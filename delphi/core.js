@@ -37,5 +37,6 @@ Object.defineProperty(TApplication, 'animationEnabled', {
 document.body.classList.add('TApplication');  
 TApplication.caption = properties.caption;
 
+/* Named and default exports */
 export default TApplication;
 export { TApplication } ;
