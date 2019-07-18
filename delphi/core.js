@@ -38,3 +38,4 @@ document.body.classList.add('TApplication');
 TApplication.caption = properties.caption;
 
 export default TApplication;
+export { TApplication } ;

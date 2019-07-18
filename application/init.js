@@ -1,4 +1,4 @@
-import TApplication from '../delphi/core.js';
+import { TApplication as app } from '../delphi/core.js';
 
 /* Set up our application instance */
-TApplication.caption = 'New project on Delphi.js';
+app.caption = 'New project on Delphi.js';
