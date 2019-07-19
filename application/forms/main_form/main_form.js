@@ -1,7 +1,7 @@
 import { TForm } from '../../../delphi/vcl.js';
 
 const form_settings = {
-    name: "main_form",
+    name: "mainForm",
     "caption": "Delphi.js Boilerplate - Main Form. It is sizeable and draggable",
     "top": 50,
     "right": 50,

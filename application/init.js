@@ -5,4 +5,5 @@ import mainForm from './forms/main_form/main_form.js';
 app.caption = 'New project on Delphi.js';
 
 /* Create form */
-console.log(mainForm.getProperty('name'))
+console.log(mainForm);
+
