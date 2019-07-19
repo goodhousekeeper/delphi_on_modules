@@ -1,7 +1,11 @@
+import { TForm } from './Forms.js';
+
 let TApplication = Object.create(null);
 
 /* Store application properties */
 let properties = {
+    /* */
+    pathToRoot: window.origin,
     /* default caption */
     caption: 'Delphi.js',
     /* in-app animation */
@@ -56,28 +60,35 @@ const setBaseStyle = () => {
 
 
 /* ----------------------------------------------------------------------------- */
-
-Object.defineProperty(TApplication, 'caption', {
-    get: () => properties.caption,
-    set: (newCaption) => {
-        properties.caption = newCaption;
-        document.title = newCaption;
+Object.defineProperties(TApplication, {
+    caption: {
+        get: () => properties.caption,
+        set: (newCaption) => {
+            properties.caption = newCaption;
+            document.title = newCaption;
+        }
+    },
+    animationEnabled: {
+        get: () => properties.animation.enabled,
+        set: (value) => {
+            properties.animation.enabled = Boolean(value);
+        }
+    },
+    createForm: {
+        value:  function (properties) {
+            let newForm = new TForm (properties);
+            return newForm;
+        }
     }
-})
-
-Object.defineProperty(TApplication, 'animationEnabled', {
-    get: () => properties.animation.enabled,
-    set: function (value) {
-        properties.animation.enabled = Boolean(value)
-    }
-})
+});
 
 /* ----------------------------------------------------------------------------- */
 
 /* Application Instance Initialize */  
-
 setBaseStyle();
 TApplication.caption = properties.caption;
+
+/* ----------------------------------------------------------------------------- */
 
 /* Named and default exports */
 export default TApplication;
