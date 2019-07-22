@@ -74,9 +74,17 @@ Object.defineProperties(TApplication, {
             properties.animation.enabled = Boolean(value);
         }
     },
+    addComponent: {
+        value: function(name) {
+            if (properties.componentStorage.hasOwnProperty(name)) {
+                throw new Error(`Component with name ${name} already exists`);
+            }
+        }
+    },
     createForm: {
         value:  function (properties) {
             let newForm = new TForm (properties);
+            
             return newForm;
         }
     }
