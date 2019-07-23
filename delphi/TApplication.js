@@ -66,17 +66,6 @@ Object.defineProperties(TApplication, {
             animation.enabled = Boolean(value);
         }
     },
-    getObject:{
-        value: function(objectName)  {
-            if (objectName === '') {
-                return this;
-            } else if (objectStorage[objectName]) {
-                return objectStorage[objectName];
-            } else {
-                return false;
-            }
-        }
-    },
     createObject: {
         value:  function (properties) {
             const ownerName = properties.ownerName ? properties.ownerName + '.' : '';
@@ -89,9 +78,21 @@ Object.defineProperties(TApplication, {
             newObject = new componentLibrary[properties.class](properties);
             objectStorage[properties.registerName] = newObject;
             Object.defineProperty(ownerObject, properties.name, {
-                value: newObject
+                value: newObject,
+                configurable: true
             })
             return newObject;
+        }
+    },
+    getObject:{
+        value: function(objectName)  {
+            if (objectName === '') {
+                return this;
+            } else if (objectStorage[objectName]) {
+                return objectStorage[objectName];
+            } else {
+                return false;
+            }
         }
     },
     addComponentsToLibrary: {

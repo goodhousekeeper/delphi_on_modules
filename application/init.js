@@ -12,3 +12,4 @@ import mainFormProperties from  './forms/main_form.js'
 let form = app.createObject(mainFormProperties);
 
 console.info(app.mainForm)
+
