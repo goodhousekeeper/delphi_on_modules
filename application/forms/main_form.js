@@ -1,4 +1,4 @@
-let properties = {
+let mainFormProperties = {
     name: "mainForm",
     "caption": "Delphi.js Boilerplate - Main Form. It is sizeable and draggable",
     "top": 50,
@@ -10,3 +10,5 @@ let properties = {
     "sizeable": true,
     "visible": true,
 }
+
+export default mainFormProperties;

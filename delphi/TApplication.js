@@ -75,16 +75,40 @@ Object.defineProperties(TApplication, {
         }
     },
     addComponent: {
-        value: function(name) {
-            if (properties.componentStorage.hasOwnProperty(name)) {
-                throw new Error(`Component with name ${name} already exists`);
+        value: function(componentName, componentObject) {
+            if (properties.componentStorage.hasOwnProperty(componentName)) {
+                throw new Error(`Component with name ${componentName} already exists`);
             }
+            properties.componentStorage[componentName] = componentObject;
+
         }
     },
+    getComponent: {
+        value: function(componentName) {
+            if (properties.componentStorage.hasOwnProperty(componentName)) {
+                return properties.componentStorage[componentName]
+            } else {
+                return false;
+            }    
+        }
+    },
+    deleteComponent: {
+        value: function(componentName) {
+            if (properties.componentStorage.hasOwnProperty(componentName)) {
+                delete properties.componentStorage[componentName]
+            } else {
+                return false;
+            }              
+        }
+    },
+
     createForm: {
         value:  function (properties) {
             let newForm = new TForm (properties);
-            
+            this.addComponent(properties.name, newForm);
+            Object.defineProperty(this, properties.name, {
+                get: () => this.getComponent(properties.name)
+              })
             return newForm;
         }
     }
