@@ -4,8 +4,8 @@ let TApplication = Object.create(null);
 
 /* Store application properties */
 let properties = {
-    /* component storage  */
-    vcl: {},
+    /* component library  */
+    library: {},
     /* default caption */
     caption: 'Delphi.js',
     /* in-app animation */
@@ -59,8 +59,8 @@ const setBaseStyle = () => {
 
 /* ----------------------------------------------------------------------------- */
 Object.defineProperties(TApplication, {
-    vcl: {
-        get: () => properties.vcl
+    library: {
+        get: () => properties.library
     },
     caption: {
         get: () => properties.caption,
@@ -80,20 +80,20 @@ Object.defineProperties(TApplication, {
             if (this[properties.name]) {
                 throw new Error(`Form with name "${properties.name}" already exists.`)
             }
-            let newForm = new this.vcl[properties.class](properties);
+            let newForm = new this.library[properties.class](properties);
             Object.defineProperty(this, properties.name, {
                value: newForm
               })
             return newForm;
         }
     },
-    addComponentsToVCL: {
+    addComponentsToLibrary: {
         value: function(components) {
             for (let [key, value] of Object.entries(components)) {
-                if (this.vcl[key]) {
+                if (this.library[key]) {
                     throw new Error(`Component with name ${value.name} already exists`);
                 } else {
-                    this.vcl[key] = value;
+                    this.library[key] = value;
                 }
             }
         }
@@ -106,8 +106,7 @@ Object.defineProperties(TApplication, {
 /* Application Instance Initialize */  
 setBaseStyle();
 TApplication.caption = properties.caption;
-
-TApplication.addComponentsToVCL(Forms);
+TApplication.addComponentsToLibrary(Forms);
 
 
 /* ----------------------------------------------------------------------------- */
