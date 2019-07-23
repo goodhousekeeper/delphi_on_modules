@@ -53,9 +53,6 @@ const setBaseStyle = () => {
 /* ----------------------------------------------------------------------------- */
 
 Object.defineProperties(TApplication, {
-    componentLibrary: {
-        get: () => componentLibrary
-    },
     caption: {
         get: () => caption,
         set: (newCaption) => {
