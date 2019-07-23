@@ -6,5 +6,3 @@ import mainFormProperties from  './forms/main_form.js'
 app.caption = 'New project on Delphi.js';
 
 let form = app.createForm(mainFormProperties);
-
-console.info(app.mainForm)
