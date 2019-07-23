@@ -1,28 +1,22 @@
+/* Import components module */
 import * as Forms from './Forms.js';
-
+/* Application instance */
 let TApplication = Object.create(null);
-
-/* Store application properties */
-let properties = {
-    /* component library  */
-    library: {},
-    /* default caption */
-    caption: 'Delphi.js',
-    /* in-app animation */
-    animation: {
-        /* use or not */
-        enabled: true,
-        /* duration in milliseconds */
-        speed: 200,
-        /* timing functions */
-        function: {
-            linear: (timeFraction) => timeFraction,
-            timingArc: (timeFraction) => 1 - Math.sin(Math.acos(timeFraction))
-        }
+/* Private properties */
+let componentLibrary = {};
+let objectStorage = {};
+let caption = 'Delphi.js';
+let animation = {
+    /* use or not */
+    enabled: true,
+    /* duration in milliseconds */
+    speed: 200,
+    /* timing functions */
+    function: {
+        linear: (timeFraction) => timeFraction,
+        timingArc: (timeFraction) => 1 - Math.sin(Math.acos(timeFraction))
     }
 }
-
-/* ----------------------------------------------------------------------------- */
 
 const setBaseStyle = () => {
     const style = `
@@ -56,23 +50,23 @@ const setBaseStyle = () => {
     document.body.classList.add('TApplication');  
 }
 
-
 /* ----------------------------------------------------------------------------- */
+
 Object.defineProperties(TApplication, {
-    library: {
-        get: () => properties.library
+    componentLibrary: {
+        get: () => componentLibrary
     },
     caption: {
-        get: () => properties.caption,
+        get: () => caption,
         set: (newCaption) => {
-            properties.caption = newCaption;
+            caption = newCaption;
             document.title = newCaption;
         }
     },
     animationEnabled: {
-        get: () => properties.animation.enabled,
+        get: () => animation.enabled,
         set: (value) => {
-            properties.animation.enabled = Boolean(value);
+            animation.enabled = Boolean(value);
         }
     },
     createForm: {
@@ -80,7 +74,7 @@ Object.defineProperties(TApplication, {
             if (this[properties.name]) {
                 throw new Error(`Form with name "${properties.name}" already exists.`)
             }
-            let newForm = new this.library[properties.class](properties);
+            let newForm = new componentLibrary[properties.class](properties);
             Object.defineProperty(this, properties.name, {
                value: newForm
               })
@@ -90,10 +84,10 @@ Object.defineProperties(TApplication, {
     addComponentsToLibrary: {
         value: function(components) {
             for (let [key, value] of Object.entries(components)) {
-                if (this.library[key]) {
+                if (componentLibrary[key]) {
                     throw new Error(`Component with name ${value.name} already exists`);
                 } else {
-                    this.library[key] = value;
+                    componentLibrary[key] = value;
                 }
             }
         }
@@ -105,7 +99,7 @@ Object.defineProperties(TApplication, {
 
 /* Application Instance Initialize */  
 setBaseStyle();
-TApplication.caption = properties.caption;
+TApplication.caption = caption;
 TApplication.addComponentsToLibrary(Forms);
 
 
