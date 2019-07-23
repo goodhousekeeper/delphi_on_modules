@@ -3,8 +3,8 @@ import * as Forms from './Forms.js';
 /* Application instance */
 let TApplication = Object.create(null);
 /* Private properties */
-let componentLibrary = {};
-let objectStorage = {};
+let componentLibrary = Object.create(null);
+let objectStorage = Object.create(null);
 let caption = 'Delphi.js';
 let animation = {
     /* use or not */
@@ -66,16 +66,32 @@ Object.defineProperties(TApplication, {
             animation.enabled = Boolean(value);
         }
     },
-    createForm: {
-        value:  function (properties) {
-            if (this[properties.name]) {
-                throw new Error(`Form with name "${properties.name}" already exists.`)
+    getObject:{
+        value: function(objectName)  {
+            if (objectName === '') {
+                return this;
+            } else if (objectStorage[objectName]) {
+                return objectStorage[objectName];
+            } else {
+                return false;
             }
-            let newForm = new componentLibrary[properties.class](properties);
-            Object.defineProperty(this, properties.name, {
-               value: newForm
-              })
-            return newForm;
+        }
+    },
+    createObject: {
+        value:  function (properties) {
+            const ownerName = properties.ownerName ? properties.ownerName + '.' : '';
+            const ownerObject = this.getObject(ownerName);
+            let newObject;
+            properties.registerName = `${ownerName}${properties.name}`;
+            if (this.getObject(properties.registerName)) {
+                throw new Error(`Object with name "${properties.registerName}" already exists.`)
+            }
+            newObject = new componentLibrary[properties.class](properties);
+            objectStorage[properties.registerName] = newObject;
+            Object.defineProperty(ownerObject, properties.name, {
+                value: newObject
+            })
+            return newObject;
         }
     },
     addComponentsToLibrary: {
