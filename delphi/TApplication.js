@@ -1,11 +1,11 @@
-import { TForm } from './Forms.js';
+import * as Forms from './Forms.js';
 
 let TApplication = Object.create(null);
 
 /* Store application properties */
 let properties = {
-    /* */
-    pathToRoot: window.origin,
+    /* component storage  */
+    vcl: {},
     /* default caption */
     caption: 'Delphi.js',
     /* in-app animation */
@@ -19,9 +19,7 @@ let properties = {
             linear: (timeFraction) => timeFraction,
             timingArc: (timeFraction) => 1 - Math.sin(Math.acos(timeFraction))
         }
-    },
-    /* storage for components */
-    componentStorage: {}
+    }
 }
 
 /* ----------------------------------------------------------------------------- */
@@ -61,6 +59,9 @@ const setBaseStyle = () => {
 
 /* ----------------------------------------------------------------------------- */
 Object.defineProperties(TApplication, {
+    vcl: {
+        get: () => properties.vcl
+    },
     caption: {
         get: () => properties.caption,
         set: (newCaption) => {
@@ -79,13 +80,25 @@ Object.defineProperties(TApplication, {
             if (this[properties.name]) {
                 throw new Error(`Form with name "${properties.name}" already exists.`)
             }
-            let newForm = new TForm (properties);
+            let newForm = new this.vcl[properties.class](properties);
             Object.defineProperty(this, properties.name, {
                value: newForm
               })
             return newForm;
         }
+    },
+    addComponentsToVCL: {
+        value: function(components) {
+            for (let [key, value] of Object.entries(components)) {
+                if (this.vcl[key]) {
+                    throw new Error(`Component with name ${value.name} already exists`);
+                } else {
+                    this.vcl[key] = value;
+                }
+            }
+        }
     }
+
 });
 
 /* ----------------------------------------------------------------------------- */
@@ -93,6 +106,9 @@ Object.defineProperties(TApplication, {
 /* Application Instance Initialize */  
 setBaseStyle();
 TApplication.caption = properties.caption;
+
+TApplication.addComponentsToVCL(Forms);
+
 
 /* ----------------------------------------------------------------------------- */
 
