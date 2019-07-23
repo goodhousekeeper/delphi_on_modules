@@ -10,6 +10,7 @@ let mainFormProperties = {
     minHeight: 600,
     sizeable: true,
     visible: true,
+    content: {}
 }
 
 export default mainFormProperties;

@@ -20,7 +20,7 @@ let animation = {
 
 const setBaseStyle = () => {
     const style = `
-{
+* {
     margin: 0;
     padding: 0;
     border: 0 none;
@@ -42,6 +42,12 @@ const setBaseStyle = () => {
     font-size: 14px;
     overflow: auto;
     color: #444444;
+  }
+
+  .body {
+    height: 100%;
+    width: 100%;
+    background: #E6E6E6 url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAAAXNSR0IArs4c6QAAAAZQTFRF////zsrFFOhhzwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfbCA8IIAxOHyTqAAAAbElEQVR42u3PMQ0AAAgDsMlHNhqWcHC0Dpqp5S0XFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXF5cjC3IDYNdXepeXAAAAAElFTkSuQmCC') repeat;
   }
 `;
     let styleNode = document.createElement('style');
