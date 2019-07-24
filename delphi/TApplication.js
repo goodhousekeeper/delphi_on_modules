@@ -1,5 +1,6 @@
 /* Import components module */
 import Utils from './Utils.js';
+import * as Constants from './Constants.js';
 import * as Forms from './Forms.js';
 
 /* Application instance */
@@ -118,7 +119,9 @@ Object.defineProperties(TApplication, {
 TApplication.addComponentsToLibrary(Forms);
 TApplication.caption = caption;
 Utils.addStyleNode(TApplicationStyle);
-document.body.classList.add('TApplication');  
+document.body.classList.add('TApplication'); 
+/* Add system Objects */
+TApplication.createObject(Constants.OVERLAY_PROPERTIES);
 
 
 /* ----------------------------------------------------------------------------- */

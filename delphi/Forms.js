@@ -1,7 +1,16 @@
-import Utils from './Utils.js'
+import Utils from './Utils.js';
+import * as Constants from './Constants.js';
 import TControl from './TControl.js';
 
 const formsModuleStyle = `
+.TOverlay {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
 .TApplication .TForm {
     box-sizing: border-box;
     border-radius: 7px 7px 0 0;
@@ -258,7 +267,8 @@ class TForm extends TControl {
         }
         */
         super.show();
-        this.align().bringToFront().fadeIn()     
+        this.align().bringToFront().fadeIn();
+        return this;   
     } 
     bringToFront() {
         return this;
@@ -266,4 +276,24 @@ class TForm extends TControl {
 
 } 
 
-export { TForm }
+class TOverlay extends TControl {
+    constructor(properties) {
+        super(properties);
+        this.createNode();
+    }
+
+    createNode() {
+        super.createNode();
+        this.style.zIndex = Constants.OVERLAY_Z_INDEX;
+    }
+
+    show() {
+        super.show();
+        this.fadeIn();
+        return this;
+    }
+}
+
+
+
+export { TForm, TOverlay }
