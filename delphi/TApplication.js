@@ -48,6 +48,7 @@ const TApplicationStyle = `
   body {
     height: 100%;
     width: 100%;
+    overflow: hidden;
     background-color: #E6E6E6;
     background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAAAXNSR0IArs4c6QAAAAZQTFRF////zsrFFOhhzwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfbCA8IIAxOHyTqAAAAbElEQVR42u3PMQ0AAAgDsMlHNhqWcHC0Dpqp5S0XFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXF5cjC3IDYNdXepeXAAAAAElFTkSuQmCC');
     background-size: auto;
@@ -55,7 +56,6 @@ const TApplicationStyle = `
     --form-back-layer: #ECE9D6;
     --form-caption-color: #FFF;
     --form-caption-shadow-color: #072BA2;
-    --border-color:  #8D8D8D;
   }
 `;
 

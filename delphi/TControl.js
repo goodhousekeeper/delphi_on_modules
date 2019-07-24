@@ -73,7 +73,7 @@ export default class TControl extends TComponent {
     hide() {
         this.setProperty('visible', false);
         this.style.visibility = 'hidden';
-        this.container.dispatchEvent(new CustomEvent('hide'));
+        this.objectContainer.dispatchEvent(new CustomEvent('hide'));
         return this;
       }
 
