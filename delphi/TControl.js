@@ -1,4 +1,5 @@
 import * as Constants from './Constants.js';
+import Utils from './Utils.js';
 import TComponent from './TComponent.js';
 
 
@@ -178,12 +179,33 @@ export default class TControl extends TComponent {
         */
     }
 
-    fadeIn() {
-        return this;
+    fadeIn(callback) {
+        let style = this.style
+        if (style.opacity === '1') {
+            return;
+        }
+        if (style.opacity !== '1') {
+            style.opacity = '0';
+        }
+        Utils.animate({
+            draw: function (progress) {
+                style.opacity = String(progress);
+            },
+            callback: callback
+        })
     }
 
-    fadeOut() {
-        return this;
+    fadeOut(callback) {
+        let style = this.style
+        if (style.opacity === '0') {
+            return;
+        }
+        Utils.animate({
+            draw: function (progress) {
+                style.opacity = String(1 - progress);
+            },
+            callback: callback
+        })
     }
 
 

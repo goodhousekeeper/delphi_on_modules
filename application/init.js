@@ -16,3 +16,4 @@ let oneMoreForm = app.createObject(oneMoreFormProperties);
 console.info(app.mainForm);
 console.info(app.oneMoreForm);
 
+
