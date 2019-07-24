@@ -1,0 +1,18 @@
+/**
+ * Constants
+ */
+
+const DISABLED_CLASS_NAME = 'Disabled';
+const CHECKED_CLASS_NAME = 'Checked';
+const UNCHECKED_CLASS_NAME = 'Unchecked';
+const INVALIDATED_CLASS_NAME = 'Invalidated';
+const BRING_TO_FRONT_Z_INDEX = 1000;
+
+export {
+    DISABLED_CLASS_NAME, 
+    CHECKED_CLASS_NAME,
+    UNCHECKED_CLASS_NAME,
+    INVALIDATED_CLASS_NAME,
+    BRING_TO_FRONT_Z_INDEX
+}
+
