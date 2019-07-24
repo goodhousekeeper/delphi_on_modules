@@ -93,7 +93,13 @@ class TForm extends TControl {
        this.modalResult = null;
        this.isModal = false;
        this.addStyle(TFormStyle);
-    }    
+    }
+
+    addStyle(style) {
+        super.addStyle(style);
+    }
+
+
 } 
 
 export { TForm }

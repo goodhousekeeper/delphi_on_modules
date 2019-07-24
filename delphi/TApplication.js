@@ -1,4 +1,5 @@
 /* Import components module */
+import Utils from './Utils.js';
 import * as Forms from './Forms.js';
 /* Application instance */
 let TApplication = Object.create(null);
@@ -18,8 +19,7 @@ let animation = {
     }
 }
 
-const setBaseStyle = () => {
-    const style = `
+const BASE_CSS = `
 * {
     margin: 0;
     padding: 0;
@@ -50,11 +50,6 @@ const setBaseStyle = () => {
     background: #E6E6E6 url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAAAXNSR0IArs4c6QAAAAZQTFRF////zsrFFOhhzwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfbCA8IIAxOHyTqAAAAbElEQVR42u3PMQ0AAAgDsMlHNhqWcHC0Dpqp5S0XFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXF5cjC3IDYNdXepeXAAAAAElFTkSuQmCC') repeat;
   }
 `;
-    let styleNode = document.createElement('style');
-    styleNode.innerHTML = style;
-    document.getElementsByTagName('head')[0].appendChild(styleNode);
-    document.body.classList.add('TApplication');  
-}
 
 /* ----------------------------------------------------------------------------- */
 
@@ -118,7 +113,8 @@ Object.defineProperties(TApplication, {
 /* ----------------------------------------------------------------------------- */
 
 /* Application Instance Initialize */  
-setBaseStyle();
+Utils.addStyleNode(BASE_CSS);
+document.body.classList.add('TApplication');  
 TApplication.caption = caption;
 TApplication.addComponentsToLibrary(Forms);
 

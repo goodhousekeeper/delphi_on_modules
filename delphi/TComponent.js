@@ -4,11 +4,11 @@ export default class TComponent extends Object {
         this._properties = properties;
     }
 
-    setProperty = function(name, value) {
+    setProperty(name, value) {
         this._properties[name] = value;
     }
 
-    getProperty = function(name) { 
+    getProperty(name) { 
         return this._properties.hasOwnProperty(name) ? this._properties[name] : undefined;
     }
 
