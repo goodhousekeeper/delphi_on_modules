@@ -10,7 +10,7 @@ export default class TControl extends TComponent {
         const objectContainer = document.createElement('div');
         let contentContainer = document.createElement('div');
         objectContainer.id = this.getProperty('registerName'); 
-        objectContainer.className = this.getProperty('registerName');
+        objectContainer.className = this.getProperty('className');
         this.getProperty('ownerObject').contentContainer.appendChild(objectContainer);
 
         

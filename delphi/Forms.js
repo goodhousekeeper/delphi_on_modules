@@ -3,11 +3,18 @@ import TControl from './TControl.js';
 
 const formsModuleStyle = `
 .TApplication .TForm {
-    background-color: #2E86C1;
-    border: 1px solid #8D8D8D;
-    box-shadow: 0 0 10px 2px #8D8D8D, 0 1px 2px 0 #fff inset;
+   background-color: var(--form-border-color);
+   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAMAAADaS4T1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1MDQwRjhGNTA4QUVFOTExQUM5QzhENDMwQzY4REU4MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0M0NBNEU0Q0FFMDkxMUU5OTVBQUI3OEEzMTQ3MDQyMyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0M0NBNEU0QkFFMDkxMUU5OTVBQUI3OEEzMTQ3MDQyMyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjUwNDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjUwNDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+lgl1FgAAADxQTFRFAGD/AGX1AFntAETlAGz/AJb/AFr5AEHUAFztAFDqAFfyAFfrAJH/AFf3AFTvAGX/AGD9AGr/AFLmAFTqAXFw1gAAADBJREFUeNocx4cJADAMwDB37/3/rw1BYDCWQMdjyDSueqJop6gMIhtYHLXkHOkLMAAoZgFrf25PLgAAAABJRU5ErkJggg==');
+    background-repeat-x: repeat;
+    background-repeat-y: no-repeat;
+
+
+    border-color: var(--form-border-color);
+    border-radius: 7px 7px 0 0;
+    //box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+   
     overflow: hidden;
-    min-height: 24px;
+    min-height: 32px;
     min-width: 100px;
     box-sizing: border-box;
   }
@@ -51,11 +58,11 @@ const formsModuleStyle = `
     line-height: 24px;
     color: #FFF;
   }
-  .TApplication .TForm .ClientArea {
-    top: 24px;
-    right: 2px;
-    bottom: 2px;
-    left: 2px;
+  .TApplication .TForm .ContentContainer {
+    top: 30px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
     background-color: #D6D6D6;
     overflow: hidden;
     box-sizing: inherit;
@@ -74,7 +81,7 @@ const formsModuleStyle = `
   .TApplication .TForm.noTitle .Title {
     display: none;
   }
-  .TApplication .TForm.noTitle .ClientArea {
+  .TApplication .TForm.noTitle .ContentContainer {
     top: 2px;
   }
   .TApplication .TForm.noCloseButton .Title .CloseButton {
@@ -95,6 +102,10 @@ class TForm extends TControl {
        this.modalResult = null;
        this.isModal = false;
        this.createNode();
+    }
+
+    createNode() {
+        super.createNode();
     }
 
 
