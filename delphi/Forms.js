@@ -231,8 +231,37 @@ class TForm extends TControl {
         })
     }
 
-    bringToFront() {
+    align() {
+        let container = this.objectContainer;
+        let style = this.style
+        let containerWidth = parseInt(style.width, 10)
+        let containerHeight = parseInt(style.height, 10)
+      
+        if (!this.getProperty('screenCenter')) {
+            return this;
+        }
+        if (container.offsetWidth > 0) {
+            containerWidth = container.offsetWidth;
+        }
+        if (container.offsetHeight > 0) {
+            containerHeight = container.offsetHeight
+        }
+        style.left = (window.innerWidth - containerWidth) / 2 + 'px'
+        style.top = (window.innerHeight - containerHeight) / 2 + 'px'
+        return this;
+    }
 
+    show() {
+        /*
+        if (TApplication.core.modalStack.length > 0) {
+            this.showModal()
+        }
+        */
+        super.show();
+        this.align().bringToFront().fadeIn()     
+    } 
+    bringToFront() {
+        return this;
     }
 
 } 

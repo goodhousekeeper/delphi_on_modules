@@ -178,5 +178,13 @@ export default class TControl extends TComponent {
         */
     }
 
+    fadeIn() {
+        return this;
+    }
+
+    fadeOut() {
+        return this;
+    }
+
 
 }
