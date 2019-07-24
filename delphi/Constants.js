@@ -55,6 +55,8 @@ const OVERLAY_PROPERTIES = {
     visible: false
 }
 
+const MODAL_RESULT_CLOSE = 'mrClose';
+
 /*------------------------------------------------------------------------------------------ */
 export {
     APPLICATION_STYLE,
@@ -70,6 +72,7 @@ export {
     ANIMATION_FUNCTION_ARC,
 
     OVERLAY_Z_INDEX,
-    OVERLAY_PROPERTIES
-}
+    OVERLAY_PROPERTIES,
 
+    MODAL_RESULT_CLOSE
+}

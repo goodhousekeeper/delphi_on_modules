@@ -8,6 +8,7 @@ let TApplication = Object.create(null);
 /* Private properties */
 let componentLibrary = Object.create(null);
 let objectStorage = Object.create(null);
+let modalStack = [];
 let caption = 'Delphi.js';
 let animationEnabled = true;
 
@@ -20,6 +21,9 @@ Object.defineProperties(TApplication, {
             caption = newCaption;
             document.title = newCaption;
         }
+    },
+    modalStack: {
+        value: modalStack
     },
     contentContainer: {
         value: document.body

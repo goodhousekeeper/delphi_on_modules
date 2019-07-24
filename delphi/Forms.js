@@ -1,6 +1,7 @@
 import Utils from './Utils.js';
 import * as Constants from './Constants.js';
 import TControl from './TControl.js';
+import TApplication from './TApplication.js';
 
 const formsModuleStyle = `
 .TOverlay {
@@ -139,10 +140,11 @@ Utils.addStyleNode(formsModuleStyle);
 
 class TForm extends TControl {
     constructor(properties) {
-       super(properties);
-       this.modalResult = null;
-       this.isModal = false;
-       this.createNode();
+        super(properties);
+        this.modalResult = null;
+        this.setProperty('modal', false);
+        this.setProperty('modalResult', false);
+        this.createNode();
     }
 
     createNode() {
@@ -261,15 +263,62 @@ class TForm extends TControl {
     }
 
     show() {
-        /*
-        if (TApplication.core.modalStack.length > 0) {
-            this.showModal()
+        if (TApplication.modalStack.length > 0) {
+            this.showModal();
         }
-        */
         super.show();
         this.align().bringToFront().fadeIn();
         return this;   
     } 
+    
+    showModal() {
+        let modalStack = TApplication.modalStack;
+
+        TApplication.overlay.show();
+      
+        super.show();
+        this.style.zIndex = Constants.OVERLAY_Z_INDEX + 1;
+        this.align().fadeIn();
+        if (modalStack.length > 0) {
+          modalStack[modalStack.length - 1].style.zIndex = Constants.OVERLAY_Z_INDEX - 1;
+        }
+        modalStack.push(this);
+        this.setProperty('modal', true);
+        this.setProperty('modalResult');
+    }
+
+    hide() {
+        let modalStack = TApplication.modalStack;
+        let that = this;
+      
+        function afterFade () {
+           // TApplication.vcl.TControl.prototype.hide.apply(that)
+            if (modalStack.length > 0) {
+                modalStack[modalStack.length - 1].style.zIndex = Constants.OVERLAY_Z_INDEX + 1
+            }
+        }
+      
+        function afterHideQuery () {
+            if (that.getProperty('modal')) {
+                that.setProperty('modal', false);
+                modalStack.pop();
+                if (modalStack.length === 0) {
+                   TApplication.overlay.hide();
+                }
+                if (!that.getProperty('modalResult')) {
+                    that.setProperty('modalResult', Constants.MODAL_RESULT_CLOSE)
+                }
+            }
+            that.fadeOut(afterFade);
+        }
+      
+        if (that.hideQuery) {
+            that.hideQuery(afterHideQuery);
+        } else {
+            afterHideQuery();
+        }
+    }
+
     bringToFront() {
         return this;
     }
@@ -290,7 +339,10 @@ class TOverlay extends TControl {
     show() {
         super.show();
         this.fadeIn();
-        return this;
+    }
+
+    hide() {
+        this.fadeOut(() => super.hide());
     }
 }
 
