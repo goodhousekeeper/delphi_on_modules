@@ -290,9 +290,9 @@ class TForm extends TControl {
     hide() {
         let modalStack = TApplication.modalStack;
         let that = this;
-      
-        function afterFade () {
-           // TApplication.vcl.TControl.prototype.hide.apply(that)
+   
+        const afterFade = () => {
+            super.hide();
             if (modalStack.length > 0) {
                 modalStack[modalStack.length - 1].style.zIndex = Constants.OVERLAY_Z_INDEX + 1
             }
