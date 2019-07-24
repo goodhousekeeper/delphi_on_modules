@@ -8,17 +8,7 @@ let TApplication = Object.create(null);
 let componentLibrary = Object.create(null);
 let objectStorage = Object.create(null);
 let caption = 'Delphi.js';
-let animation = {
-    /* use or not */
-    enabled: true,
-    /* duration in milliseconds */
-    speed: 200,
-    /* timing functions */
-    function: {
-        linear: (timeFraction) => timeFraction,
-        timingArc: (timeFraction) => 1 - Math.sin(Math.acos(timeFraction))
-    }
-}
+let animationEnabled = true;
 
 const TApplicationStyle = `
 * {
@@ -73,9 +63,9 @@ Object.defineProperties(TApplication, {
         value: document.body
     },
     animationEnabled: {
-        get: () => animation.enabled,
+        get: () => animationEnabled,
         set: (value) => {
-            animation.enabled = Boolean(value);
+            animationEnabled = Boolean(value);
         }
     },
     createObject: {
