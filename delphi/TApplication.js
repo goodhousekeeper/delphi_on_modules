@@ -1,6 +1,7 @@
 /* Import components module */
 import Utils from './Utils.js';
 import * as Forms from './Forms.js';
+
 /* Application instance */
 let TApplication = Object.create(null);
 /* Private properties */
@@ -19,7 +20,7 @@ let animation = {
     }
 }
 
-const BASE_CSS = `
+const TApplicationStyle = `
 * {
     margin: 0;
     padding: 0;
@@ -113,7 +114,7 @@ Object.defineProperties(TApplication, {
 /* ----------------------------------------------------------------------------- */
 
 /* Application Instance Initialize */  
-Utils.addStyleNode(BASE_CSS);
+Utils.addStyleNode(TApplicationStyle);
 document.body.classList.add('TApplication');  
 TApplication.caption = caption;
 TApplication.addComponentsToLibrary(Forms);
