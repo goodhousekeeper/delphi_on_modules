@@ -76,8 +76,7 @@ const formsModuleStyle = `
     overflow: hidden;
     text-align: left;
     text-overflow: ellipsis;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 15px;
     line-height: 24px;
     color: var(--form-caption-color);
     text-shadow: 1px 1px 0 var(--form-caption-shadow-color);
@@ -116,6 +115,15 @@ const formsModuleStyle = `
 .TApplication .TForm.noCloseButton .Title .CloseButton {
     display: none;
 }
+
+.TApplication .TForm .SizeHandle {
+    width: 12px;
+    height: 12px;
+    right: 0;
+    bottom: 0;
+    cursor: se-resize;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1NzQwRjhGNTA4QUVFOTExQUM5QzhENDMwQzY4REU4MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGNEFBRDg3REFFMjMxMUU5OEY5RTgyOEI4NDE5NEI0QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGNEFBRDg3Q0FFMjMxMUU5OEY5RTgyOEI4NDE5NEI0QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU3NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+j9zGmAAAAGxQTFRF4d3K7ejS7ejU5eDJ5+DL6uXQ6ujV39zE4dzJ6eXR39vD39zH5eHL5eHJ3Na+39rF4dzL3NbA4drG7enW4d3I7ebQ6+TO7urT29fA7OfT6uXPu7Wiu7ai7OjR7enU7enT7urWu7Wk7urV////1SXZ2AAAAGxJREFUeNpEilkOwkAMxd50o2VfprQQJmnI/e/Iq4TAkj8sGQt5E5dpwi9e8Q8Nxq1TrSqzlEpBp2YuqwxVNf6JFjzIGFHoiGFo2ye5E7g0jcv+4FLX4Lv5usUcMa9eIo4gOee+P++up48AAwCnMQ4FktRCuQAAAABJRU5ErkJggg==') no-repeat center center;
+  }
 `;
 
 Utils.addStyleNode(formsModuleStyle);
@@ -166,7 +174,33 @@ class TForm extends TControl {
         this.caption = this.getProperty('caption');
 
         closeButton.className = 'CloseButton';
-        closeButton.id = container.id + '.CloseButton';
+        closeButton.id = this.objectContainer.id + '.CloseButton';
+
+        /*------------------------------------------------------------------------------ */
+
+        if (this.getProperty('sizeable')) {
+            let sizeHandle = document.createElement('div');
+            sizeHandle.id = `${this.objectContainer.id}.SizeHandle`;
+            sizeHandle.className = 'SizeHandle';
+
+            this.contentContainer.appendChild(sizeHandle);
+
+            sizeHandle.addEventListener('mousedown', (e) => {
+              let box = this.objectContainer.getBoundingClientRect()
+              let deltaX = e.pageX - box.width
+              let deltaY = e.pageY - box.height
+              this.bringToFront();
+        
+              function sizeAt (e) {
+                style.width = e.pageX - deltaX + 'px'
+                style.height = e.pageY - deltaY + 'px'
+                style.opacity = 0.5
+              }
+        
+              document.onmousemove = (e) => sizeAt(e)
+              container.onmouseup = () => endDrag()
+            })
+          }
 
 
     }
