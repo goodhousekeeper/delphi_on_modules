@@ -1,6 +1,6 @@
 let mainFormProperties = {
     name: "mainForm",
-    class: "TForm",
+    className: "TForm",
     caption: "Delphi.js Boilerplate - Main Form. It is sizeable and draggable",
     top: 50,
     right: 50,

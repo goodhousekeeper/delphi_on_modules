@@ -1,7 +1,7 @@
 import Utils from './Utils.js'
 import TControl from './TControl.js';
 
-const TFormStyle = `
+const formsModuleStyle = `
 .TApplication .TForm {
     background-color: #2E86C1;
     border: 1px solid #8D8D8D;
@@ -87,13 +87,14 @@ const TFormStyle = `
   }
 `;
 
+Utils.addStyleNode(formsModuleStyle);
 
 class TForm extends TControl {
     constructor(properties) {
        super(properties);
-       Utils.addStyleNode(TFormStyle);
        this.modalResult = null;
        this.isModal = false;
+       this.createNode();
     }
 
 

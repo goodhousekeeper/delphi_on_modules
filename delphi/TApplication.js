@@ -65,6 +65,9 @@ Object.defineProperties(TApplication, {
             document.title = newCaption;
         }
     },
+    contentContainer: {
+        value: document.body
+    },
     animationEnabled: {
         get: () => animation.enabled,
         set: (value) => {
@@ -77,10 +80,11 @@ Object.defineProperties(TApplication, {
             const ownerObject = this.getObject(ownerName);
             let newObject;
             properties.registerName = `${ownerName}${properties.name}`;
+            properties.ownerObject = ownerObject;
             if (this.getObject(properties.registerName)) {
                 throw new Error(`Object with name "${properties.registerName}" already exists.`)
             }
-            newObject = new componentLibrary[properties.class](properties);
+            newObject = new componentLibrary[properties.className](properties);
             objectStorage[properties.registerName] = newObject;
             Object.defineProperty(ownerObject, properties.name, {
                 value: newObject,
