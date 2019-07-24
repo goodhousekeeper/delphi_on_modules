@@ -53,8 +53,8 @@ const TApplicationStyle = `
     background-size: auto;
     background-repeat: repeat;
     --form-back-layer: #EFEFEF;
-    //--form-border-color: #0059E8;
-    --form-border-color: #0142cf;
+    --form-caption-color: #FFF;
+    --form-caption-shadow-color: #072BA2;
     --border-color:  #8D8D8D;
   }
 `;

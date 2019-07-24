@@ -12,7 +12,6 @@ export default class TControl extends TComponent {
         objectContainer.id = this.getProperty('registerName'); 
         objectContainer.className = this.getProperty('className');
         this.getProperty('ownerObject').contentContainer.appendChild(objectContainer);
-
         
         Object.assign(objectContainer.style, {
             whiteSpace: this.getProperty('multiLine') ? 'normal' : 'nowrap',
@@ -57,12 +56,11 @@ export default class TControl extends TComponent {
                 set: (newCaption) => document.getElementById(objectContainer.id + '.Caption').innerText = newCaption || '' 
             }
         });
+
         this.setProperty('visible', this.getProperty('visible') === undefined ? true : Boolean(this.getProperty('visible')))
         if (this.getProperty('visible') === true) {
           this.show();
         }
-
-        return objectContainer;
     }  
 
     show() {
