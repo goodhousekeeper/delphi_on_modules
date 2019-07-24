@@ -141,14 +141,14 @@ class TForm extends TControl {
         let style = this.style;
         let container = this.objectContainer;
         /*------------------------------------------------------------------------------ */        
-        function endDrag () {
+        function endTransition () {
             document.onmousemove = null
             container.onmouseup = null
             style.opacity = 1.0
-          }
+        }
         /*------------------------------------------------------------------------------ */
-        this.style.height = this.getProperty('height') ? (this.getProperty('height') + 'px') : '';
-        this.style.width = this.getProperty('width') ? (this.getProperty('width') + 'px') : '';
+        style.height = this.getProperty('height') ? (this.getProperty('height') + 'px') : '';
+        style.width = this.getProperty('width') ? (this.getProperty('width') + 'px') : '';
         /*------------------------------------------------------------------------------ */
         let borderTop = document.createElement('div');
         let borderRight = document.createElement('div');
@@ -158,44 +158,44 @@ class TForm extends TControl {
         borderRight.className = 'BorderRight';
         borderBottom.className = 'BorderBottom';        
         borderLeft.className = 'BorderLeft';
-        this.objectContainer.appendChild(borderTop);
-        this.objectContainer.appendChild(borderRight); 
-        this.objectContainer.appendChild(borderBottom);               
-        this.objectContainer.appendChild(borderLeft);
+        container.appendChild(borderTop);
+        container.appendChild(borderRight); 
+        container.appendChild(borderBottom);               
+        container.appendChild(borderLeft);
         /*------------------------------------------------------------------------------ */
         let title = document.createElement('div');
         let caption = document.createElement('div');
         let closeButton = document.createElement('div');
         let icon = document.createElement('div');
 
-        this.objectContainer.appendChild(title);
+        container.appendChild(title);
         title.className = 'Title';
         title.appendChild(icon);
         title.appendChild(caption);
         title.appendChild(closeButton);
 
         icon.className = 'Icon';
-        icon.id = this.objectContainer.id + '.Icon';
+        icon.id = container.id + '.Icon';
 
         caption.className = 'Caption';
-        caption.id = this.objectContainer.id + '.Caption';
+        caption.id = container.id + '.Caption';
         this.caption = this.getProperty('caption');
 
         closeButton.className = 'CloseButton';
-        closeButton.id = this.objectContainer.id + '.CloseButton';
+        closeButton.id = container.id + '.CloseButton';
         closeButton.addEventListener('click', () => this.hide())
 
         /*------------------------------------------------------------------------------ */
 
         if (this.getProperty('sizeable')) {
             let sizeHandle = document.createElement('div');
-            sizeHandle.id = `${this.objectContainer.id}.SizeHandle`;
+            sizeHandle.id = `${container.id}.SizeHandle`;
             sizeHandle.className = 'SizeHandle';
 
             this.contentContainer.appendChild(sizeHandle);
 
             sizeHandle.addEventListener('mousedown', (e) => {
-                let box = this.objectContainer.getBoundingClientRect();
+                let box = container.getBoundingClientRect();
                 let deltaX = e.pageX - box.width;
                 let deltaY = e.pageY - box.height;
                 this.bringToFront();
@@ -207,18 +207,18 @@ class TForm extends TControl {
                 }
         
                 document.onmousemove = (e) => sizeAt(e);
-                this.objectContainer.onmouseup = () => endDrag();
+                container.onmouseup = () => endTransition();
             })
         }
 
         /*------------------------------------------------------------------------------ */
         title.addEventListener('mousedown', (e) => {
-            let box = this.objectContainer.getBoundingClientRect()
-            let deltaX = e.pageX - box.left
-            let deltaY = e.pageY - box.top
-            style.width = (box.width) + 'px'
-            style.height = (box.height) + 'px'
-            this.bringToFront()
+            let box = container.getBoundingClientRect();
+            let deltaX = e.pageX - box.left;
+            let deltaY = e.pageY - box.top;
+            style.width = (box.width) + 'px';
+            style.height = (box.height) + 'px';
+            this.bringToFront();
         
             function moveAt (e) {
               style.left = e.pageX - deltaX + 'px'
@@ -227,10 +227,8 @@ class TForm extends TControl {
             }
         
             document.onmousemove = (e) => moveAt(e)
-            this.objectContainer.onmouseup = () => endDrag()
-          })
-
-
+            container.onmouseup = () => endTransition()
+        })
     }
 
     bringToFront() {

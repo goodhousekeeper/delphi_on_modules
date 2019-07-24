@@ -1,3 +1,4 @@
+import * as Constants from './Constants.js';
 import TComponent from './TComponent.js';
 
 
@@ -57,11 +58,33 @@ export default class TControl extends TComponent {
             }
         });
 
+        if (this.getProperty('enabled') === false) {
+            this.enabled(false);
+        } else {
+            this.setProperty('enabled', true);
+        }
+
         this.setProperty('visible', this.getProperty('visible') === undefined ? true : Boolean(this.getProperty('visible')))
         if (this.getProperty('visible') === true) {
           this.show();
         }
     }  
+    
+    setEventListener(eventName, fnc, runOnce = false) {
+        let that = this;
+        if (runOnce) {
+            that.container.addEventListener(eventName, function set (e) {
+                e.target.removeEventListener(e.type, set);
+                return fnc(e, that);
+            })
+        } else {
+            that.container.addEventListener(eventName, fnc, false);
+        }
+    }
+
+    onShow(fnc, runOnce) {
+        this.setEventListener('show', fnc, runOnce);
+    }
 
     show() {
         this.setProperty('visible', true);
@@ -75,7 +98,85 @@ export default class TControl extends TComponent {
         this.style.visibility = 'hidden';
         this.objectContainer.dispatchEvent(new CustomEvent('hide'));
         return this;
-      }
+    }
+
+    onHide(fnc, runOnce) {
+        this.setEventListener('hide', fnc, runOnce);
+    }
+
+    onChange(fnc, runOnce) {
+        this.setEventListener('onchange', fnc, runOnce);
+    }
+
+    onInput(fnc, runOnce) {
+        this.setEventListener('oninput', fnc, runOnce);
+    }
+
+    click() {
+        this.objectContainer.click();
+    }
+
+    onClick(fnc, runOnce) {
+        this.setEventListener('click', fnc, runOnce);
+    }
+
+    enabled(status) {
+        let container = this.objectContainer;
+        switch (status) {
+            case true:
+                container.classList.toggle(Constants.DISABLED_CLASS_NAME, false);
+                break;
+            case false:
+                container.classList.toggle(Constants.DISABLED_CLASS_NAME, true);
+                break;
+            default:
+                return this.getProperty('enabled');
+        }
+        this.setProperty('enabled', status);
+        /*
+        Object.keys(this.getProperty('TComponents') || {}).forEach((name, index) => {
+          TApplication.core.getComponent(`${this.getProperty('ownerName')}.${name}`).enabled(status)
+        })
+        */
+    }
+
+    checked(status) {
+        let container = this.objectContainer;
+        switch (status) {
+            case true:
+                container.classList.toggle(Constants.CHECKED_CLASS_NAME, true);
+                container.classList.toggle(Constants.UNCHECKED_CLASS_NAME, false);
+            break;
+        case false:
+            this.container.classList.toggle(Constants.CHECKED_CLASS_NAME, false);
+            this.container.classList.toggle(Constants.UNCHECKED_CLASS_NAME, true);
+            break;
+        default:
+            return this.getProperty('checked');
+        }
+        this.setProperty('checked', status)
+        container.dispatchEvent(new CustomEvent('onchange'));
+    }
+
+    invalidated(status) {
+        let container = this.objectContainer;
+        switch (status) {
+            case true:
+                container.classList.toggle(Constants.INVALIDATED_CLASS_NAME, true);
+                break;
+            case false:
+                container.classList.toggle(Constants.INVALIDATED_CLASS_NAME, false);
+                break;
+            default:
+                return this.getProperty('invalidated');
+        }
+        this.setProperty('invalidated', status);
+        /*
+        Object.keys(this.getProperty('TComponents') || {}).forEach((name, index) => {
+          TApplication.core.getComponent(`${this.getProperty('ownerName')}.${name}`).invalidated(status)
+        })
+        */
+    }
 
 
 }
