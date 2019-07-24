@@ -45,10 +45,13 @@ const TApplicationStyle = `
     color: #444444;
   }
 
-  .body {
+  body {
     height: 100%;
     width: 100%;
-    background: #E6E6E6 url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAAAXNSR0IArs4c6QAAAAZQTFRF////zsrFFOhhzwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfbCA8IIAxOHyTqAAAAbElEQVR42u3PMQ0AAAgDsMlHNhqWcHC0Dpqp5S0XFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXF5cjC3IDYNdXepeXAAAAAElFTkSuQmCC') repeat;
+    background-color: #E6E6E6;
+    background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAAAXNSR0IArs4c6QAAAAZQTFRF////zsrFFOhhzwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfbCA8IIAxOHyTqAAAAbElEQVR42u3PMQ0AAAgDsMlHNhqWcHC0Dpqp5S0XFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXF5cjC3IDYNdXepeXAAAAAElFTkSuQmCC');
+    background-size: auto;
+    background-repeat: repeat;
   }
 `;
 
@@ -114,10 +117,10 @@ Object.defineProperties(TApplication, {
 /* ----------------------------------------------------------------------------- */
 
 /* Application Instance Initialize */  
+TApplication.addComponentsToLibrary(Forms);
+TApplication.caption = caption;
 Utils.addStyleNode(TApplicationStyle);
 document.body.classList.add('TApplication');  
-TApplication.caption = caption;
-TApplication.addComponentsToLibrary(Forms);
 
 
 /* ----------------------------------------------------------------------------- */
