@@ -141,7 +141,6 @@ Utils.addStyleNode(formsModuleStyle);
 class TForm extends TControl {
     constructor(properties) {
         super(properties);
-        this.modalResult = null;
         this.setProperty('modal', false);
         this.setProperty('modalResult', false);
         this.createNode();
@@ -299,22 +298,22 @@ class TForm extends TControl {
             }
         }
       
-        function afterHideQuery () {
-            if (that.getProperty('modal')) {
-                that.setProperty('modal', false);
+        const afterHideQuery  = () => {
+            if (this.getProperty('modal')) {
+                this.setProperty('modal', false);
                 modalStack.pop();
                 if (modalStack.length === 0) {
                    TApplication.overlay.hide();
                 }
-                if (!that.getProperty('modalResult')) {
-                    that.setProperty('modalResult', Constants.MODAL_RESULT_CLOSE)
+                if (!this.getProperty('modalResult')) {
+                    this.setProperty('modalResult', Constants.MODAL_RESULT_CLOSE);
                 }
             }
-            that.fadeOut(afterFade);
+            this.fadeOut(afterFade);
         }
       
-        if (that.hideQuery) {
-            that.hideQuery(afterHideQuery);
+        if (this.hideQuery) {
+            this.hideQuery(afterHideQuery);
         } else {
             afterHideQuery();
         }
@@ -330,8 +329,7 @@ class TForm extends TControl {
           }
           */
           TApplication.getObjectsByClassName('TForm').forEach(function (form) {
-              console.info(form);
-            form.style.zIndex = '1';
+              form.style.zIndex = '1';
           })
           this.style.zIndex =Constants.BRING_TO_FRONT_Z_INDEX;
           return this;

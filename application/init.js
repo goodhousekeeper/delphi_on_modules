@@ -17,6 +17,6 @@ console.info('Get mainForm', app.mainForm);
 console.info('Get oneMoreForm', app.oneMoreForm);
 
 mainForm.show();
-oneMoreForm.show();
+oneMoreForm.showModal();
 
 
