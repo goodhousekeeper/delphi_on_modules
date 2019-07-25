@@ -122,6 +122,10 @@ const formsModuleStyle = `
     top: 4px;
 }
 
+.TApplication .TForm.noTitle .BorderTop {
+    height: 4px;
+}
+
 .TApplication .TForm.noCloseButton .Title .CloseButton {
     display: none;
 }
@@ -183,6 +187,11 @@ class TForm extends TControl {
         title.appendChild(icon);
         title.appendChild(caption);
         title.appendChild(closeButton);
+
+        if (this.getProperty('noTitle')) {
+            style.height = (this.getProperty('height') + 'px');
+            container.classList.toggle('noTitle', true);
+          }
 
         icon.className = 'Icon';
         icon.id = container.id + '.Icon';

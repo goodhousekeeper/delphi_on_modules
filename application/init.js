@@ -7,16 +7,20 @@ app.caption = 'New project on Delphi.js';
 
 /* get forms definition */
 import mainFormProperties from  './forms/main_form.js';
-import oneMoreFormProperties from  './forms/one_more_form.js'
+import oneMoreFormProperties from  './forms/one_more_form.js';
+import splashFormProperties from  './forms/splash.js';
 
 
 let mainForm = app.createObject(mainFormProperties);
 let oneMoreForm = app.createObject(oneMoreFormProperties);
+let splashForm = app.createObject(splashFormProperties);
 
 console.info('Get mainForm', app.mainForm);
 console.info('Get oneMoreForm', app.oneMoreForm);
 
 mainForm.show();
-oneMoreForm.showModal();
+oneMoreForm.show();
+splashForm.show();
+
 
 
