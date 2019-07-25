@@ -64,6 +64,20 @@ Object.defineProperties(TApplication, {
             }
         }
     },
+    getObjectsByClassName: {
+        value: function(className) {
+            let result = [];
+            for (let [key, value] of Object.entries(objectStorage)) {
+                {
+                    if (objectStorage[key].getProperty('className') === className) {
+                        result.push(value);
+                    }
+                }
+
+            }
+            return result;
+        }
+    },
     addComponentsToLibrary: {
         value: function(components) {
             for (let [key, value] of Object.entries(components)) {

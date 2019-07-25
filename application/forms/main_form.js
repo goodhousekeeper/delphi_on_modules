@@ -9,7 +9,7 @@ let mainFormProperties = {
     minWidth: 700,
     minHeight: 300,
     sizeable: true,
-    visible: true,
+    visible: false,
     content: {}
 }
 

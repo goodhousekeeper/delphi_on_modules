@@ -13,9 +13,10 @@ import oneMoreFormProperties from  './forms/one_more_form.js'
 let mainForm = app.createObject(mainFormProperties);
 let oneMoreForm = app.createObject(oneMoreFormProperties);
 
-console.info(app.mainForm);
-console.info(app.oneMoreForm);
+console.info('Get mainForm', app.mainForm);
+console.info('Get oneMoreForm', app.oneMoreForm);
 
-oneMoreForm.showModal()
+mainForm.show();
+oneMoreForm.show();
 
 

@@ -321,8 +321,22 @@ class TForm extends TControl {
     }
 
     bringToFront() {
-        return this;
+        if (this.getProperty('modal')) {
+            return this;
+          }
+          /*
+          if (this === TApplication.core.mainForm) {
+            return this
+          }
+          */
+          TApplication.getObjectsByClassName('TForm').forEach(function (form) {
+              console.info(form);
+            form.style.zIndex = '1';
+          })
+          this.style.zIndex =Constants.BRING_TO_FRONT_Z_INDEX;
+          return this;
     }
+        
 
 } 
 
