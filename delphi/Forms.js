@@ -194,40 +194,58 @@ class TForm extends TControl {
         container.appendChild(borderRight); 
         container.appendChild(borderBottom);               
         container.appendChild(borderLeft);
+
         /*------------------------------------------------------------------------------ */
-        let title = document.createElement('div');
-        let caption = document.createElement('div');
-        let maximizeButton = document.createElement('div');
-        let closeButton = document.createElement('div');
-        let icon = document.createElement('div');
-
-        container.appendChild(title);
-        title.className = 'Title';
-        title.appendChild(icon);
-        title.appendChild(caption);
-        title.appendChild(maximizeButton);
-        title.appendChild(closeButton);
-
         if (this.getProperty('noTitle')) {
             style.height = (this.getProperty('height') + 'px');
             container.classList.toggle('noTitle', true);
-          }
+        } else {
+            let title = document.createElement('div');
+            let caption = document.createElement('div');
+            let maximizeButton = document.createElement('div');
+            let closeButton = document.createElement('div');
+            let icon = document.createElement('div');
+    
+            container.appendChild(title);
+            title.className = 'Title';
+            title.appendChild(icon);
+            title.appendChild(caption);
+            title.appendChild(maximizeButton);
+            title.appendChild(closeButton);
+    
+            icon.className = 'Icon';
+            icon.id = container.id + '.Icon';
+    
+            caption.className = 'Caption';
+            caption.id = container.id + '.Caption';
+            this.caption = this.getProperty('caption');
+            caption.addEventListener('mousedown', (e) => {
+                let box = container.getBoundingClientRect();
+                let deltaX = e.pageX - box.left;
+                let deltaY = e.pageY - box.top;
+                style.width = (box.width) + 'px';
+                style.height = (box.height) + 'px';
+                this.bringToFront();
+            
+                function moveAt (e) {
+                  style.left = e.pageX - deltaX + 'px'
+                  style.top = e.pageY - deltaY + 'px'
+                  style.opacity = 0.5
+                }
+            
+                document.onmousemove = (e) => moveAt(e)
+                container.onmouseup = () => endTransition()
+            });
 
-        icon.className = 'Icon';
-        icon.id = container.id + '.Icon';
-
-        caption.className = 'Caption';
-        caption.id = container.id + '.Caption';
-        this.caption = this.getProperty('caption');
-
-        maximizeButton.className = 'MaximizeButton';
-        maximizeButton.id = container.id + '.MaximizeButton';
-        //maximizeButton.addEventListener('click', () => this.hide());
-
-        closeButton.className = 'CloseButton';
-        closeButton.id = container.id + '.CloseButton';
-        closeButton.addEventListener('click', () => this.hide());
-
+    
+            maximizeButton.className = 'MaximizeButton';
+            maximizeButton.id = container.id + '.MaximizeButton';
+            //maximizeButton.addEventListener('click', () => this.hide());
+    
+            closeButton.className = 'CloseButton';
+            closeButton.id = container.id + '.CloseButton';
+            closeButton.addEventListener('click', () => this.hide());
+        }
         /*------------------------------------------------------------------------------ */
 
         if (this.getProperty('sizeable')) {
@@ -255,23 +273,7 @@ class TForm extends TControl {
         }
 
         /*------------------------------------------------------------------------------ */
-        caption.addEventListener('mousedown', (e) => {
-            let box = container.getBoundingClientRect();
-            let deltaX = e.pageX - box.left;
-            let deltaY = e.pageY - box.top;
-            style.width = (box.width) + 'px';
-            style.height = (box.height) + 'px';
-            this.bringToFront();
-        
-            function moveAt (e) {
-              style.left = e.pageX - deltaX + 'px'
-              style.top = e.pageY - deltaY + 'px'
-              style.opacity = 0.5
-            }
-        
-            document.onmousemove = (e) => moveAt(e)
-            container.onmouseup = () => endTransition()
-        })
+
     }
 
     align() {
