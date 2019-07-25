@@ -67,7 +67,11 @@ const formsModuleStyle = `
     height: 24px;
     cursor: pointer;
 }
-.TApplication .TForm .Title .Icon, .TApplication .TForm .Title .CloseButton, .TApplication .TForm .Title .Caption {
+.TApplication .TForm .Title .Icon, 
+.TApplication .TForm .Title .Caption,
+.TApplication .TForm .Title .MaximizeButton,
+.TApplication .TForm .Title .CloseButton 
+ {
     height: 24px;
     top: 0;
 }
@@ -81,7 +85,7 @@ const formsModuleStyle = `
 
 .TApplication .TForm .Title .Caption {
     left: 24px;
-    right: 24px;
+    right: 48px;
     white-space: nowrap;
     overflow: hidden;
     text-align: left;
@@ -98,10 +102,22 @@ const formsModuleStyle = `
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAIAAAAmdTLBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1NjQwRjhGNTA4QUVFOTExQUM5QzhENDMwQzY4REU4MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyQTIwQzEwMkFFMjMxMUU5OUNDQkUxOTc4NzU5N0VGOCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyQTIwQzEwMUFFMjMxMUU5OUNDQkUxOTc4NzU5N0VGOCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU2NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU2NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+dQfAqwAAAw1JREFUeNqUVM9LVFEU/u57b0YlUMpQGFu4qFZtqkUURaJBizQaDIpIWgRRFLRoIdEfkIsgTMgICSsJixb9kiiignYRkeDKICo1KNSZcebN+3Hvfbdz3nvjuPVyGe6c977zfec79zwL+fne4X9zi9Kscx0fmsOeaae3K/syX8b4EIqLqLrwPSgJGcCyoELQ0op/Ay8+a4RV47mlltzE9Qlgk6BMuDmIthzsDCpFlIsIfYQhooiRDDackZCUNAzgu6iUSsXCr2xL6/1vFmddWUZDIxqysB04GTjxL/FbNkesZNv1SCZrZbLun58dmzMO490VlEsM86sIaAfMT2xSxswKMmQVFNGSi1KKclk2Y2N+ekDKVwpwS+jux7XbcCuokM5yGi8vobSIsQ84fYU5tBKkxcnW8KFEtQKvzMy79nPkxiQnJSpiVj6X/egLx3vyLMFoUpOshD82LAhZ8NWB9MnoFL8aaVb7ZDoNHu3kiImAiJyv4bk9Pu/E58v9afDeRxiFya/p374t0CF0QEECC6ziqSXUMxkbQ22zDC71ppiHn9NDvhNWBKEBBSNFRFvX8ERL14bwZDVpiwxI2/lDWF0ntsVgsxaPSK36F7JVlC+pjfgpfOddHf/4O0c4hWJ8FAgdcIo1/sUmUyjhH5lKkef2pofxmTQF6LVQKN/Wdf0Bp0guBpUw/DzFXDjI1+bsTj5vaMbTvzQA3DwVWNo3KqrhaTao88mFu/WiBu5mLdykCGe2p8FnLpFTj4w0LLOun65t6PHh0+tYdlc6PGQS+6JwKsfxtw8QOwgqlMtHPH/7GrGxDU3NaGzi8RBIbkislnwlXR40FejR8FL5iOlmStj9w/AMSBnaniuELaj5PHCCOQWSVsWCA77FXCCSTYVKtg/OfCFqau3E8gKksbM+fwUIaiIhjDBaGOVQFu6WMkpbii8kGV0IYTraWX/PXe/VgdnZi8eKC78bMpYRQsdCbIsVUAqHckXGNoaaQzU5BgF1INe+Y+zNyfdbgQF5eNRd78dvbkkfGamgr/pfgAEA4u1YO0cOA2kAAAAASUVORK5CYII=') no-repeat center center;
     filter: grayscale(25%);
   }
-  .TApplication .TForm .Title .CloseButton:hover {
+
+  .TApplication .TForm .Title .MaximizeButton {
+    width: 24px;
+    right: 24px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAIAAAAmdTLBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1ODQwRjhGNTA4QUVFOTExQUM5QzhENDMwQzY4REU4MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyNzI4MDlEMkFFOUQxMUU5QjU0MEFDRDJGQzczNTVDOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyNzI4MDlEMUFFOUQxMUU5QjU0MEFDRDJGQzczNTVDOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU4NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU4NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+3CUSYQAAAoFJREFUeNqUVLtuE0EUPXdmbSdQGCGgouAbkpIKaICKhgKJBiGoaKEAIVFQIiEKEEJARY34kYiKHyA8Ilt2YuPH7rwud+54k9AEuFrNzuzOuefcx4zBjcHlV+PtUeD/tCsvR7j+s7p6np5fO/HoY/w+DeOaJw6zwIMAY5A8siUdHa/mDmg8jk0+3+8TJxJPt9+Hc6eoYzBe8HCGpUftOSa4RD6BGcvIIWIased42ADziMkE+Lr9YtOI050Zr1foddCx1K1kRM+SNdQhFqeVQc9k7x3CuiEIwuqzMz970laCHy2wu0Rl8avheYOlE34sA+pAdWCRMA0cZH9AikDkHIV4MZk74+cBwxkLz7TGhzsVjjS61yAxiLKegl+EjBR3jcPfLQmMMl4t44eea0+W0IR/wHOG56yi5RebOVREMeUibTwNteNRwCAwJOA8Uo5ZavG6Cy5hoEwyPqfNc9fC6CepaDBwsijOSXMesNJMBWwO8XtMHY5XIiGvoj5BdsvS7tPpVzFDh5dVmUmFugasDEwQ/lWcxUtqVUArL+Gw7tvn/+GxZrCmbDHnmBYlGKPgpF5iG06pwgE+sLT6rkVf/y0ZDXNCK9wqgNuMFWmCj3zAL6diZNHRHfNIU5nQQZJXcxxOj0bR8uupqnhH+QdPjmxBEVLwif/EW/35wGl7tfykL1Yhss0TSlPkU7CPdx6NtmTUaItUUo9lzqq20MpF4CJcQMjXQ/VtN6E/wZ50L5B7KGVyEWmoPTF2VS0hlMJmFwHLCc7kFFc3P/mtx/3Nh1/kGkCnByqNqjAqRdJWk4aLUe8iC+9x2m0927j4Tjjv8oW39f9eftvjeOnNArf8bwEGACPwtCMtkV4mAAAAAElFTkSuQmCC') no-repeat center center;
+    filter: grayscale(25%);
+  }
+
+  .TApplication .TForm .Title .CloseButton:hover, 
+  .TApplication .TForm .Title .MaximizeButton:hover
+  {
     filter: grayscale(0%);
   }
-  .TApplication .TForm .Title .CloseButton:active {
+  .TApplication .TForm .Title .CloseButton:active,
+  .TApplication .TForm .Title .MaximizeButton:active  
+  {
     filter: grayscale(75%);
   }
  
@@ -126,7 +142,9 @@ const formsModuleStyle = `
     height: 4px;
 }
 
-.TApplication .TForm.noCloseButton .Title .CloseButton {
+.TApplication .TForm.noCloseButton .Title .CloseButton, 
+.TApplication .TForm.noCloseButton .Title .MaximizeButton,
+{
     display: none;
 }
 
@@ -179,6 +197,7 @@ class TForm extends TControl {
         /*------------------------------------------------------------------------------ */
         let title = document.createElement('div');
         let caption = document.createElement('div');
+        let maximizeButton = document.createElement('div');
         let closeButton = document.createElement('div');
         let icon = document.createElement('div');
 
@@ -186,6 +205,7 @@ class TForm extends TControl {
         title.className = 'Title';
         title.appendChild(icon);
         title.appendChild(caption);
+        title.appendChild(maximizeButton);
         title.appendChild(closeButton);
 
         if (this.getProperty('noTitle')) {
@@ -200,9 +220,13 @@ class TForm extends TControl {
         caption.id = container.id + '.Caption';
         this.caption = this.getProperty('caption');
 
+        maximizeButton.className = 'MaximizeButton';
+        maximizeButton.id = container.id + '.MaximizeButton';
+        //maximizeButton.addEventListener('click', () => this.hide());
+
         closeButton.className = 'CloseButton';
         closeButton.id = container.id + '.CloseButton';
-        closeButton.addEventListener('click', () => this.hide())
+        closeButton.addEventListener('click', () => this.hide());
 
         /*------------------------------------------------------------------------------ */
 
