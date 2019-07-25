@@ -1,7 +1,10 @@
-export default class TComponent extends Object {
+export default class TComponent {
     constructor(properties) {
-        super(properties);
-        this._properties = properties;
+        Object.defineProperties(this, {
+            _properties: {
+                value: properties
+            }
+        });
     }
 
     setProperty(name, value) {
