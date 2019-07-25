@@ -216,6 +216,12 @@ class TForm extends TControl {
     
             icon.className = 'Icon';
             icon.id = container.id + '.Icon';
+            if (this.getProperty('icon')) {
+                icon.style.backgroundImage = 'url(' + this.getProperty('icon') + ')';
+            }
+            if (this.getProperty('iconBase64')) {
+                icon.style.backgroundImage = "url('data:image/" + this.getProperty('iconBase64').type + ';base64, ' + this.getProperty('iconBase64').data + "')"
+            }
     
             caption.className = 'Caption';
             caption.id = container.id + '.Caption';

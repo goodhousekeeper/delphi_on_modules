@@ -6,7 +6,7 @@ let oneMoreFormProperties = {
     height:400,
     screenCenter:true,
     visible:false,
-    icon:"application/resources/images/icons/radioactivity.png",
+    icon:'../application/resources/images/icons/question.png',
     content:{}
 
 }

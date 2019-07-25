@@ -39,6 +39,7 @@ const APPLICATION_STYLE = `
     --form-caption-shadow-color: #072BA2;
   }
 `;
+
 const DISABLED_CLASS_NAME = 'Disabled';
 const CHECKED_CLASS_NAME = 'Checked';
 const UNCHECKED_CLASS_NAME = 'Unchecked';
