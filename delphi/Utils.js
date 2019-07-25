@@ -14,6 +14,22 @@ export default class Utils {
         document.getElementsByTagName('head')[0].appendChild(styleNode);
     }
 
+    static addFaviconNode(favicon) {
+        let headNode = document.getElementsByTagName('head')[0];
+        let iconNode;
+        headNode.childNodes.forEach((item, index) => {
+            if (item.rel === 'shortcut icon') {
+                iconNode = item;
+            }
+        });
+        if (!iconNode) {
+            iconNode = document.createElement('link'); 
+            iconNode.rel = 'shortcut icon';
+            document.getElementsByTagName('head')[0].appendChild(iconNode);
+        }
+        iconNode.href = favicon;
+    }
+
     static animate(options) {
         let start = performance.now()
         const duration = !options.duration ? Constants.ANIMATION_SPEED : options.duration

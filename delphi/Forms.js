@@ -169,7 +169,6 @@ class TForm extends TControl {
     }
 
     createNode() {
-        console.info(window.location);
         super.createNode();
         let style = this.style;
         let container = this.objectContainer;
