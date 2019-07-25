@@ -223,7 +223,7 @@ class TForm extends TControl {
         }
 
         /*------------------------------------------------------------------------------ */
-        title.addEventListener('mousedown', (e) => {
+        caption.addEventListener('mousedown', (e) => {
             let box = container.getBoundingClientRect();
             let deltaX = e.pageX - box.left;
             let deltaY = e.pageY - box.top;
@@ -266,6 +266,7 @@ class TForm extends TControl {
         if (TApplication.modalStack.length > 0) {
             this.showModal();
         }
+        this.style.opacity = "0";
         super.show();
         this.align().bringToFront().fadeIn();
         return this;   
