@@ -385,6 +385,7 @@ class TOverlay extends TControl {
     }
 
     show() {
+        this.style.opacity = '0';
         super.show();
         this.fadeIn();
     }

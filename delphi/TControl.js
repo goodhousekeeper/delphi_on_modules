@@ -83,15 +83,15 @@ export default class TControl extends TComponent {
         }
     }
 
-    onShow(fnc, runOnce) {
-        this.setEventListener('show', fnc, runOnce);
-    }
-
     show() {
         this.setProperty('visible', true);
         this.style.visibility = 'unset';
         this.objectContainer.dispatchEvent(new CustomEvent('show'));
         return this;
+    }
+
+    onShow(fnc, runOnce) {
+        this.setEventListener('show', fnc, runOnce);
     }
 
     hide() {

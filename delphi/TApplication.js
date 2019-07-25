@@ -10,6 +10,7 @@ let componentLibrary = Object.create(null);
 let objectStorage = Object.create(null);
 let modalStack = [];
 let caption = 'Delphi.js';
+let mainFormName;
 let animationEnabled = true;
 
 /* ----------------------------------------------------------------------------- */
@@ -21,6 +22,10 @@ Object.defineProperties(TApplication, {
             caption = newCaption;
             document.title = newCaption;
         }
+    },
+    mainFormName: {
+        get: () => mainFormName,
+        set: (newName) => mainFormName = newName
     },
     modalStack: {
         value: modalStack

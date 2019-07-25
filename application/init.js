@@ -16,11 +16,10 @@ let oneMoreForm = app.createObject(oneMoreFormProperties);
 let splashForm = app.createObject(splashFormProperties);
 
 console.info('Get mainForm', app.mainForm);
-console.info('Get oneMoreForm', app.oneMoreForm);
 
 mainForm.show();
 oneMoreForm.show();
-splashForm.show();
+splashForm.showModal();
 
 
 
