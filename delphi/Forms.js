@@ -188,6 +188,8 @@ class TForm extends TControl {
             style.opacity = 1.0
         }
         /*------------------------------------------------------------------------------ */
+        container.addEventListener('click', () => this.bringToFront());
+        /*------------------------------------------------------------------------------ */
         style.height = this.getProperty('height') ? (this.getProperty('height') + 'px') : '';
         style.width = this.getProperty('width') ? (this.getProperty('width') + 'px') : '';
         /*------------------------------------------------------------------------------ */
@@ -334,6 +336,7 @@ class TForm extends TControl {
         modalStack.push(this);
         this.setProperty('modal', true);
         this.setProperty('modalResult');
+        this.setActive();
     }
 
     hide() {
@@ -343,7 +346,11 @@ class TForm extends TControl {
         const afterFade = () => {
             super.hide();
             if (modalStack.length > 0) {
-                modalStack[modalStack.length - 1].style.zIndex = Constants.OVERLAY_Z_INDEX + 1
+                let form = modalStack[modalStack.length - 1];
+                form.style.zIndex = Constants.OVERLAY_Z_INDEX + 1;
+                form.setActive();
+            } else {
+                TApplication.getMainForm().setActive();
             }
         }
       
@@ -368,6 +375,14 @@ class TForm extends TControl {
         }
     }
 
+    setActive() {
+        TApplication.getObjectsByClassName('TForm').forEach(function (form) {
+            form.objectContainer.classList.remove('Active');
+        })
+        this.objectContainer.classList.add('Active');
+        return this;
+    }
+
     bringToFront() {
         if (this.getProperty('modal')) {
             return this;
@@ -378,10 +393,9 @@ class TForm extends TControl {
           
           TApplication.getObjectsByClassName('TForm').forEach(function (form) {
               form.style.zIndex = '1';
-              form.objectContainer.classList.remove('Active');
           })
           this.style.zIndex =Constants.BRING_TO_FRONT_Z_INDEX;
-          this.objectContainer.classList.add('Active');
+          this.setActive();
           return this;
     }
         
