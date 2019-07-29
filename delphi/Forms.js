@@ -77,8 +77,7 @@ const formsModuleStyle = `
 }
 .TApplication .TForm .Title .Icon, 
 .TApplication .TForm .Title .Caption,
-.TApplication .TForm .Title .MaximizeButton,
-.TApplication .TForm .Title .CloseButton 
+.TApplication .TForm .Title .Buttons
  {
     height: 24px;
     top: 0;
@@ -105,31 +104,49 @@ const formsModuleStyle = `
     text-shadow: 1px 1px 0 var(--form-caption-shadow-color);
 }
 
+.TApplication .TForm .Title .Buttons {
+    width: 24px;
+    filter: grayscale(25%);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.TApplication .TForm .Title .Buttons:hover
+{
+  filter: grayscale(0%);
+}
+
+.TApplication .TForm .Title .Buttons:active  
+{
+  filter: grayscale(75%);
+}
+
 .TApplication .TForm .Title .CloseButton {
-    width: 24px;
     right: 0;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAIAAAAmdTLBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1NjQwRjhGNTA4QUVFOTExQUM5QzhENDMwQzY4REU4MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyQTIwQzEwMkFFMjMxMUU5OUNDQkUxOTc4NzU5N0VGOCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyQTIwQzEwMUFFMjMxMUU5OUNDQkUxOTc4NzU5N0VGOCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU2NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU2NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+dQfAqwAAAw1JREFUeNqUVM9LVFEU/u57b0YlUMpQGFu4qFZtqkUURaJBizQaDIpIWgRRFLRoIdEfkIsgTMgICSsJixb9kiiignYRkeDKICo1KNSZcebN+3Hvfbdz3nvjuPVyGe6c977zfec79zwL+fne4X9zi9Kscx0fmsOeaae3K/syX8b4EIqLqLrwPSgJGcCyoELQ0op/Ay8+a4RV47mlltzE9Qlgk6BMuDmIthzsDCpFlIsIfYQhooiRDDackZCUNAzgu6iUSsXCr2xL6/1vFmddWUZDIxqysB04GTjxL/FbNkesZNv1SCZrZbLun58dmzMO490VlEsM86sIaAfMT2xSxswKMmQVFNGSi1KKclk2Y2N+ekDKVwpwS+jux7XbcCuokM5yGi8vobSIsQ84fYU5tBKkxcnW8KFEtQKvzMy79nPkxiQnJSpiVj6X/egLx3vyLMFoUpOshD82LAhZ8NWB9MnoFL8aaVb7ZDoNHu3kiImAiJyv4bk9Pu/E58v9afDeRxiFya/p374t0CF0QEECC6ziqSXUMxkbQ22zDC71ppiHn9NDvhNWBKEBBSNFRFvX8ERL14bwZDVpiwxI2/lDWF0ntsVgsxaPSK36F7JVlC+pjfgpfOddHf/4O0c4hWJ8FAgdcIo1/sUmUyjhH5lKkef2pofxmTQF6LVQKN/Wdf0Bp0guBpUw/DzFXDjI1+bsTj5vaMbTvzQA3DwVWNo3KqrhaTao88mFu/WiBu5mLdykCGe2p8FnLpFTj4w0LLOun65t6PHh0+tYdlc6PGQS+6JwKsfxtw8QOwgqlMtHPH/7GrGxDU3NaGzi8RBIbkislnwlXR40FejR8FL5iOlmStj9w/AMSBnaniuELaj5PHCCOQWSVsWCA77FXCCSTYVKtg/OfCFqau3E8gKksbM+fwUIaiIhjDBaGOVQFu6WMkpbii8kGV0IYTraWX/PXe/VgdnZi8eKC78bMpYRQsdCbIsVUAqHckXGNoaaQzU5BgF1INe+Y+zNyfdbgQF5eNRd78dvbkkfGamgr/pfgAEA4u1YO0cOA2kAAAAASUVORK5CYII=') no-repeat center center;
-    filter: grayscale(25%);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAIAAAAmdTLBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1NjQwRjhGNTA4QUVFOTExQUM5QzhENDMwQzY4REU4MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyQTIwQzEwMkFFMjMxMUU5OUNDQkUxOTc4NzU5N0VGOCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyQTIwQzEwMUFFMjMxMUU5OUNDQkUxOTc4NzU5N0VGOCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU2NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU2NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+dQfAqwAAAw1JREFUeNqUVM9LVFEU/u57b0YlUMpQGFu4qFZtqkUURaJBizQaDIpIWgRRFLRoIdEfkIsgTMgICSsJixb9kiiignYRkeDKICo1KNSZcebN+3Hvfbdz3nvjuPVyGe6c977zfec79zwL+fne4X9zi9Kscx0fmsOeaae3K/syX8b4EIqLqLrwPSgJGcCyoELQ0op/Ay8+a4RV47mlltzE9Qlgk6BMuDmIthzsDCpFlIsIfYQhooiRDDackZCUNAzgu6iUSsXCr2xL6/1vFmddWUZDIxqysB04GTjxL/FbNkesZNv1SCZrZbLun58dmzMO490VlEsM86sIaAfMT2xSxswKMmQVFNGSi1KKclk2Y2N+ekDKVwpwS+jux7XbcCuokM5yGi8vobSIsQ84fYU5tBKkxcnW8KFEtQKvzMy79nPkxiQnJSpiVj6X/egLx3vyLMFoUpOshD82LAhZ8NWB9MnoFL8aaVb7ZDoNHu3kiImAiJyv4bk9Pu/E58v9afDeRxiFya/p374t0CF0QEECC6ziqSXUMxkbQ22zDC71ppiHn9NDvhNWBKEBBSNFRFvX8ERL14bwZDVpiwxI2/lDWF0ntsVgsxaPSK36F7JVlC+pjfgpfOddHf/4O0c4hWJ8FAgdcIo1/sUmUyjhH5lKkef2pofxmTQF6LVQKN/Wdf0Bp0guBpUw/DzFXDjI1+bsTj5vaMbTvzQA3DwVWNo3KqrhaTao88mFu/WiBu5mLdykCGe2p8FnLpFTj4w0LLOun65t6PHh0+tYdlc6PGQS+6JwKsfxtw8QOwgqlMtHPH/7GrGxDU3NaGzi8RBIbkislnwlXR40FejR8FL5iOlmStj9w/AMSBnaniuELaj5PHCCOQWSVsWCA77FXCCSTYVKtg/OfCFqau3E8gKksbM+fwUIaiIhjDBaGOVQFu6WMkpbii8kGV0IYTraWX/PXe/VgdnZi8eKC78bMpYRQsdCbIsVUAqHckXGNoaaQzU5BgF1INe+Y+zNyfdbgQF5eNRd78dvbkkfGamgr/pfgAEA4u1YO0cOA2kAAAAASUVORK5CYII=');
+
   }
 
-  .TApplication .TForm .Title .MaximizeButton {
-    width: 24px;
+.TApplication .TForm .Title .MaximizeButton {
     right: 24px;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAIAAAAmdTLBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1ODQwRjhGNTA4QUVFOTExQUM5QzhENDMwQzY4REU4MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyNzI4MDlEMkFFOUQxMUU5QjU0MEFDRDJGQzczNTVDOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyNzI4MDlEMUFFOUQxMUU5QjU0MEFDRDJGQzczNTVDOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU4NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU4NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+3CUSYQAAAoFJREFUeNqUVLtuE0EUPXdmbSdQGCGgouAbkpIKaICKhgKJBiGoaKEAIVFQIiEKEEJARY34kYiKHyA8Ilt2YuPH7rwud+54k9AEuFrNzuzOuefcx4zBjcHlV+PtUeD/tCsvR7j+s7p6np5fO/HoY/w+DeOaJw6zwIMAY5A8siUdHa/mDmg8jk0+3+8TJxJPt9+Hc6eoYzBe8HCGpUftOSa4RD6BGcvIIWIased42ADziMkE+Lr9YtOI050Zr1foddCx1K1kRM+SNdQhFqeVQc9k7x3CuiEIwuqzMz970laCHy2wu0Rl8avheYOlE34sA+pAdWCRMA0cZH9AikDkHIV4MZk74+cBwxkLz7TGhzsVjjS61yAxiLKegl+EjBR3jcPfLQmMMl4t44eea0+W0IR/wHOG56yi5RebOVREMeUibTwNteNRwCAwJOA8Uo5ZavG6Cy5hoEwyPqfNc9fC6CepaDBwsijOSXMesNJMBWwO8XtMHY5XIiGvoj5BdsvS7tPpVzFDh5dVmUmFugasDEwQ/lWcxUtqVUArL+Gw7tvn/+GxZrCmbDHnmBYlGKPgpF5iG06pwgE+sLT6rkVf/y0ZDXNCK9wqgNuMFWmCj3zAL6diZNHRHfNIU5nQQZJXcxxOj0bR8uupqnhH+QdPjmxBEVLwif/EW/35wGl7tfykL1Yhss0TSlPkU7CPdx6NtmTUaItUUo9lzqq20MpF4CJcQMjXQ/VtN6E/wZ50L5B7KGVyEWmoPTF2VS0hlMJmFwHLCc7kFFc3P/mtx/3Nh1/kGkCnByqNqjAqRdJWk4aLUe8iC+9x2m0927j4Tjjv8oW39f9eftvjeOnNArf8bwEGACPwtCMtkV4mAAAAAElFTkSuQmCC') no-repeat center center;
-    filter: grayscale(25%);
-  }
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAIAAAAmdTLBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1ODQwRjhGNTA4QUVFOTExQUM5QzhENDMwQzY4REU4MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyNzI4MDlEMkFFOUQxMUU5QjU0MEFDRDJGQzczNTVDOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyNzI4MDlEMUFFOUQxMUU5QjU0MEFDRDJGQzczNTVDOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU4NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU4NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+3CUSYQAAAoFJREFUeNqUVLtuE0EUPXdmbSdQGCGgouAbkpIKaICKhgKJBiGoaKEAIVFQIiEKEEJARY34kYiKHyA8Ilt2YuPH7rwud+54k9AEuFrNzuzOuefcx4zBjcHlV+PtUeD/tCsvR7j+s7p6np5fO/HoY/w+DeOaJw6zwIMAY5A8siUdHa/mDmg8jk0+3+8TJxJPt9+Hc6eoYzBe8HCGpUftOSa4RD6BGcvIIWIased42ADziMkE+Lr9YtOI050Zr1foddCx1K1kRM+SNdQhFqeVQc9k7x3CuiEIwuqzMz970laCHy2wu0Rl8avheYOlE34sA+pAdWCRMA0cZH9AikDkHIV4MZk74+cBwxkLz7TGhzsVjjS61yAxiLKegl+EjBR3jcPfLQmMMl4t44eea0+W0IR/wHOG56yi5RebOVREMeUibTwNteNRwCAwJOA8Uo5ZavG6Cy5hoEwyPqfNc9fC6CepaDBwsijOSXMesNJMBWwO8XtMHY5XIiGvoj5BdsvS7tPpVzFDh5dVmUmFugasDEwQ/lWcxUtqVUArL+Gw7tvn/+GxZrCmbDHnmBYlGKPgpF5iG06pwgE+sLT6rkVf/y0ZDXNCK9wqgNuMFWmCj3zAL6diZNHRHfNIU5nQQZJXcxxOj0bR8uupqnhH+QdPjmxBEVLwif/EW/35wGl7tfykL1Yhss0TSlPkU7CPdx6NtmTUaItUUo9lzqq20MpF4CJcQMjXQ/VtN6E/wZ50L5B7KGVyEWmoPTF2VS0hlMJmFwHLCc7kFFc3P/mtx/3Nh1/kGkCnByqNqjAqRdJWk4aLUe8iC+9x2m0927j4Tjjv8oW39f9eftvjeOnNArf8bwEGACPwtCMtkV4mAAAAAElFTkSuQmCC');
+}
 
-  .TApplication .TForm .Title .CloseButton:hover, 
-  .TApplication .TForm .Title .MaximizeButton:hover
-  {
-    filter: grayscale(0%);
-  }
-  .TApplication .TForm .Title .CloseButton:active,
-  .TApplication .TForm .Title .MaximizeButton:active  
-  {
-    filter: grayscale(75%);
-  }
- 
+.TApplication .TForm .Title .RestoreButton {
+    right: 24px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAIAAAAmdTLBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1OTQwRjhGNTA4QUVFOTExQUM5QzhENDMwQzY4REU4MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5QUFFNkNCMkFFOUQxMUU5OTg1NURGN0U4OEQ3NTBFQSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5QUFFNkNCMUFFOUQxMUU5OTg1NURGN0U4OEQ3NTBFQSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU5NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU5NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+jwAzaQAAAqVJREFUeNqUVMtqFUEQPdUzc28ei4CoKxf6AwrmB0Qh/oTgQtCNWUaIJisXbrIRQUTQ/IDgF7h0GVy5FhLUkJDHvbm5M9Ovsqp7rokkLlIMQ890nzqnT1W3wSLfWW83DyJfMO6t13jclgu3Rm/uz658Cj+H2G94YDHyvONhDKKDRkxvy93YAq3DzODb0twzH0gyPfror1+mymB/zLsj1A6N4xBhI7kIZtSBfcAw4NDybgscBwwGwObW63kjSbdHPF2iX6EqqFfKG/2CCkMVsSQtDfpGs1eEaUMQRJGe7eNrl4pS8HtjHNQoCxy1fNyitsKP2qPx1HgWCUPPXtZ7xAAE1l1IFqPcij/22B2x8AwbHDUYW32+Lpc4E7TYQnyIDCLVk/Fjr0hJ11pYR9axdTg/AuU8ik+h+F3HjaOC0HrYwDagiXzjhfvtWf7As8LEyLc9hKRcsOIqJvwSI4uSKET+snSe7Kf25IM7BXmgq9U2x70Chv8juxIVaSAihVnB5hS/w9BithQJ+nXzpZMC7wSMolrFr3oKyyEopozUvXT4oBXqGZnSCVngTZKnKymv4rWqExKSi5wTTfh/OUwZTBWc80aicd6MyS4TLftkHnXtHOkU3rO0+kGBucRWM1rmiIlPJ7JZabM0wQc+4ZdTsVeIOv31Y7U6U4CcKG+bVYjveiHzp1NV8jbRzIptQJ1HNEEznaofdfjI/+ILnayz1cQdPvvHSbksc5TaKZ+Cv3hp1za1ZEgVzlIpZcxjTmozrVwE0qHWw2uTl1uHjLkBDqV7Ae2hqOQi0kw0U9FVSwilsJrCox7gqlpcPvzsNlbn5p9/l2sAVR+kTZOKX6gi3XlqNWm4EFLxCjiHK3Zj7fbCe+F8Eu5+qC96+W3tx4V3YzywfwQYAFxpz1+tP+FyAAAAAElFTkSuQmCC');
+    display: none;
+}
+
+.TApplication .TForm.Maximized .Title .RestoreButton {
+      display: block;
+}
+
+  
+.TApplication .TForm.Maximized .Title .MaximizeButton {
+    display: none;
+}
+
 .TApplication .TForm .ContentContainer {
     top: 30px;
     right: 4px;
@@ -184,12 +201,6 @@ class TForm extends TControl {
         super.createNode();
         let style = this.style;
         let container = this.objectContainer;
-        /*------------------------------------------------------------------------------ */        
-        function endTransition () {
-            document.onmousemove = null
-            container.onmouseup = null
-            style.opacity = 1.0
-        }
         /*------------------------------------------------------------------------------ */
         container.addEventListener('click', () => this.bringToFront().setActive())
         /*------------------------------------------------------------------------------ */
@@ -210,6 +221,13 @@ class TForm extends TControl {
         container.appendChild(borderLeft);
 
         /*------------------------------------------------------------------------------ */
+        function endTransition () {
+            document.onmousemove = null
+            container.onmouseup = null
+            style.opacity = 1.0
+        }
+
+        /*------------------------------------------------------------------------------ */
         if (this.getProperty('noTitle')) {
             style.height = (this.getProperty('height') + 'px');
             container.classList.toggle('noTitle', true);
@@ -217,6 +235,7 @@ class TForm extends TControl {
             let title = document.createElement('div');
             let caption = document.createElement('div');
             let maximizeButton = document.createElement('div');
+            let restoreButton = document.createElement('div');
             let closeButton = document.createElement('div');
             let icon = document.createElement('div');
     
@@ -244,26 +263,32 @@ class TForm extends TControl {
                 style.height = (box.height) + 'px';
             
                 function moveAt (e) {
-                  style.left = e.pageX - deltaX + 'px'
-                  style.top = e.pageY - deltaY + 'px'
-                  style.opacity = 0.5
+                    style.left = e.pageX - deltaX + 'px';
+                    style.top = e.pageY - deltaY + 'px';
                 }
-            
+                style.opacity = 0.5;
+                container.classList.remove('Maximized');
                 document.onmousemove = (e) => moveAt(e)
                 container.onmouseup = () => endTransition()
             });
 
             if (this.getProperty('noMaximizeButton')) {
                 maximizeButton = undefined;
+                restoreButton = undefined;
             } else {
                 title.appendChild(maximizeButton);
-                maximizeButton.className = 'MaximizeButton';
+                maximizeButton.className = 'Buttons MaximizeButton';
                 maximizeButton.id = container.id + '.MaximizeButton';
                 maximizeButton.addEventListener('click', () => this.maximize());
+
+                title.appendChild(restoreButton);
+                restoreButton.className = 'Buttons RestoreButton';
+                restoreButton.id = container.id + '.RestoreButton';
+                restoreButton.addEventListener('click', () => this.restore());
             }
     
             title.appendChild(closeButton);
-            closeButton.className = 'CloseButton';
+            closeButton.className = 'Buttons CloseButton';
             closeButton.id = container.id + '.CloseButton';
             closeButton.addEventListener('click', () => this.hide());
         }
@@ -284,9 +309,10 @@ class TForm extends TControl {
                 function sizeAt (e) {
                     style.width = e.pageX - deltaX + 'px';
                     style.height = e.pageY - deltaY + 'px';
-                    style.opacity = 0.5;
+
                 }
-        
+                style.opacity = 0.5;
+                container.classList.remove('Maximized');        
                 document.onmousemove = (e) => sizeAt(e);
                 container.onmouseup = () => endTransition();
             })
@@ -298,9 +324,9 @@ class TForm extends TControl {
 
     align() {
         let container = this.objectContainer;
-        let style = this.style
-        let containerWidth = parseInt(style.width, 10)
-        let containerHeight = parseInt(style.height, 10)
+        let style = this.style;
+        let containerWidth = parseInt(style.width, 10);
+        let containerHeight = parseInt(style.height, 10);
       
         if (!this.getProperty('screenCenter')) {
             return this;
@@ -311,8 +337,8 @@ class TForm extends TControl {
         if (container.offsetHeight > 0) {
             containerHeight = container.offsetHeight
         }
-        style.left = (window.innerWidth - containerWidth) / 2 + 'px'
-        style.top = (window.innerHeight - containerHeight) / 2 + 'px'
+        style.left = (window.innerWidth - containerWidth) / 2 + 'px';
+        style.top = (window.innerHeight - containerHeight) / 2 + 'px';
         return this;
     }
 
@@ -402,7 +428,35 @@ class TForm extends TControl {
     }
 
     maximize() {
+        let container = this.objectContainer;
+        let style = this.style;
+        let box = container.getBoundingClientRect();
+        /* save previous position */
+        this.setProperty('positionBeforeMaximize', {top: box.top, left: box.left, width: box.width, height: box.height});
+        
+        style.top = 0;
+        style.left = 0;
+        style.width = '100%';
+        style.height = '100%';
+        
+        this.objectContainer.classList.add('Maximized');
+        
+        return this;
+    }
 
+    restore() {
+        let container = this.objectContainer;
+        let style = this.style;
+        let box = this.getProperty('positionBeforeMaximize');
+        if (!box) {
+            return this;
+        }
+        style.top = `${box.top}px`;
+        style.left = `${box.left}px`;
+        style.width = `${box.width}px`;
+        style.height = `${box.height}px`;
+        this.objectContainer.classList.remove('Maximized');
+        return this;
     }
 } 
 
@@ -427,7 +481,5 @@ class TOverlay extends TControl {
         this.fadeOut(() => super.hide());
     }
 }
-
-
 
 export { TForm, TOverlay }
