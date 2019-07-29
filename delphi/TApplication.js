@@ -29,6 +29,17 @@ Object.defineProperties(TApplication, {
         set: (newIcon) => {
             icon = newIcon;
             Utils.addFaviconNode(newIcon);
+            TApplication.getObjectsByClassName('TForm').forEach(function (form) {
+                console.info('form.icon', form.icon)
+                if (form.icon) {
+                    form.icon = newIcon;
+                }
+            })
+            /*
+            тут надо перебрать все формы и проставить иконки всем формам, 
+            у которых не задана иконка через свойства
+            
+            * */
         }
     },
     mainFormName: {

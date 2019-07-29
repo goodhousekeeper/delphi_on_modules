@@ -56,6 +56,16 @@ export default class TControl extends TComponent {
                 configurable: true,
                 get: () => document.getElementById(objectContainer.id + '.Caption').innerText,
                 set: (newCaption) => document.getElementById(objectContainer.id + '.Caption').innerText = newCaption || '' 
+            },
+            icon: {
+                configurable: true,
+                get: () => document.getElementById(objectContainer.id + '.Icon'),
+                set: (newIcon) => { 
+                    if (this.icon) {  
+                       this.setProperty('icon', newIcon);
+                       document.getElementById(objectContainer.id + '.Icon').style.backgroundImage = `url('${this.getProperty('icon')}')`;
+                    }
+                } 
             }
         });
 
