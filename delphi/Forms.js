@@ -318,7 +318,7 @@ class TForm extends TControl {
         }
         this.style.opacity = "0";
         super.show();
-        this.align().bringToFront().fadeIn();
+        this.align().bringToFront().setActive().fadeIn();
         return this;   
     } 
     
@@ -329,14 +329,13 @@ class TForm extends TControl {
       
         super.show();
         this.style.zIndex = Constants.OVERLAY_Z_INDEX + 1;
-        this.align().fadeIn();
+        this.align().setActive().fadeIn();
         if (modalStack.length > 0) {
           modalStack[modalStack.length - 1].style.zIndex = Constants.OVERLAY_Z_INDEX - 1;
         }
         modalStack.push(this);
         this.setProperty('modal', true);
-        this.setProperty('modalResult');
-        this.setActive();
+        this.setProperty('modalResult');     
     }
 
     hide() {
@@ -386,20 +385,17 @@ class TForm extends TControl {
     bringToFront() {
         if (this.getProperty('modal')) {
             return this;
-          }
-          if (this === TApplication.getMainForm()) {
+        }
+        if (this === TApplication.getMainForm()) {
             return this;
-          }
+        }
           
-          TApplication.getObjectsByClassName('TForm').forEach(function (form) {
-              form.style.zIndex = '1';
-          })
-          this.style.zIndex =Constants.BRING_TO_FRONT_Z_INDEX;
-          this.setActive();
-          return this;
+        TApplication.getObjectsByClassName('TForm').forEach(function (form) {
+            form.style.zIndex = '1';
+        })
+        this.style.zIndex = Constants.BRING_TO_FRONT_Z_INDEX;
+        return this;
     }
-        
-
 } 
 
 class TOverlay extends TControl {
