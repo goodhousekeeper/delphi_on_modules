@@ -151,10 +151,13 @@ const formsModuleStyle = `
     height: 4px;
 }
 
-.TApplication .TForm.noCloseButton .Title .CloseButton, 
-.TApplication .TForm.noCloseButton .Title .MaximizeButton,
-{
+
+.TApplication .TForm.noMaximizeButton .Title .MaximizeButton {
     display: none;
+}
+
+.TApplication .TForm.noMaximizeButton .Title .Caption {
+    right: 24px;
 }
 
 .TApplication .TForm .SizeHandle {
@@ -219,11 +222,8 @@ class TForm extends TControl {
     
             container.appendChild(title);
             title.className = 'Title';
+
             title.appendChild(icon);
-            title.appendChild(caption);
-            title.appendChild(maximizeButton);
-            title.appendChild(closeButton);
-    
             icon.className = 'Icon';
             icon.id = container.id + '.Icon';
             if (this.getProperty('icon')) {
@@ -232,6 +232,7 @@ class TForm extends TControl {
                 this.icon = TApplication.icon;   
             }
     
+            title.appendChild(caption);
             caption.className = 'Caption';
             caption.id = container.id + '.Caption';
             this.caption = this.getProperty('caption');
@@ -252,11 +253,16 @@ class TForm extends TControl {
                 container.onmouseup = () => endTransition()
             });
 
+            if (this.getProperty('noMaximizeButton')) {
+                maximizeButton = undefined;
+            } else {
+                title.appendChild(maximizeButton);
+                maximizeButton.className = 'MaximizeButton';
+                maximizeButton.id = container.id + '.MaximizeButton';
+                maximizeButton.addEventListener('click', () => this.maximize());
+            }
     
-            maximizeButton.className = 'MaximizeButton';
-            maximizeButton.id = container.id + '.MaximizeButton';
-            //maximizeButton.addEventListener('click', () => this.hide());
-    
+            title.appendChild(closeButton);
             closeButton.className = 'CloseButton';
             closeButton.id = container.id + '.CloseButton';
             closeButton.addEventListener('click', () => this.hide());
@@ -393,6 +399,10 @@ class TForm extends TControl {
         })
         this.style.zIndex = Constants.BRING_TO_FRONT_Z_INDEX;
         return this;
+    }
+
+    maximize() {
+
     }
 } 
 

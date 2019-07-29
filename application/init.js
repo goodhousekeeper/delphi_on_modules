@@ -7,12 +7,12 @@ app.icon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAA
 
 /* Add custom components */
 
-/* get forms definition */
+/* Get forms definition */
 import mainFormProperties from  './forms/main_form.js';
 import oneMoreFormProperties from  './forms/one_more_form.js';
 import splashFormProperties from  './forms/splash.js';
 
-
+/* Create forms  */
 let mainForm = app.createObject(mainFormProperties);
 let oneMoreForm = app.createObject(oneMoreFormProperties);
 let splashForm = app.createObject(splashFormProperties);
