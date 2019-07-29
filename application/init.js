@@ -21,7 +21,7 @@ console.info('Get mainForm', app.mainForm);
 
 mainForm.show();
 oneMoreForm.show();
-//splashForm.show();
+splashForm.show();
 
 
 
