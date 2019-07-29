@@ -20,6 +20,14 @@ const formsModuleStyle = `
     min-width: 100px;
 }
 
+.TApplication .TForm .Borders {
+    filter: grayscale(50%);
+}
+
+.TApplication .TForm.Active .Borders {
+    filter: grayscale(0%);
+}
+
 .TApplication .TForm .BorderTop {
     top: 0;
     right: 4px;
@@ -187,10 +195,10 @@ class TForm extends TControl {
         let borderRight = document.createElement('div');
         let borderBottom = document.createElement('div');        
         let borderLeft = document.createElement('div');
-        borderTop.className = 'BorderTop';
-        borderRight.className = 'BorderRight';
-        borderBottom.className = 'BorderBottom';        
-        borderLeft.className = 'BorderLeft';
+        borderTop.className = 'Borders BorderTop';
+        borderRight.className = 'Borders BorderRight';
+        borderBottom.className = 'Borders BorderBottom';        
+        borderLeft.className = 'Borders BorderLeft';
         container.appendChild(borderTop);
         container.appendChild(borderRight); 
         container.appendChild(borderBottom);               
@@ -371,8 +379,10 @@ class TForm extends TControl {
           */
           TApplication.getObjectsByClassName('TForm').forEach(function (form) {
               form.style.zIndex = '1';
+              form.objectContainer.classList.remove('Active');
           })
           this.style.zIndex =Constants.BRING_TO_FRONT_Z_INDEX;
+          this.objectContainer.classList.add('Active');
           return this;
     }
         
