@@ -41,6 +41,9 @@ Object.defineProperties(TApplication, {
         get: () => mainFormName,
         set: (newName) => mainFormName = newName
     },
+    getMainForm: {
+        value: () => TApplication.getObject(mainFormName)
+    },
     modalStack: {
         value: modalStack
     },

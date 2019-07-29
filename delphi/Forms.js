@@ -372,11 +372,10 @@ class TForm extends TControl {
         if (this.getProperty('modal')) {
             return this;
           }
-          /*
-          if (this === TApplication.core.mainForm) {
-            return this
+          if (this === TApplication.getMainForm()) {
+            return this;
           }
-          */
+          
           TApplication.getObjectsByClassName('TForm').forEach(function (form) {
               form.style.zIndex = '1';
               form.objectContainer.classList.remove('Active');
