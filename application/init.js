@@ -20,7 +20,7 @@ let splashForm = app.createObject(splashFormProperties);
 console.info('Get mainForm', app.mainForm);
 
 mainForm.show();
-oneMoreForm.showModal();
+oneMoreForm.show();
 //splashForm.show();
 
 

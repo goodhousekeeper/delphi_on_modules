@@ -188,7 +188,7 @@ class TForm extends TControl {
             style.opacity = 1.0
         }
         /*------------------------------------------------------------------------------ */
-        container.addEventListener('click', () => this.bringToFront());
+        container.addEventListener('click', () => this.bringToFront().setActive())
         /*------------------------------------------------------------------------------ */
         style.height = this.getProperty('height') ? (this.getProperty('height') + 'px') : '';
         style.width = this.getProperty('width') ? (this.getProperty('width') + 'px') : '';
@@ -241,7 +241,6 @@ class TForm extends TControl {
                 let deltaY = e.pageY - box.top;
                 style.width = (box.width) + 'px';
                 style.height = (box.height) + 'px';
-                this.bringToFront();
             
                 function moveAt (e) {
                   style.left = e.pageX - deltaX + 'px'
@@ -275,7 +274,6 @@ class TForm extends TControl {
                 let box = container.getBoundingClientRect();
                 let deltaX = e.pageX - box.width;
                 let deltaY = e.pageY - box.height;
-                this.bringToFront();
         
                 function sizeAt (e) {
                     style.width = e.pageX - deltaX + 'px';
