@@ -213,8 +213,6 @@ class TForm extends TControl {
             title.appendChild(caption);
             title.appendChild(maximizeButton);
             title.appendChild(closeButton);
-
-
     
             icon.className = 'Icon';
             icon.id = container.id + '.Icon';
@@ -223,7 +221,6 @@ class TForm extends TControl {
             } else {
                 this.icon = TApplication.icon;   
             }
-
     
             caption.className = 'Caption';
             caption.id = container.id + '.Caption';

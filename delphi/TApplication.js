@@ -35,11 +35,6 @@ Object.defineProperties(TApplication, {
                     form.icon = newIcon;
                 }
             })
-            /*
-            тут надо перебрать все формы и проставить иконки всем формам, 
-            у которых не задана иконка через свойства
-            
-            * */
         }
     },
     mainFormName: {
