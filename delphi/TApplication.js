@@ -84,7 +84,6 @@ Object.defineProperties(TApplication, {
             if (properties.content) {
                 newObject.createContent();
             }
-           
             return newObject;
         }
     },

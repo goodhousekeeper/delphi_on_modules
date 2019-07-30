@@ -37,6 +37,11 @@ const APPLICATION_STYLE = `
     --form-back-layer: #EEEBD6;
     --form-caption-color: #FFF;
     --form-caption-shadow-color: #072BA2;
+    --button-background-color: #F3F3F3;
+    --button-background-active-color: #E3E3DC;
+    --button-background-disabled-color: #F5F4EA;
+    --button-border-color: #003C74;
+    --button-border-disabled-color: #C9C7BA;
   }
 `;
 

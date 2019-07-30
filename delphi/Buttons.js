@@ -7,14 +7,13 @@ import * as Constants from './Constants.js';
 const buttonsModuleStyle = `
 .TApplication .TForm .TButton {
     box-sizing: border-box;
-    background-color: #D6D6D6;
-    border: 1px solid #8D8D8D;
-    border-left-color: #FFF;
-    border-top-color: #FFF;
+    background-color: var(--button-background-color);
+    border: 1px solid var(--button-border-color);
+    border-radius: 3px;
     cursor: pointer;
-    filter: grayscale(33%);
-  }
-  .TApplication .TForm .TButton .Caption {
+}
+
+.TApplication .TForm .TButton .Caption {
     top: 0;
     right: 0;
     bottom: 0;
@@ -28,36 +27,27 @@ const buttonsModuleStyle = `
     font-family: inherit;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  .TApplication .TForm .TButton:hover {
-    filter: grayscale(0%);
-  }
-  .TApplication .TForm .TButton:hover .Caption {
-    background-color: #e3e3e3;
-  }
-  .TApplication .TForm .TButton:active {
-    filter: grayscale(33%);
-    border: 1px solid #8D8D8D;
-    border-right-color: #FFF;
-    border-bottom-color: #FFF;
-  }
-  .TApplication .TForm .TButton:active .Caption {
-    text-shadow: 1px 1px 0 #FFF;
-    background-color: #c9c9c9;
-  }
-  .TApplication .TForm .TButton.Disabled {
-    border-color: #b3b3b3;
-    background-color: #f0f0f0;
-    cursor: default !important;
-    filter: grayscale(100%);
-  }
-  .TApplication .TForm .TButton.Disabled .Caption {
-    background-color: transparent !important;
-  }
-  .TApplication .TForm .TBitButton .Caption {
-    padding-left: 24px;
-    background: no-repeat 4px center;
-  }
+}
+.TApplication .TForm .TButton:hover {
+    box-shadow: inset  0  0 2px 2px #EFBB56;
+}
+
+.TApplication .TForm .TButton:active {
+    background-color: var(--button-background-active-color);
+    box-shadow: inset 0 -1px 1px 1px #F0F0F0,
+                inset 0 1px 1px 1px #D1CCC1;
+}
+
+.TApplication .TForm .TButton.Disabled {
+    background-color: var(--button-background-disabled-color);
+    border-color: var(--button-border-disabled-color);
+    box-shadow: none;
+    cursor: default;
+}
+
+.TApplication .TForm .TButton.Disabled .Caption {
+    color:  var(--button-border-disabled-color);
+}
 `;
 
 Utils.addStyleNode(buttonsModuleStyle);
