@@ -1,6 +1,6 @@
+import TComponent from './TComponent.js';
 import * as Constants from './Constants.js';
 import Utils from './Utils.js';
-import TComponent from './TComponent.js';
 
 
 export default class TControl extends TComponent {
@@ -38,7 +38,6 @@ export default class TControl extends TComponent {
             contentContainer.id = `${objectContainer.id}.ContentContainer`;
             contentContainer.className = 'ContentContainer';
             objectContainer.appendChild(contentContainer);
-            this.createContent();
         } else {
              contentContainer = undefined;
         }

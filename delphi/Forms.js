@@ -1,7 +1,9 @@
+import TApplication from './TApplication.js';
+import TControl from './TControl.js';
 import Utils from './Utils.js';
 import * as Constants from './Constants.js';
-import TControl from './TControl.js';
-import TApplication from './TApplication.js';
+
+
 
 const formsModuleStyle = `
 .TOverlay {

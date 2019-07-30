@@ -6,17 +6,7 @@ let splashFormProperties = {
     screenCenter: true, 
     visible: false,
     noTitle: true,
-    content: {
-        splashPicture: {
-            className: 'TPicture',
-            top: 0,
-            right: 0, 
-            bottom: 0, 
-            left: 0,
-            backgroundSize: 'cover',
-            image: 'application/resources/images/backgrounds/splash.jpg'
-        }
-    }
+    content: []
 }
 
 export default splashFormProperties;

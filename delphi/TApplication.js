@@ -1,7 +1,10 @@
 /* Import components module */
 import Utils from './Utils.js';
 import * as Constants from './Constants.js';
+
 import * as Forms from './Forms.js';
+import * as Buttons from './Buttons.js';
+
 
 /* Application instance */
 let TApplication = Object.create(null);
@@ -30,7 +33,6 @@ Object.defineProperties(TApplication, {
             icon = newIcon;
             Utils.addFaviconNode(newIcon);
             TApplication.getObjectsByClassName('TForm').forEach(function (form) {
-                console.info('form.icon', form.icon)
                 if (form.icon) {
                     form.icon = newIcon;
                 }
@@ -58,10 +60,16 @@ Object.defineProperties(TApplication, {
     },
     createObject: {
         value:  function (properties) {
-            const ownerName = properties.ownerName ? properties.ownerName + '.' : '';
+            const ownerName = properties.ownerName ? properties.ownerName : '';
             const ownerObject = this.getObject(ownerName);
             let newObject;
-            properties.registerName = `${ownerName}${properties.name}`;
+            
+            if (ownerName !== '') {
+                properties.registerName = `${ownerName}.${properties.name}`;
+            } else {
+                properties.registerName = `${properties.name}`;
+            }
+            
             properties.ownerObject = ownerObject;
             if (this.getObject(properties.registerName)) {
                 throw new Error(`Object with name "${properties.registerName}" already exists.`)
@@ -71,7 +79,12 @@ Object.defineProperties(TApplication, {
             Object.defineProperty(ownerObject, properties.name, {
                 value: newObject,
                 configurable: true
-            })
+            });
+           
+            if (properties.content) {
+                newObject.createContent();
+            }
+           
             return newObject;
         }
     },
@@ -118,6 +131,8 @@ Object.defineProperties(TApplication, {
 
 /* Application Instance Initialize */  
 TApplication.addComponentsToLibrary(Forms);
+TApplication.addComponentsToLibrary(Buttons);
+
 TApplication.caption = caption;
 TApplication.icon = icon;
 Utils.addStyleNode(Constants.APPLICATION_STYLE);

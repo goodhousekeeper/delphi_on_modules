@@ -18,15 +18,14 @@ export default class TComponent {
     }
 
     createContent() {
-        const ownerName = this.getProperty('ownerName');
         const content = this.getProperty('content');
         if (!content) {
             return this;
         }
+
         content.forEach((objectProperties) => {
             objectProperties.ownerName = this.getProperty('registerName');
             TApplication.createObject(objectProperties);
-
         });
     }
 }
