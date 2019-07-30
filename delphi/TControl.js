@@ -38,6 +38,7 @@ export default class TControl extends TComponent {
             contentContainer.id = `${objectContainer.id}.ContentContainer`;
             contentContainer.className = 'ContentContainer';
             objectContainer.appendChild(contentContainer);
+            this.createContent();
         } else {
              contentContainer = undefined;
         }

@@ -10,7 +10,19 @@ let mainFormProperties = {
     minHeight: 300,
     sizeable: true,
     visible: false,
-    content: {}
+    content: [
+        {
+            name: 'theVeryFirstButton',
+            className: 'TButton',
+            caption: 'I am TButton',
+            toolTip: 'The very first button on form',
+            height: 26,
+            top: 10,
+            width: 120,
+            right: 4,
+            textAlign: 'center'
+        }
+    ]
 }
 
 export default mainFormProperties;
