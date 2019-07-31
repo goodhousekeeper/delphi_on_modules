@@ -20,6 +20,7 @@ const formsModuleStyle = `
     overflow: hidden;
     min-height: 32px;
     min-width: 100px;
+    background-color: var(--form-back-layer);
 }
 
 .TApplication .TForm .Borders {
@@ -154,7 +155,6 @@ const formsModuleStyle = `
     right: 4px;
     bottom: 4px;
     left: 4px;
-    background-color: var(--form-back-layer);
     overflow: hidden;
     box-sizing: inherit;
 }

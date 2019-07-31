@@ -40,15 +40,13 @@ const properties = {
 const logics = (app) => {
     let other_form; 
     
-    app.mainForm.theVeryFirstButton.onClick(() => {
-        import('./one_more_form.js')
-        .then(module => {
-            if (!other_form) { 
-               other_form = app.createObject(module.properties);
-               module.logics();
-            }  
-            other_form.showModal(); 
-        })
+    app.mainForm.theVeryFirstButton.onClick(async () => {
+        let other_form_module = await import('./one_more_form.js');
+        if (!other_form) {
+            other_form = app.createObject(other_form_module.properties);
+            other_form_module.logics();
+        }
+        other_form.showModal(); 
     })
 }
 
