@@ -110,4 +110,4 @@ class TBitButton extends TButton {
     }
 }
 
-export { TButton }
+export { TButton, TBitButton }

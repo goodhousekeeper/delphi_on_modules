@@ -17,9 +17,20 @@ let mainFormProperties = {
             caption: 'I am TButton',
             toolTip: 'The very first button on form',
             height: 26,
-            top: 10,
+            top: 4,
             width: 120,
-            right: 4,
+            left: 4,
+            textAlign: 'center'
+        },
+        {
+            name: 'theVeryFirstTBitButton',
+            className: 'TBitButton',
+            caption: 'Press me',
+            toolTip: 'The very first button with icon on form',
+            height: 26,
+            top: 34,
+            width: 120,
+            left: 4,
             textAlign: 'center'
         }
     ]
