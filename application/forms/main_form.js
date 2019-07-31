@@ -50,6 +50,4 @@ const logics = (app) => {
     })
 }
 
-
-
 export {properties, logics};
