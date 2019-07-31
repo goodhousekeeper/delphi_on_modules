@@ -24,6 +24,7 @@ const APPLICATION_STYLE = `
     font-size: 14px;
     overflow: auto;
     color: #444444;
+    text-shadow: 1px 1px 0 #FFF;
   }
 
   body {
