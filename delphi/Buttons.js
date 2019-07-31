@@ -1,4 +1,3 @@
-import TApplication from './TApplication.js';
 import TControl from './TControl.js';
 import Utils from './Utils.js';
 
@@ -59,9 +58,20 @@ const buttonsModuleStyle = `
     left: 0;
     width: 24px;
     background: transparent no-repeat 4px center;
+    filter: grayscale(25%);
 }
 
+.TApplication .TForm .TBitButton:hover .Icon {
+    filter: grayscale(0%);
+}
 
+.TApplication .TForm .TBitButton:active .Icon {
+    filter: grayscale(75%);
+}
+
+.TApplication .TForm .TBitButton.Disabled .Icon {
+    filter: grayscale(100%);
+}
 `;
 
 Utils.addStyleNode(buttonsModuleStyle);
