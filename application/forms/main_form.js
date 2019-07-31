@@ -38,11 +38,16 @@ const properties = {
 }
 
 const logics = (app) => {
+    let other_form; 
+    
     app.mainForm.theVeryFirstButton.onClick(() => {
         import('./one_more_form.js')
         .then(module => {
-           app.createObject(module.properties).show();
-           module.logics();
+            if (!other_form) { 
+               other_form = app.createObject(module.properties);
+               module.logics();
+            }  
+            other_form.showModal(); 
         })
     })
 }
