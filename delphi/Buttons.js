@@ -1,7 +1,6 @@
 import TApplication from './TApplication.js';
 import TControl from './TControl.js';
 import Utils from './Utils.js';
-import * as Constants from './Constants.js';
 
 
 const buttonsModuleStyle = `
@@ -29,13 +28,14 @@ const buttonsModuleStyle = `
     text-overflow: ellipsis;
 }
 .TApplication .TForm .TButton:hover {
-    box-shadow: inset  0  0 2px 2px #EFBB56;
+    box-shadow: inset  -1px  -1px 2px 0px #F8B230,
+                inset   1px   1px 2px 0px #FDD889;                   
 }
 
 .TApplication .TForm .TButton:active {
     background-color: var(--button-background-active-color);
-    box-shadow: inset 0 -1px 1px 1px #F0F0F0,
-                inset 0 1px 1px 1px #D1CCC1;
+    box-shadow: inset -1px -1px 1px 1px #F0F0F0,
+                inset  1px  1px 1px 1px #D1CCC1;
 }
 
 .TApplication .TForm .TButton.Disabled {
