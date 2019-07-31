@@ -75,6 +75,8 @@ class TButton extends TControl {
         super.createNode();
         let container = this.objectContainer;
         let caption = document.createElement('div');
+
+        container.classList.add('TButton');
         
         container.appendChild(caption);
         if (this.getProperty('toolTip')) {
@@ -97,14 +99,13 @@ class TBitButton extends TButton {
         super.createNode();
         let container = this.objectContainer;
         let icon = document.createElement('div');
-        container.classList.add('TButton');
+        container.classList.add('TBitButton');
         container.appendChild(icon);
         icon.className = 'Icon';
         icon.id = container.id + '.Icon';
         if (this.getProperty('icon')) {
             this.icon = this.getProperty('icon');
         }
-
     }
 }
 

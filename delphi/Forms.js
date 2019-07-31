@@ -203,6 +203,7 @@ class TForm extends TControl {
         let style = this.style;
         let container = this.objectContainer;
         /*------------------------------------------------------------------------------ */
+        container.classList.add('TForm');
         container.addEventListener('click', () => this.bringToFront().setActive())
         /*------------------------------------------------------------------------------ */
         style.height = this.getProperty('height') ? (this.getProperty('height') + 'px') : '';
@@ -468,6 +469,7 @@ class TOverlay extends TControl {
 
     createNode() {
         super.createNode();
+        this.objectContainer.classList.add('TOverlay');
         this.style.zIndex = Constants.OVERLAY_Z_INDEX;
     }
 
