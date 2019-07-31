@@ -148,11 +148,7 @@ export default class TControl extends TComponent {
                 return this.getProperty('enabled');
         }
         this.setProperty('enabled', status);
-        /*
-        Object.keys(this.getProperty('TComponents') || {}).forEach((name, index) => {
-          TApplication.core.getComponent(`${this.getProperty('ownerName')}.${name}`).enabled(status)
-        })
-        */
+        this.content.forEach((object) => object.enabled(status));
     }
 
     checked(status) {
@@ -186,11 +182,6 @@ export default class TControl extends TComponent {
                 return this.getProperty('invalidated');
         }
         this.setProperty('invalidated', status);
-        /*
-        Object.keys(this.getProperty('TComponents') || {}).forEach((name, index) => {
-          TApplication.core.getComponent(`${this.getProperty('ownerName')}.${name}`).invalidated(status)
-        })
-        */
     }
 
     fadeIn(callback) {
