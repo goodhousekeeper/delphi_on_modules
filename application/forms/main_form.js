@@ -1,4 +1,4 @@
-let mainFormProperties = {
+const properties = {
     name: "mainForm",
     className: "TForm",
     caption: "Delphi.js Boilerplate - Main Form. It is sizeable and draggable",
@@ -37,4 +37,16 @@ let mainFormProperties = {
     ]
 }
 
-export default mainFormProperties;
+const logics = (app) => {
+    app.mainForm.theVeryFirstButton.onClick(() => {
+        import('./one_more_form.js')
+        .then(module => {
+           app.createObject(module.properties).show();
+           module.logics();
+        })
+    })
+}
+
+
+
+export {properties, logics};

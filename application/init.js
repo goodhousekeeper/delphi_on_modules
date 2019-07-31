@@ -8,22 +8,17 @@ app.icon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAA
 
 /* Add custom components */
 
-/* Get forms definition */
-import mainFormProperties from  './forms/main_form.js';
-import oneMoreFormProperties from  './forms/one_more_form.js';
-import splashFormProperties from  './forms/splash.js';
+let mainForm;
 
-/* Create forms  */
-let mainForm = app.createObject(mainFormProperties);
-let oneMoreForm = app.createObject(oneMoreFormProperties);
-let splashForm = app.createObject(splashFormProperties);
+async function showMainForm() {
+    let mainFormModule = await import('./forms/main_form.js');
+    mainForm = app.createObject(mainFormModule.properties);
+    mainForm.show();
+    mainFormModule.logics(app);
+}
 
-console.info('Get mainForm', app.mainForm);
+showMainForm();
 
-mainForm.show();
-
-//oneMoreForm.showModal();
-//splashForm.show();
 
 
 
