@@ -1,4 +1,4 @@
-let splashFormProperties = {
+const properties = {
     name: 'splashForm',
     className: 'TForm',
     width: 500,
@@ -8,4 +8,4 @@ let splashFormProperties = {
     noTitle: true
 }
 
-export default splashFormProperties;
+export {properties};
