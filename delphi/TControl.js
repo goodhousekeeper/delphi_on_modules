@@ -1,3 +1,4 @@
+import TApplication from './TApplication.js';
 import TComponent from './TComponent.js';
 import * as Constants from './Constants.js';
 import Utils from './Utils.js';
@@ -195,6 +196,7 @@ export default class TControl extends TComponent {
             draw: function (progress) {
                 style.opacity = String(progress);
             },
+            duration: TApplication.animationSpeed,
             callback: callback
         })
     }
@@ -208,6 +210,7 @@ export default class TControl extends TComponent {
             draw: function (progress) {
                 style.opacity = String(1 - progress);
             },
+            duration: TApplication.animationSpeed,
             callback: callback
         })
     }

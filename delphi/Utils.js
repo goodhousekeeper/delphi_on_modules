@@ -31,9 +31,11 @@ export default class Utils {
     }
 
     static animate(options) {
-        let start = performance.now()
-        const duration = !options.duration ? Constants.ANIMATION_SPEED : options.duration
-        const timing = !options.timing ? Constants.ANIMATION_FUNCTION_LINEAR : options.timing
+        let start = performance.now();
+
+
+        const duration = options.duration || options.duration===0 ? options.duration : Constants.ANIMATION_SPEED;
+        const timing = options.timing ? options.timing : Constants.ANIMATION_FUNCTION_LINEAR;
 
         window.requestAnimationFrame(function animate (time) {
             /* timeFraction от 0 до 1 */
