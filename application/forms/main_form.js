@@ -10,7 +10,7 @@ let mainFormProperties = {
     minHeight: 300,
     sizeable: true,
     visible: false,
-    content: [
+    contentProperties: [
         {
             name: 'theVeryFirstButton',
             className: 'TButton',

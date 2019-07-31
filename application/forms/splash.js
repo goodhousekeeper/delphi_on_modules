@@ -5,8 +5,7 @@ let splashFormProperties = {
     height: 500,
     screenCenter: true, 
     visible: false,
-    noTitle: true,
-    content: []
+    noTitle: true
 }
 
 export default splashFormProperties;

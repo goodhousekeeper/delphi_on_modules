@@ -18,12 +18,12 @@ export default class TComponent {
     }
 
     createContent() {
-        const content = this.getProperty('content');
-        if (!content) {
+        const contentProperties = this.getProperty('contentProperties');
+        if (!contentProperties) {
             return this;
         }
 
-        content.forEach((objectProperties) => {
+        contentProperties.forEach((objectProperties) => {
             objectProperties.ownerName = this.getProperty('registerName');
             TApplication.createObject(objectProperties);
         });

@@ -11,6 +11,7 @@ export default class TControl extends TComponent {
     createNode() {
         const objectContainer = document.createElement('div');
         let contentContainer = document.createElement('div');
+        const content = [];
         objectContainer.id = this.getProperty('registerName'); 
         objectContainer.className = this.getProperty('className');
         this.getProperty('ownerObject').contentContainer.appendChild(objectContainer);
@@ -34,7 +35,7 @@ export default class TControl extends TComponent {
         })
         
 
-        if (this.getProperty('content') !== undefined) {
+        if (this.getProperty('contentProperties') !== undefined) {
             contentContainer.id = `${objectContainer.id}.ContentContainer`;
             contentContainer.className = 'ContentContainer';
             objectContainer.appendChild(contentContainer);
@@ -48,7 +49,10 @@ export default class TControl extends TComponent {
             },
             contentContainer: {
                 value: contentContainer
-            },            
+            },   
+            content: {
+                value: content
+            },         
             style: {
                 value: objectContainer.style
             },
