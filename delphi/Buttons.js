@@ -48,6 +48,20 @@ const buttonsModuleStyle = `
 .TApplication .TForm .TButton.Disabled .Caption {
     color:  var(--button-border-disabled-color);
 }
+
+.TApplication .TForm .TBitButton .Caption {
+    left: 24px;    
+}
+
+.TApplication .TForm .TBitButton .Icon {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 24px;
+    background: transparent no-repeat 4px center;
+}
+
+
 `;
 
 Utils.addStyleNode(buttonsModuleStyle);
@@ -60,7 +74,6 @@ class TButton extends TControl {
 
     createNode() {
         super.createNode();
-        let style = this.style;
         let container = this.objectContainer;
         let caption = document.createElement('div');
         
@@ -73,6 +86,27 @@ class TButton extends TControl {
         caption.id = container.id + '.Caption';
         caption.style.lineHeight = (parseInt(container.style.height, 10) - 2) + 'px';
         this.caption = this.getProperty('caption');
+    }
+}
+
+class TBitButton extends TButton {
+    constructor(properties) {
+        super(properties);
+        this.createNode();
+    }
+
+    createNode() {
+        super.createNode();
+        let container = this.objectContainer;
+        let icon = document.createElement('div');
+        container.classList.add('TButton');
+        container.appendChild(icon);
+        icon.className = 'Icon';
+        icon.id = container.id + '.Icon';
+        if (this.getProperty('icon')) {
+            this.icon = this.getProperty('icon');
+        }
+
     }
 }
 
