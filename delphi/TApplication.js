@@ -85,10 +85,13 @@ Object.defineProperties(TApplication, {
                 configurable: true
             });
             ownerObject.content.push(newObject);
-           
+            if (newObject.createNode) {
+                newObject.createNode();
+            }   
             if (properties.contentProperties) {
                 newObject.createContent();
             }
+
             return newObject;
         }
     },

@@ -196,7 +196,6 @@ class TForm extends TControl {
         super(properties);
         this.setProperty('modal', false);
         this.setProperty('modalResult', false);
-        this.createNode();
     }
 
     createNode() {
@@ -465,7 +464,6 @@ class TForm extends TControl {
 class TOverlay extends TControl {
     constructor(properties) {
         super(properties);
-        this.createNode();
     }
 
     createNode() {

@@ -69,7 +69,6 @@ Utils.addStyleNode(buttonsModuleStyle);
 class TButton extends TControl {
     constructor(properties) {
         super(properties);
-        this.createNode();
     }
 
     createNode() {
@@ -92,7 +91,6 @@ class TButton extends TControl {
 class TBitButton extends TButton {
     constructor(properties) {
         super(properties);
-        this.createNode();
     }
 
     createNode() {
