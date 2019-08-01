@@ -16,10 +16,12 @@ const formsModuleStyle = `
 
 .TApplication .TForm {
     box-sizing: border-box;
-    border-radius: 7px 7px 0 0;
+    border-radius: 8px 8px 0 0;
     overflow: hidden;
     min-height: 32px;
     min-width: 100px;
+    color: var(--form-color);
+    text-shadow: 1px 1px 0 var(--form-shadow-color);
     background-color: var(--form-back-layer);
 }
 

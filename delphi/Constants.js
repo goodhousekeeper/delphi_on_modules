@@ -8,12 +8,13 @@ const APPLICATION_STYLE = `
     border: 0 none;
     background-color: transparent;
     position: absolute;
-  }
-  *:focus {
-    outline: none;
-  }
+}
 
-  html {
+*:focus {
+    outline: none;
+}
+
+html {
     width: 100%;
     height: 100%;
     -webkit-user-select: none;
@@ -23,11 +24,9 @@ const APPLICATION_STYLE = `
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-size: 14px;
     overflow: auto;
-    color: #444444;
-    text-shadow: 1px 1px 0 #FFF;
-  }
+}
 
-  body {
+body {
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -35,6 +34,8 @@ const APPLICATION_STYLE = `
     background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAAAXNSR0IArs4c6QAAAAZQTFRF////zsrFFOhhzwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfbCA8IIAxOHyTqAAAAbElEQVR42u3PMQ0AAAgDsMlHNhqWcHC0Dpqp5S0XFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXF5cjC3IDYNdXepeXAAAAAElFTkSuQmCC');
     background-size: auto;
     background-repeat: repeat;
+    --form-color: #000;
+    --form-shadow-color: #FFF;
     --form-back-layer: #EEEBD6;
     --form-caption-color: #FFF;
     --form-caption-shadow-color: #072BA2;
@@ -43,7 +44,7 @@ const APPLICATION_STYLE = `
     --button-background-disabled-color: #F5F4EA;
     --button-border-color: #003C74;
     --button-border-disabled-color: #C9C7BA;
-  }
+}
 `;
 
 const DISABLED_CLASS_NAME = 'Disabled';
