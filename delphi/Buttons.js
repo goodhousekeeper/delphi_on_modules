@@ -7,7 +7,7 @@ const buttonsModuleStyle = `
     box-sizing: border-box;
     background-color: var(--button-background-color);
     border: 1px solid var(--button-border-color);
-    border-radius: 3px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
