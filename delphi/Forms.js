@@ -439,40 +439,31 @@ class TForm extends TControl {
         let heightDelta = window.innerHeight - box.height;
         /* save previous position */
         this.setProperty('positionBeforeMaximize', {top: box.top, left: box.left, width: box.width, height: box.height});
-        
-        /*
-        style.top = 0;
-        style.left = 0;
-        style.width = '100%';
-        style.height = '100%';
-       
-        this.objectContainer.classList.add('Maximized');
-        */
-        
-
+        console.info('maximize', this.getProperty('positionBeforeMaximize'));
+        console.info('maximize,  window.innerWidth', window.innerWidth)
 
         Utils.animate({
             draw: function (progress) {
-                style.top = (String(box.top - progress*box.top)) + 'px';
+                style.top = (String(box.top - progress * box.top)) + 'px';
             },
             duration: TApplication.animationSpeed,
-            callback: () => {this.objectContainer.classList.add('Maximized'); console.info(this.getProperty('positionBeforeMaximize')) } 
+            callback: () => this.objectContainer.classList.add('Maximized')
         });
         Utils.animate({
             draw: function (progress) {
-                style.left = (String(box.left - progress*box.left)) + 'px';
+                style.left = (String(box.left - progress * box.left)) + 'px';
             },
             duration: TApplication.animationSpeed
         });
         Utils.animate({
             draw: function (progress) {
-                style.width = (String(box.width + progress*widthDelta)) + 'px';
+                style.width = (String(box.width + progress * widthDelta)) + 'px';
             },
             duration: TApplication.animationSpeed
         });
         Utils.animate({
             draw: function (progress) {
-                style.height = (String(box.height + progress*heightDelta)) + 'px';
+                style.height = (String(box.height + progress * heightDelta)) + 'px';
             },
             duration: TApplication.animationSpeed
         });
@@ -486,11 +477,38 @@ class TForm extends TControl {
         if (!box) {
             return this;
         }
-        style.top = `${box.top}px`;
-        style.left = `${box.left}px`;
-        style.width = `${box.width}px`;
-        style.height = `${box.height}px`;
-        this.objectContainer.classList.remove('Maximized');
+        let widthDelta = window.innerWidth - box.width;
+        let heightDelta = window.innerHeight - box.height;
+
+        console.info('restore', box);
+        console.info('restore,  window.innerWidth', window.innerWidth)
+          
+        Utils.animate({
+            draw: function (progress) {
+                style.top = (String(progress*box.top)) + 'px';
+            },
+            duration: TApplication.animationSpeed,
+            callback: () => this.objectContainer.classList.remove('Maximized')
+        });
+        Utils.animate({
+            draw: function (progress) {
+                style.left = (String(progress*box.left)) + 'px';
+            },
+            duration: TApplication.animationSpeed
+        });
+        Utils.animate({
+            draw: function (progress) {
+                style.width = (String(window.innerWidth - progress * widthDelta)) + 'px';
+            },
+            duration: TApplication.animationSpeed
+        });
+        Utils.animate({
+            draw: function (progress) {
+                style.height = (String(window.innerHeight - progress * heightDelta)) + 'px';
+            },
+            duration: TApplication.animationSpeed
+        });
+
         return this;
     }
 } 
