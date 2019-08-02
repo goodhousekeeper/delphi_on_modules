@@ -11,7 +11,7 @@ let properties = {
 }
 
 let logics = () => {
-    console.info('AAAAAAAAAA');
+  
 }
 
 export {properties, logics};

@@ -439,15 +439,19 @@ class TForm extends TControl {
         let heightDelta = window.innerHeight - box.height;
         /* save previous position */
         this.setProperty('positionBeforeMaximize', {top: box.top, left: box.left, width: box.width, height: box.height});
-        console.info('maximize', this.getProperty('positionBeforeMaximize'));
-        console.info('maximize,  window.innerWidth', window.innerWidth)
+        style.opacity = 0.5;
+
+        let onEndMaximize = () => {
+            this.objectContainer.classList.add('Maximized');
+            style.opacity = 1;
+        }
 
         Utils.animate({
             draw: function (progress) {
                 style.top = (String(box.top - progress * box.top)) + 'px';
             },
             duration: TApplication.animationSpeed,
-            callback: () => this.objectContainer.classList.add('Maximized')
+            callback: onEndMaximize
         });
         Utils.animate({
             draw: function (progress) {
@@ -479,16 +483,19 @@ class TForm extends TControl {
         }
         let widthDelta = window.innerWidth - box.width;
         let heightDelta = window.innerHeight - box.height;
+        style.opacity = 0.5;
 
-        console.info('restore', box);
-        console.info('restore,  window.innerWidth', window.innerWidth)
-          
+        let onEndRestore = () => {
+            this.objectContainer.classList.remove('Maximized');
+            style.opacity = 1;
+        }
+         
         Utils.animate({
             draw: function (progress) {
                 style.top = (String(progress*box.top)) + 'px';
             },
             duration: TApplication.animationSpeed,
-            callback: () => this.objectContainer.classList.remove('Maximized')
+            callback: onEndRestore
         });
         Utils.animate({
             draw: function (progress) {
