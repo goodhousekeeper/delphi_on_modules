@@ -435,16 +435,47 @@ class TForm extends TControl {
         let container = this.objectContainer;
         let style = this.style;
         let box = container.getBoundingClientRect();
+        let widthDelta = window.innerWidth - box.width;
+        let heightDelta = window.innerHeight - box.height;
         /* save previous position */
         this.setProperty('positionBeforeMaximize', {top: box.top, left: box.left, width: box.width, height: box.height});
         
+        /*
         style.top = 0;
         style.left = 0;
         style.width = '100%';
         style.height = '100%';
-        
+       
         this.objectContainer.classList.add('Maximized');
+        */
         
+
+
+        Utils.animate({
+            draw: function (progress) {
+                style.top = (String(box.top - progress*box.top)) + 'px';
+            },
+            duration: TApplication.animationSpeed,
+            callback: () => {this.objectContainer.classList.add('Maximized'); console.info(this.getProperty('positionBeforeMaximize')) } 
+        });
+        Utils.animate({
+            draw: function (progress) {
+                style.left = (String(box.left - progress*box.left)) + 'px';
+            },
+            duration: TApplication.animationSpeed
+        });
+        Utils.animate({
+            draw: function (progress) {
+                style.width = (String(box.width + progress*widthDelta)) + 'px';
+            },
+            duration: TApplication.animationSpeed
+        });
+        Utils.animate({
+            draw: function (progress) {
+                style.height = (String(box.height + progress*heightDelta)) + 'px';
+            },
+            duration: TApplication.animationSpeed
+        });
         return this;
     }
 
