@@ -1,0 +1,21 @@
+{
+  "name": "delphi.js",
+  "version": "1.0.0",
+  "description": "My tribute to Delphi 7 on Windows XP. Let the Web be a new home of yours",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goodhousekeeper/delphi_on_modules.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goodhousekeeper/delphi_on_modules/issues"
+  },
+  "homepage": "https://github.com/goodhousekeeper/delphi_on_modules#readme",
+  "devDependencies": {
+    "eslint": "^6.1.0"
+  }
+}
