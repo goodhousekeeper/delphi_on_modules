@@ -442,7 +442,7 @@ class TForm extends TControl {
 
     maximize() {
         if (this.getProperty('noMaximizeButton')) {
-            return;
+            return this;
         }
         let container = this.objectContainer;
         let style = this.style;
@@ -495,7 +495,7 @@ class TForm extends TControl {
 
     restore() {
         if (this.getProperty('noMaximizeButton')) {
-            return;
+            return this;
         }
         let style = this.style;
         let box = this.getProperty('positionBeforeMaximize');
