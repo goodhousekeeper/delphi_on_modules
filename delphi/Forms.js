@@ -198,6 +198,7 @@ class TForm extends TControl {
         super(properties);
         this.setProperty('modal', false);
         this.setProperty('modalResult', false);
+        this.setProperty('maximized', false);
     }
 
     createNode() {
@@ -269,12 +270,21 @@ class TForm extends TControl {
                 function moveAt (e) {
                     style.left = e.pageX - deltaX + 'px';
                     style.top = e.pageY - deltaY + 'px';
+                    style.opacity = 0.5;
                 }
-                style.opacity = 0.5;
+               
                 container.classList.remove('Maximized');
                 document.onmousemove = (e) => moveAt(e)
                 container.onmouseup = () => endTransition()
             });
+
+            caption.addEventListener('dblclick', () => {
+                if (this.getProperty('maximized')) {
+                    this.restore();
+                } else {
+                    this.maximize();
+                }
+            })
 
             if (this.getProperty('noMaximizeButton')) {
                 maximizeButton = undefined;
@@ -313,9 +323,9 @@ class TForm extends TControl {
                 function sizeAt (e) {
                     style.width = e.pageX - deltaX + 'px';
                     style.height = e.pageY - deltaY + 'px';
-
+                    style.opacity = 0.5;
                 }
-                style.opacity = 0.5;
+               
                 container.classList.remove('Maximized');        
                 document.onmousemove = (e) => sizeAt(e);
                 container.onmouseup = () => endTransition();
@@ -436,40 +446,47 @@ class TForm extends TControl {
         let box = container.getBoundingClientRect();
         let widthDelta = window.innerWidth - box.width;
         let heightDelta = window.innerHeight - box.height;
+        let animateOptions = {
+            duration: TApplication.animationSpeed, 
+            timing: Constants.ANIMATION_FUNCTION_ARC
+        };
         /* save previous position */
         this.setProperty('positionBeforeMaximize', {top: box.top, left: box.left, width: box.width, height: box.height});
-        style.opacity = 0.5;
 
         let onEndMaximize = () => {
             this.objectContainer.classList.add('Maximized');
-            style.opacity = 1;
+            this.setProperty('maximized', true);
         }
 
-        Utils.animate({
-            draw: function (progress) {
-                style.top = (String(box.top - progress * box.top)) + 'px';
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.top = (String(box.top - progress * box.top)) + 'px';
+                },
+                callback: onEndMaximize
             },
-            duration: TApplication.animationSpeed,
-            callback: onEndMaximize
-        });
-        Utils.animate({
-            draw: function (progress) {
-                style.left = (String(box.left - progress * box.left)) + 'px';
+            animateOptions 
+        ));
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.left = (String(box.left - progress * box.left)) + 'px';
+                }
             },
-            duration: TApplication.animationSpeed
-        });
-        Utils.animate({
-            draw: function (progress) {
-                style.width = (String(box.width + progress * widthDelta)) + 'px';
+            animateOptions
+        ));
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.width = (String(box.width + progress * widthDelta)) + 'px';
+                }
             },
-            duration: TApplication.animationSpeed
-        });
-        Utils.animate({
-            draw: function (progress) {
-                style.height = (String(box.height + progress * heightDelta)) + 'px';
+            animateOptions
+        ));
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.height = (String(box.height + progress * heightDelta)) + 'px';
+                }
             },
-            duration: TApplication.animationSpeed
-        });
+            animateOptions
+        ));
         return this;
     }
 
@@ -481,11 +498,10 @@ class TForm extends TControl {
         }
         let widthDelta = window.innerWidth - box.width;
         let heightDelta = window.innerHeight - box.height;
-        style.opacity = 0.5;
 
         let onEndRestore = () => {
             this.objectContainer.classList.remove('Maximized');
-            style.opacity = 1;
+            this.setProperty('maximized', false);
         }
          
         Utils.animate({
