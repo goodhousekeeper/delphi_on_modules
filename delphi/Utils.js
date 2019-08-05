@@ -17,7 +17,7 @@ export default class Utils {
     static addFaviconNode(favicon) {
         let headNode = document.getElementsByTagName('head')[0];
         let iconNode;
-        headNode.childNodes.forEach((item, index) => {
+        headNode.childNodes.forEach((item) => {
             if (item.rel === 'shortcut icon') {
                 iconNode = item;
             }

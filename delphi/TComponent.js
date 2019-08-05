@@ -14,7 +14,7 @@ export default class TComponent {
     }
 
     getProperty(name) { 
-        return this._properties.hasOwnProperty(name) ? this._properties[name] : undefined;
+        return name in this._properties ? this._properties[name] : undefined;
     }
 
     createContent() {

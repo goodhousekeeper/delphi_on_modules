@@ -374,7 +374,6 @@ class TForm extends TControl {
 
     hide() {
         let modalStack = TApplication.modalStack;
-        let that = this;
    
         const afterFade = () => {
             super.hide();
@@ -475,7 +474,6 @@ class TForm extends TControl {
     }
 
     restore() {
-        let container = this.objectContainer;
         let style = this.style;
         let box = this.getProperty('positionBeforeMaximize');
         if (!box) {
