@@ -493,6 +493,10 @@ class TForm extends TControl {
     restore() {
         let style = this.style;
         let box = this.getProperty('positionBeforeMaximize');
+        let animateOptions = {
+            duration: TApplication.animationSpeed, 
+            timing: Constants.ANIMATION_FUNCTION_ARC
+        };
         if (!box) {
             return this;
         }
@@ -504,31 +508,35 @@ class TForm extends TControl {
             this.setProperty('maximized', false);
         }
          
-        Utils.animate({
-            draw: function (progress) {
-                style.top = (String(progress*box.top)) + 'px';
-            },
-            duration: TApplication.animationSpeed,
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.top = (String(progress*box.top)) + 'px';
+                },
             callback: onEndRestore
-        });
-        Utils.animate({
-            draw: function (progress) {
-                style.left = (String(progress*box.left)) + 'px';
             },
-            duration: TApplication.animationSpeed
-        });
-        Utils.animate({
-            draw: function (progress) {
-                style.width = (String(window.innerWidth - progress * widthDelta)) + 'px';
+            animateOptions
+        ));
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.left = (String(progress*box.left)) + 'px';
+                }
             },
-            duration: TApplication.animationSpeed
-        });
-        Utils.animate({
-            draw: function (progress) {
-                style.height = (String(window.innerHeight - progress * heightDelta)) + 'px';
+            animateOptions
+        ));
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.width = (String(window.innerWidth - progress * widthDelta)) + 'px';
+                }
             },
-            duration: TApplication.animationSpeed
-        });
+            animateOptions
+        ));
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.height = (String(window.innerHeight - progress * heightDelta)) + 'px';
+                }
+            },
+            animateOptions
+        ));
 
         return this;
     }
