@@ -9,6 +9,8 @@ const buttonsModuleStyle = `
     border: 1px solid var(--button-border-color);
     border-radius: 4px;
     cursor: pointer;
+    box-shadow: inset -1px -1px 1px 1px #D1CCC1,
+    inset  1px  1px 1px 1px #F0F0F0;
 }
 
 .TApplication .TForm .TButton .Caption {

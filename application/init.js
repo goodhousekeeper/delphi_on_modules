@@ -15,6 +15,7 @@ async function showMainForm() {
     let module = await import('./forms/main_form.js');
     mainForm = TApplication.createObject(module.properties);
     mainForm.show();
+    //mainForm.theVeryFirstTBitButton.enabled(false);
     module.logics(TApplication);
 }
 
