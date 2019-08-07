@@ -11,7 +11,7 @@ export default class Utils {
     static addStyleNode(style) {
         const styleNode = document.createElement('style');
         styleNode.title = Constants.STYLE_TAG_TITLE;
-        styleNode.innerHTML = style;
+        styleNode.innerHTML = style.replace(/\s+/g, ' ');
         document.getElementsByTagName('head')[0].appendChild(styleNode);
     }
 
@@ -25,7 +25,7 @@ export default class Utils {
         if (!styleNode) {
             return;
         }
-        styleNode.innerHTML += style;
+        styleNode.innerHTML += style.replace(/\s+/g, ' ');
     }
 
     static addFaviconNode(favicon) {
