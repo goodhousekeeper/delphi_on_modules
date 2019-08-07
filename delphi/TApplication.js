@@ -4,6 +4,7 @@ import * as Constants from './Constants.js';
 
 import * as Forms from './Forms.js';
 import * as Buttons from './Buttons.js';
+import * as Panels from './Panels.js';
 
 
 /* Application instance */
@@ -139,6 +140,7 @@ Object.defineProperties(TApplication, {
 /* Application Instance Initialize */  
 TApplication.addComponentsToLibrary(Forms);
 TApplication.addComponentsToLibrary(Buttons);
+TApplication.addComponentsToLibrary(Panels);
 
 TApplication.caption = caption;
 TApplication.icon = icon;

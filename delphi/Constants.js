@@ -44,6 +44,9 @@ body {
     --button-background-disabled-color: #F5F4EA;
     --button-border-color: #003C74;
     --button-border-disabled-color: #C9C7BA;
+    --panel-border-color: #ACA899;
+    --panel-border-shadow-color: #FFF;
+    --panel-border-disabled-color: #C9C7BA;
 }
 `;
 
