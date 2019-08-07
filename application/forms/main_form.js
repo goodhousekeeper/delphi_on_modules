@@ -40,8 +40,7 @@ const properties = {
             top: 4,
             left: 200,
             width: 1000,
-            height: 100,
-            contentProperties: []
+            height: 100
         }
 
     ]

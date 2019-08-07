@@ -43,8 +43,25 @@ class TPanel extends TControl {
         super.createNode();
         let container = this.objectContainer;
         container.classList.add('TPanel');
-        
+        if (this.getProperty('lowered')) {
+            this.low();
+        }
+        if (this.getProperty('raised')) {
+            this.raise();
+        }
     }
+
+    low() {
+        this.objectContainer.classList.remove('Raised');
+        this.objectContainer.classList.add('Lowered');
+    }
+
+    raise() {
+        this.objectContainer.classList.remove('Lowered');
+        this.objectContainer.classList.add('Raised');
+    }
+
+
 }
 
 export { TPanel }
