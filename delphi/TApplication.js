@@ -4,8 +4,8 @@ import * as Constants from './Constants.js';
 
 Utils.addStyleNode(Constants.APPLICATION_STYLE);
 
-import formsModuleStyle, * as Forms from './Forms.js';
-import buttonsModuleStyle, * as Buttons from './Buttons.js';
+import * as Forms from './Forms.js';
+import * as Buttons from './Buttons.js';
 import * as Panels from './Panels.js';
 
 
@@ -124,9 +124,12 @@ Object.defineProperties(TApplication, {
         }
     },
     addComponentsToLibrary: {
-        value: function(components, style) {
-            Utils.updateStyleNode(style);
+        value: function(components) {
             for (let [key, value] of Object.entries(components)) {
+                if (key === 'default') {
+                    Utils.updateStyleNode(value);
+                    continue;
+                }
                 if (componentLibrary[key]) {
                     throw new Error(`Component with name ${value.name} already exists`);
                 } else {
@@ -141,8 +144,8 @@ Object.defineProperties(TApplication, {
 /* ----------------------------------------------------------------------------- */
 
 /* Application Instance Initialize */  
-TApplication.addComponentsToLibrary(Forms, formsModuleStyle);
-TApplication.addComponentsToLibrary(Buttons, buttonsModuleStyle);
+TApplication.addComponentsToLibrary(Forms);
+TApplication.addComponentsToLibrary(Buttons);
 TApplication.addComponentsToLibrary(Panels);
 
 TApplication.caption = caption;

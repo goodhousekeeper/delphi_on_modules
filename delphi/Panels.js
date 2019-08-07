@@ -1,5 +1,4 @@
 import TControl from './TControl.js';
-import Utils from './Utils.js';
 
 const panelsModuleStyle = `
 .TApplication .TForm .TPanel {
@@ -32,8 +31,6 @@ const panelsModuleStyle = `
 `;
 
 
-Utils.addStyleNode(panelsModuleStyle);
-
 class TPanel extends TControl {
     constructor(properties) {
         super(properties);
@@ -62,5 +59,5 @@ class TPanel extends TControl {
     }
     
 }
-
+export default panelsModuleStyle;
 export { TPanel }

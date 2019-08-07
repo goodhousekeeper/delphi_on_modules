@@ -1,6 +1,4 @@
 import TControl from './TControl.js';
-import Utils from './Utils.js';
-
 
 const buttonsModuleStyle = `
 .TApplication .TForm .TButton {
@@ -75,8 +73,6 @@ const buttonsModuleStyle = `
     filter: grayscale(100%);
 }
 `;
-
-//Utils.addStyleNode(buttonsModuleStyle);
 
 class TButton extends TControl {
     constructor(properties) {

@@ -191,7 +191,6 @@ const formsModuleStyle = `
   }
 `;
 
-//Utils.addStyleNode(formsModuleStyle);
 
 class TForm extends TControl {
     constructor(properties) {
