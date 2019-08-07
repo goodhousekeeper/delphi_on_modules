@@ -5,7 +5,7 @@ import * as Constants from './Constants.js';
 Utils.addStyleNode(Constants.APPLICATION_STYLE);
 
 import formsModuleStyle, * as Forms from './Forms.js';
-import * as Buttons from './Buttons.js';
+import buttonsModuleStyle, * as Buttons from './Buttons.js';
 import * as Panels from './Panels.js';
 
 
@@ -142,7 +142,7 @@ Object.defineProperties(TApplication, {
 
 /* Application Instance Initialize */  
 TApplication.addComponentsToLibrary(Forms, formsModuleStyle);
-TApplication.addComponentsToLibrary(Buttons);
+TApplication.addComponentsToLibrary(Buttons, buttonsModuleStyle);
 TApplication.addComponentsToLibrary(Panels);
 
 TApplication.caption = caption;

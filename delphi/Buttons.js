@@ -76,7 +76,7 @@ const buttonsModuleStyle = `
 }
 `;
 
-Utils.addStyleNode(buttonsModuleStyle);
+//Utils.addStyleNode(buttonsModuleStyle);
 
 class TButton extends TControl {
     constructor(properties) {
@@ -120,5 +120,5 @@ class TBitButton extends TButton {
         }
     }
 }
-
+export default buttonsModuleStyle;
 export { TButton, TBitButton }
