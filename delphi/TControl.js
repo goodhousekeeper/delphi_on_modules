@@ -84,7 +84,8 @@ export default class TControl extends TComponent {
           this.show();
         }
     }  
-    
+
+        
     setEventListener(eventName, fnc, runOnce = false) {
         let that = this;
         if (runOnce) {

@@ -60,8 +60,7 @@ class TPanel extends TControl {
         this.objectContainer.classList.remove('Lowered');
         this.objectContainer.classList.add('Raised');
     }
-
-
+    
 }
 
 export { TPanel }
