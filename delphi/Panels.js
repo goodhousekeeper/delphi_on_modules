@@ -1,6 +1,6 @@
 import TControl from './TControl.js';
 
-const panelsModuleStyle = `
+export default `
 .TApplication .TForm .TPanel {
     box-sizing: border-box;
     border: 1px solid var(--panel-border-color);
@@ -59,5 +59,5 @@ class TPanel extends TControl {
     }
     
 }
-export default panelsModuleStyle;
+
 export { TPanel }

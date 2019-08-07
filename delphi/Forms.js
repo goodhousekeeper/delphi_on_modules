@@ -4,8 +4,7 @@ import Utils from './Utils.js';
 import * as Constants from './Constants.js';
 
 
-
-const formsModuleStyle = `
+export default `
 .TOverlay {
     top: 0;
     right: 0;
@@ -569,5 +568,4 @@ class TOverlay extends TControl {
     }
 }
 
-export default formsModuleStyle;
 export { TForm, TOverlay }
