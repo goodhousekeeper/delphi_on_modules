@@ -2,7 +2,9 @@
 import Utils from './Utils.js';
 import * as Constants from './Constants.js';
 
-import * as Forms from './Forms.js';
+Utils.addStyleNode(Constants.APPLICATION_STYLE);
+
+import formsModuleStyle, * as Forms from './Forms.js';
 import * as Buttons from './Buttons.js';
 import * as Panels from './Panels.js';
 
@@ -122,7 +124,8 @@ Object.defineProperties(TApplication, {
         }
     },
     addComponentsToLibrary: {
-        value: function(components) {
+        value: function(components, style) {
+            Utils.updateStyleNode(style);
             for (let [key, value] of Object.entries(components)) {
                 if (componentLibrary[key]) {
                     throw new Error(`Component with name ${value.name} already exists`);
@@ -138,13 +141,12 @@ Object.defineProperties(TApplication, {
 /* ----------------------------------------------------------------------------- */
 
 /* Application Instance Initialize */  
-TApplication.addComponentsToLibrary(Forms);
+TApplication.addComponentsToLibrary(Forms, formsModuleStyle);
 TApplication.addComponentsToLibrary(Buttons);
 TApplication.addComponentsToLibrary(Panels);
 
 TApplication.caption = caption;
 TApplication.icon = icon;
-Utils.addStyleNode(Constants.APPLICATION_STYLE);
 document.body.classList.add('TApplication'); 
 /* Add system Objects */
 TApplication.createObject(Constants.OVERLAY_PROPERTIES);

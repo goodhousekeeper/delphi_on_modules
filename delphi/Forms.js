@@ -191,7 +191,7 @@ const formsModuleStyle = `
   }
 `;
 
-Utils.addStyleNode(formsModuleStyle);
+//Utils.addStyleNode(formsModuleStyle);
 
 class TForm extends TControl {
     constructor(properties) {
@@ -570,4 +570,5 @@ class TOverlay extends TControl {
     }
 }
 
+export default formsModuleStyle;
 export { TForm, TOverlay }

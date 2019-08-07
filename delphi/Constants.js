@@ -50,6 +50,8 @@ body {
 }
 `;
 
+const STYLE_TAG_TITLE = 'Delphi.js';
+
 const DISABLED_CLASS_NAME = 'Disabled';
 const CHECKED_CLASS_NAME = 'Checked';
 const UNCHECKED_CLASS_NAME = 'Unchecked';
@@ -71,6 +73,8 @@ const MODAL_RESULT_CLOSE = 'mrClose';
 /*------------------------------------------------------------------------------------------ */
 export {
     APPLICATION_STYLE,
+
+    STYLE_TAG_TITLE,
 
     DISABLED_CLASS_NAME, 
     CHECKED_CLASS_NAME,

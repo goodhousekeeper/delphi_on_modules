@@ -9,9 +9,23 @@ export default class Utils {
      * @param {string} style - css styles in text format 
      */
     static addStyleNode(style) {
-        let styleNode = document.createElement('style');
+        const styleNode = document.createElement('style');
+        styleNode.title = Constants.STYLE_TAG_TITLE;
         styleNode.innerHTML = style;
         document.getElementsByTagName('head')[0].appendChild(styleNode);
+    }
+
+    static updateStyleNode(style) {
+        let styleNode;
+        for (let node of document.getElementsByTagName('style')) {
+            if (node.title === Constants.STYLE_TAG_TITLE) {
+                styleNode = node;
+            }
+        }
+        if (!styleNode) {
+            return;
+        }
+        styleNode.innerHTML += style;
     }
 
     static addFaviconNode(favicon) {
