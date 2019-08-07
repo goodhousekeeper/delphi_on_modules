@@ -271,7 +271,6 @@ class TForm extends TControl {
                     style.opacity = 0.5;
                 }
                
-                container.classList.remove('Maximized');
                 document.onmousemove = (e) => moveAt(e)
                 container.onmouseup = () => endTransition()
             });
