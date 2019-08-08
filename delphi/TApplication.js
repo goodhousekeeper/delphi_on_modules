@@ -2,8 +2,6 @@
 import Utils from './Utils.js';
 import * as Constants from './Constants.js';
 
-Utils.addStyleNode(Constants.APPLICATION_STYLE);
-
 import * as Forms from './Forms.js';
 import * as Buttons from './Buttons.js';
 import * as Panels from './Panels.js';
@@ -144,6 +142,8 @@ Object.defineProperties(TApplication, {
 /* ----------------------------------------------------------------------------- */
 
 /* Application Instance Initialize */  
+Utils.addStyleNode(Constants.APPLICATION_STYLE);
+
 TApplication.addComponentsToLibrary(Forms);
 TApplication.addComponentsToLibrary(Buttons);
 TApplication.addComponentsToLibrary(Panels);
