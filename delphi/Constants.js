@@ -2,6 +2,8 @@
  * Constants
  */
 const APPLICATION_STYLE = `
+/* Reset styles, styles for TApplication,  setting up css variables */
+
 * {
     margin: 0;
     padding: 0;

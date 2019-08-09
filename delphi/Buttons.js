@@ -1,6 +1,8 @@
 import TControl from './TControl.js';
 
 export default `
+/* Styles for TButton, TBitButton */
+
 .TApplication .TForm .TButton {
     box-sizing: border-box;
     background-color: var(--button-background-color);

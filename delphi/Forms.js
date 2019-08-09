@@ -5,6 +5,8 @@ import * as Constants from './Constants.js';
 
 
 export default `
+/* Styles for TOverlay, TForm, TMessageDlg */
+
 .TOverlay {
     top: 0;
     right: 0;

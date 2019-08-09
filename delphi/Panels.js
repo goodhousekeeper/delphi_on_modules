@@ -1,6 +1,8 @@
 import TControl from './TControl.js';
 
 export default `
+/* Styles for TPanel */
+
 .TApplication .TForm .TPanel {
     box-sizing: border-box;
     border: 1px solid var(--panel-border-color);
