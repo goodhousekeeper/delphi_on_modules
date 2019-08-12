@@ -61,6 +61,9 @@ const logics = (app) => {
         if (!other_form) {
             other_form = app.createObject(other_form_module.properties);
             other_form_module.logics();
+            other_form.onShow(() => {
+                console.info('Showed hren sotryosh');
+            })
         }
         other_form.showModal(); 
     })

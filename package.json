@@ -18,5 +18,11 @@
   "devDependencies": {
     "eslint": "^6.1.0",
     "standard": "*"
+  },
+  "standard": { 
+    "globals": [ 
+      "CustomEvent",
+      "performance"
+      ]
   }
 }

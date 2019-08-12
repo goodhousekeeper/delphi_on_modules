@@ -77,10 +77,6 @@ export default `
 `
 
 class TButton extends TControl {
-  constructor (properties) {
-    super(properties)
-  }
-
   createNode () {
     super.createNode()
     const container = this.objectContainer
@@ -101,10 +97,6 @@ class TButton extends TControl {
 }
 
 class TBitButton extends TButton {
-  constructor (properties) {
-    super(properties)
-  }
-
   createNode () {
     super.createNode()
     const container = this.objectContainer

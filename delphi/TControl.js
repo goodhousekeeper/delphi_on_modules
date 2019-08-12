@@ -4,10 +4,6 @@ import * as Constants from './Constants.js'
 import Utils from './Utils.js'
 
 export default class TControl extends TComponent {
-  constructor (properties) {
-    super(properties)
-  }
-
   createNode () {
     const objectContainer = document.createElement('div')
     let contentContainer = document.createElement('div')
@@ -57,7 +53,9 @@ export default class TControl extends TComponent {
       caption: {
         configurable: true,
         get: () => document.getElementById(objectContainer.id + '.Caption').innerText,
-        set: (newCaption) => document.getElementById(objectContainer.id + '.Caption').innerText = newCaption || ''
+        set: (newCaption) => {
+          document.getElementById(objectContainer.id + '.Caption').innerText = newCaption || ''
+        }
       },
       icon: {
         configurable: true,

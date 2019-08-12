@@ -44,7 +44,6 @@ Object.defineProperties(TApplication, {
     get: () => mainFormName,
     set: (newName) => {
       mainFormName = newName
-      return true
     }
   },
   getMainForm: {

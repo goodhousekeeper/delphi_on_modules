@@ -33,10 +33,6 @@ export default `
 `
 
 class TPanel extends TControl {
-  constructor (properties) {
-    super(properties)
-  }
-
   createNode () {
     super.createNode()
     const container = this.objectContainer
