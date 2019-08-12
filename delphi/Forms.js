@@ -226,10 +226,10 @@ class TForm extends TControl {
         container.appendChild(borderLeft);
 
         /*------------------------------------------------------------------------------ */
-        function endTransition () {
-            document.onmousemove = null
-            container.onmouseup = null
-            style.opacity = 1.0
+        const endTransition = () => {
+            document.onmousemove = null;
+            container.onmouseup = null;
+            style.opacity = '1.0';
         }
 
         /*------------------------------------------------------------------------------ */
@@ -261,20 +261,21 @@ class TForm extends TControl {
             caption.id = container.id + '.Caption';
             this.caption = this.getProperty('caption');
             caption.addEventListener('mousedown', (e) => {
+                const moveAt = (e) => {
+                    style.left = e.pageX - deltaX + 'px';
+                    style.top = e.pageY - deltaY + 'px';
+                    if (style.opacity !== '0.5') {
+                        style.opacity = '0.5';
+                    }
+                }
                 let box = container.getBoundingClientRect();
                 let deltaX = e.pageX - box.left;
                 let deltaY = e.pageY - box.top;
+             
                 style.width = (box.width) + 'px';
                 style.height = (box.height) + 'px';
-            
-                function moveAt (e) {
-                    style.left = e.pageX - deltaX + 'px';
-                    style.top = e.pageY - deltaY + 'px';
-                    style.opacity = 0.5;
-                }
-               
-                document.onmousemove = (e) => moveAt(e)
-                container.onmouseup = () => endTransition()
+                document.onmousemove = (e) => moveAt(e);
+                container.onmouseup = () => endTransition();
             });
 
             caption.addEventListener('dblclick', () => {
@@ -315,16 +316,17 @@ class TForm extends TControl {
             this.contentContainer.appendChild(sizeHandle);
 
             sizeHandle.addEventListener('mousedown', (e) => {
+                const sizeAt  = (e) => {
+                    style.width = e.pageX - deltaX + 'px';
+                    style.height = e.pageY - deltaY + 'px';
+                    if (style.opacity !== '0.5') {
+                        style.opacity = '0.5';
+                    }
+                }
                 let box = container.getBoundingClientRect();
                 let deltaX = e.pageX - box.width;
                 let deltaY = e.pageY - box.height;
         
-                function sizeAt (e) {
-                    style.width = e.pageX - deltaX + 'px';
-                    style.height = e.pageY - deltaY + 'px';
-                    style.opacity = 0.5;
-                }
-               
                 container.classList.remove('Maximized');        
                 document.onmousemove = (e) => sizeAt(e);
                 container.onmouseup = () => endTransition();
@@ -359,7 +361,7 @@ class TForm extends TControl {
         if (TApplication.modalStack.length > 0) {
             this.showModal();
         }
-        this.style.opacity = "0";
+        this.style.opacity = '0';
         super.show();
         this.align().bringToFront().setActive().fadeIn();
         return this;   
