@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "My tribute to Delphi 7 on Windows XP. Let the Web be a new home of yours",
   "scripts": {
-    "test": "standard"
+    "test": "standard --fix"
   },
   "repository": {
     "type": "git",
