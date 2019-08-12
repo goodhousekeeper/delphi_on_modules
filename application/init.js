@@ -8,6 +8,7 @@ TApplication.icon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAA
 
 /* Add custom components */
 
+// let splashForm
 let mainForm
 
 async function showMainForm () {
@@ -24,14 +25,11 @@ async function showSplashForm () {
   splashForm.show()
 }
 
-showSplashForm();
+showSplashForm()
 
 setTimeout(() => {
-    splashForm.hide();
-    showMainForm();
-}
-, 5000
-);
+  splashForm.hide()
+  showMainForm()
+}, 5000)
 */
-
 showMainForm()
