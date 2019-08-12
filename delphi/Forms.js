@@ -1,8 +1,7 @@
-import TApplication from './TApplication.js';
-import TControl from './TControl.js';
-import Utils from './Utils.js';
-import * as Constants from './Constants.js';
-
+import TApplication from './TApplication.js'
+import TControl from './TControl.js'
+import Utils from './Utils.js'
+import * as Constants from './Constants.js'
 
 export default `
 /* Styles for TOverlay, TForm, TMessageDlg */
@@ -190,385 +189,379 @@ export default `
     cursor: se-resize;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1NzQwRjhGNTA4QUVFOTExQUM5QzhENDMwQzY4REU4MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGNEFBRDg3REFFMjMxMUU5OEY5RTgyOEI4NDE5NEI0QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGNEFBRDg3Q0FFMjMxMUU5OEY5RTgyOEI4NDE5NEI0QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU3NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3NDBGOEY1MDhBRUU5MTFBQzlDOEQ0MzBDNjhERTgyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+j9zGmAAAAGxQTFRF4d3K7ejS7ejU5eDJ5+DL6uXQ6ujV39zE4dzJ6eXR39vD39zH5eHL5eHJ3Na+39rF4dzL3NbA4drG7enW4d3I7ebQ6+TO7urT29fA7OfT6uXPu7Wiu7ai7OjR7enU7enT7urWu7Wk7urV////1SXZ2AAAAGxJREFUeNpEilkOwkAMxd50o2VfprQQJmnI/e/Iq4TAkj8sGQt5E5dpwi9e8Q8Nxq1TrSqzlEpBp2YuqwxVNf6JFjzIGFHoiGFo2ye5E7g0jcv+4FLX4Lv5usUcMa9eIo4gOee+P++up48AAwCnMQ4FktRCuQAAAABJRU5ErkJggg==') no-repeat center center;
   }
-`;
-
+`
 
 class TForm extends TControl {
-    constructor(properties) {
-        super(properties);
-        this.setProperty('modal', false);
-        this.setProperty('modalResult', false);
-        this.setProperty('maximized', false);
+  constructor (properties) {
+    super(properties)
+    this.setProperty('modal', false)
+    this.setProperty('modalResult', false)
+    this.setProperty('maximized', false)
+  }
+
+  createNode () {
+    super.createNode()
+    const style = this.style
+    const container = this.objectContainer
+    /* ------------------------------------------------------------------------------ */
+    container.classList.add('TForm')
+    container.addEventListener('click', () => this.bringToFront().setActive())
+    /* ------------------------------------------------------------------------------ */
+    style.height = this.getProperty('height') ? (this.getProperty('height') + 'px') : ''
+    style.width = this.getProperty('width') ? (this.getProperty('width') + 'px') : ''
+    /* ------------------------------------------------------------------------------ */
+    const borderTop = document.createElement('div')
+    const borderRight = document.createElement('div')
+    const borderBottom = document.createElement('div')
+    const borderLeft = document.createElement('div')
+    borderTop.className = 'Borders BorderTop'
+    borderRight.className = 'Borders BorderRight'
+    borderBottom.className = 'Borders BorderBottom'
+    borderLeft.className = 'Borders BorderLeft'
+    container.appendChild(borderTop)
+    container.appendChild(borderRight)
+    container.appendChild(borderBottom)
+    container.appendChild(borderLeft)
+
+    /* ------------------------------------------------------------------------------ */
+    const endTransition = () => {
+      document.onmousemove = null
+      container.onmouseup = null
+      style.opacity = '1.0'
     }
 
-    createNode() {
-        super.createNode();
-        let style = this.style;
-        let container = this.objectContainer;
-        /*------------------------------------------------------------------------------ */
-        container.classList.add('TForm');
-        container.addEventListener('click', () => this.bringToFront().setActive())
-        /*------------------------------------------------------------------------------ */
-        style.height = this.getProperty('height') ? (this.getProperty('height') + 'px') : '';
-        style.width = this.getProperty('width') ? (this.getProperty('width') + 'px') : '';
-        /*------------------------------------------------------------------------------ */
-        let borderTop = document.createElement('div');
-        let borderRight = document.createElement('div');
-        let borderBottom = document.createElement('div');        
-        let borderLeft = document.createElement('div');
-        borderTop.className = 'Borders BorderTop';
-        borderRight.className = 'Borders BorderRight';
-        borderBottom.className = 'Borders BorderBottom';        
-        borderLeft.className = 'Borders BorderLeft';
-        container.appendChild(borderTop);
-        container.appendChild(borderRight); 
-        container.appendChild(borderBottom);               
-        container.appendChild(borderLeft);
+    /* ------------------------------------------------------------------------------ */
+    if (this.getProperty('noTitle')) {
+      style.height = (this.getProperty('height') + 'px')
+      container.classList.toggle('noTitle', true)
+    } else {
+      const title = document.createElement('div')
+      const caption = document.createElement('div')
+      let maximizeButton = document.createElement('div')
+      let restoreButton = document.createElement('div')
+      const closeButton = document.createElement('div')
+      const icon = document.createElement('div')
 
-        /*------------------------------------------------------------------------------ */
-        const endTransition = () => {
-            document.onmousemove = null;
-            container.onmouseup = null;
-            style.opacity = '1.0';
+      container.appendChild(title)
+      title.className = 'Title'
+
+      title.appendChild(icon)
+      icon.className = 'Icon'
+      icon.id = container.id + '.Icon'
+      if (this.getProperty('icon')) {
+        this.icon = this.getProperty('icon')
+      } else {
+        this.icon = TApplication.icon
+      }
+
+      title.appendChild(caption)
+      caption.className = 'Caption'
+      caption.id = container.id + '.Caption'
+      this.caption = this.getProperty('caption')
+      caption.addEventListener('mousedown', (e) => {
+        const moveAt = (e) => {
+          style.left = e.pageX - deltaX + 'px'
+          style.top = e.pageY - deltaY + 'px'
+          if (style.opacity !== '0.5') {
+            style.opacity = '0.5'
+          }
         }
+        const box = container.getBoundingClientRect()
+        const deltaX = e.pageX - box.left
+        const deltaY = e.pageY - box.top
 
-        /*------------------------------------------------------------------------------ */
-        if (this.getProperty('noTitle')) {
-            style.height = (this.getProperty('height') + 'px');
-            container.classList.toggle('noTitle', true);
+        style.width = (box.width) + 'px'
+        style.height = (box.height) + 'px'
+        document.onmousemove = (e) => moveAt(e)
+        container.onmouseup = () => endTransition()
+      })
+
+      caption.addEventListener('dblclick', () => {
+        if (this.getProperty('maximized')) {
+          this.restore()
         } else {
-            let title = document.createElement('div');
-            let caption = document.createElement('div');
-            let maximizeButton = document.createElement('div');
-            let restoreButton = document.createElement('div');
-            let closeButton = document.createElement('div');
-            let icon = document.createElement('div');
-    
-            container.appendChild(title);
-            title.className = 'Title';
-
-            title.appendChild(icon);
-            icon.className = 'Icon';
-            icon.id = container.id + '.Icon';
-            if (this.getProperty('icon')) {
-                this.icon = this.getProperty('icon');
-            } else {
-                this.icon = TApplication.icon;   
-            }
-    
-            title.appendChild(caption);
-            caption.className = 'Caption';
-            caption.id = container.id + '.Caption';
-            this.caption = this.getProperty('caption');
-            caption.addEventListener('mousedown', (e) => {
-                const moveAt = (e) => {
-                    style.left = e.pageX - deltaX + 'px';
-                    style.top = e.pageY - deltaY + 'px';
-                    if (style.opacity !== '0.5') {
-                        style.opacity = '0.5';
-                    }
-                }
-                let box = container.getBoundingClientRect();
-                let deltaX = e.pageX - box.left;
-                let deltaY = e.pageY - box.top;
-             
-                style.width = (box.width) + 'px';
-                style.height = (box.height) + 'px';
-                document.onmousemove = (e) => moveAt(e);
-                container.onmouseup = () => endTransition();
-            });
-
-            caption.addEventListener('dblclick', () => {
-                if (this.getProperty('maximized')) {
-                    this.restore();
-                } else {
-                    this.maximize();
-                }
-            })
-
-            if (this.getProperty('noMaximizeButton')) {
-                maximizeButton = undefined;
-                restoreButton = undefined;
-            } else {
-                title.appendChild(maximizeButton);
-                maximizeButton.className = 'Buttons MaximizeButton';
-                maximizeButton.id = container.id + '.MaximizeButton';
-                maximizeButton.addEventListener('click', () => this.maximize());
-
-                title.appendChild(restoreButton);
-                restoreButton.className = 'Buttons RestoreButton';
-                restoreButton.id = container.id + '.RestoreButton';
-                restoreButton.addEventListener('click', () => this.restore());
-            }
-    
-            title.appendChild(closeButton);
-            closeButton.className = 'Buttons CloseButton';
-            closeButton.id = container.id + '.CloseButton';
-            closeButton.addEventListener('click', () => this.hide());
+          this.maximize()
         }
-        /*------------------------------------------------------------------------------ */
+      })
 
-        if (this.getProperty('sizeable')) {
-            let sizeHandle = document.createElement('div');
-            sizeHandle.id = `${container.id}.SizeHandle`;
-            sizeHandle.className = 'SizeHandle';
+      if (this.getProperty('noMaximizeButton')) {
+        maximizeButton = undefined
+        restoreButton = undefined
+      } else {
+        title.appendChild(maximizeButton)
+        maximizeButton.className = 'Buttons MaximizeButton'
+        maximizeButton.id = container.id + '.MaximizeButton'
+        maximizeButton.addEventListener('click', () => this.maximize())
 
-            this.contentContainer.appendChild(sizeHandle);
+        title.appendChild(restoreButton)
+        restoreButton.className = 'Buttons RestoreButton'
+        restoreButton.id = container.id + '.RestoreButton'
+        restoreButton.addEventListener('click', () => this.restore())
+      }
 
-            sizeHandle.addEventListener('mousedown', (e) => {
-                const sizeAt  = (e) => {
-                    style.width = e.pageX - deltaX + 'px';
-                    style.height = e.pageY - deltaY + 'px';
-                    if (style.opacity !== '0.5') {
-                        style.opacity = '0.5';
-                    }
-                }
-                let box = container.getBoundingClientRect();
-                let deltaX = e.pageX - box.width;
-                let deltaY = e.pageY - box.height;
-        
-                container.classList.remove('Maximized');        
-                document.onmousemove = (e) => sizeAt(e);
-                container.onmouseup = () => endTransition();
-            })
+      title.appendChild(closeButton)
+      closeButton.className = 'Buttons CloseButton'
+      closeButton.id = container.id + '.CloseButton'
+      closeButton.addEventListener('click', () => this.hide())
+    }
+    /* ------------------------------------------------------------------------------ */
+
+    if (this.getProperty('sizeable')) {
+      const sizeHandle = document.createElement('div')
+      sizeHandle.id = `${container.id}.SizeHandle`
+      sizeHandle.className = 'SizeHandle'
+
+      this.contentContainer.appendChild(sizeHandle)
+
+      sizeHandle.addEventListener('mousedown', (e) => {
+        const sizeAt = (e) => {
+          style.width = e.pageX - deltaX + 'px'
+          style.height = e.pageY - deltaY + 'px'
+          if (style.opacity !== '0.5') {
+            style.opacity = '0.5'
+          }
         }
+        const box = container.getBoundingClientRect()
+        const deltaX = e.pageX - box.width
+        const deltaY = e.pageY - box.height
 
-        /*------------------------------------------------------------------------------ */
-
+        container.classList.remove('Maximized')
+        document.onmousemove = (e) => sizeAt(e)
+        container.onmouseup = () => endTransition()
+      })
     }
 
-    align() {
-        let container = this.objectContainer;
-        let style = this.style;
-        let containerWidth = parseInt(style.width, 10);
-        let containerHeight = parseInt(style.height, 10);
-      
-        if (!this.getProperty('screenCenter')) {
-            return this;
-        }
-        if (container.offsetWidth > 0) {
-            containerWidth = container.offsetWidth;
-        }
-        if (container.offsetHeight > 0) {
-            containerHeight = container.offsetHeight
-        }
-        style.left = (window.innerWidth - containerWidth) / 2 + 'px';
-        style.top = (window.innerHeight - containerHeight) / 2 + 'px';
-        return this;
+    /* ------------------------------------------------------------------------------ */
+  }
+
+  align () {
+    const container = this.objectContainer
+    const style = this.style
+    let containerWidth = parseInt(style.width, 10)
+    let containerHeight = parseInt(style.height, 10)
+
+    if (!this.getProperty('screenCenter')) {
+      return this
+    }
+    if (container.offsetWidth > 0) {
+      containerWidth = container.offsetWidth
+    }
+    if (container.offsetHeight > 0) {
+      containerHeight = container.offsetHeight
+    }
+    style.left = (window.innerWidth - containerWidth) / 2 + 'px'
+    style.top = (window.innerHeight - containerHeight) / 2 + 'px'
+    return this
+  }
+
+  show () {
+    if (TApplication.modalStack.length > 0) {
+      this.showModal()
+    }
+    this.style.opacity = '0'
+    super.show()
+    this.align().bringToFront().setActive().fadeIn()
+    return this
+  }
+
+  showModal () {
+    const modalStack = TApplication.modalStack
+
+    TApplication.overlay.show()
+
+    super.show()
+    this.style.zIndex = Constants.OVERLAY_Z_INDEX + 1
+    this.align().setActive().fadeIn()
+    if (modalStack.length > 0) {
+      modalStack[modalStack.length - 1].style.zIndex = Constants.OVERLAY_Z_INDEX - 1
+    }
+    modalStack.push(this)
+    this.setProperty('modal', true)
+    this.setProperty('modalResult')
+  }
+
+  hide () {
+    const modalStack = TApplication.modalStack
+
+    const afterFade = () => {
+      super.hide()
+      if (modalStack.length > 0) {
+        const form = modalStack[modalStack.length - 1]
+        form.style.zIndex = Constants.OVERLAY_Z_INDEX + 1
+        form.setActive()
+      } else {
+        TApplication.getMainForm().setActive()
+      }
     }
 
-    show() {
-        if (TApplication.modalStack.length > 0) {
-            this.showModal();
+    const afterHideQuery = () => {
+      if (this.getProperty('modal')) {
+        this.setProperty('modal', false)
+        modalStack.pop()
+        if (modalStack.length === 0) {
+          TApplication.overlay.hide()
         }
-        this.style.opacity = '0';
-        super.show();
-        this.align().bringToFront().setActive().fadeIn();
-        return this;   
-    } 
-    
-    showModal() {
-        let modalStack = TApplication.modalStack;
-
-        TApplication.overlay.show();
-      
-        super.show();
-        this.style.zIndex = Constants.OVERLAY_Z_INDEX + 1;
-        this.align().setActive().fadeIn();
-        if (modalStack.length > 0) {
-          modalStack[modalStack.length - 1].style.zIndex = Constants.OVERLAY_Z_INDEX - 1;
+        if (!this.getProperty('modalResult')) {
+          this.setProperty('modalResult', Constants.MODAL_RESULT_CLOSE)
         }
-        modalStack.push(this);
-        this.setProperty('modal', true);
-        this.setProperty('modalResult');     
+      }
+      this.fadeOut(afterFade)
     }
 
-    hide() {
-        let modalStack = TApplication.modalStack;
-   
-        const afterFade = () => {
-            super.hide();
-            if (modalStack.length > 0) {
-                let form = modalStack[modalStack.length - 1];
-                form.style.zIndex = Constants.OVERLAY_Z_INDEX + 1;
-                form.setActive();
-            } else {
-                TApplication.getMainForm().setActive();
-            }
-        }
-      
-        const afterHideQuery  = () => {
-            if (this.getProperty('modal')) {
-                this.setProperty('modal', false);
-                modalStack.pop();
-                if (modalStack.length === 0) {
-                   TApplication.overlay.hide();
-                }
-                if (!this.getProperty('modalResult')) {
-                    this.setProperty('modalResult', Constants.MODAL_RESULT_CLOSE);
-                }
-            }
-            this.fadeOut(afterFade);
-        }
-      
-        if (this.hideQuery) {
-            this.hideQuery(afterHideQuery);
-        } else {
-            afterHideQuery();
-        }
+    if (this.hideQuery) {
+      this.hideQuery(afterHideQuery)
+    } else {
+      afterHideQuery()
+    }
+  }
+
+  setActive () {
+    TApplication.getObjectsByClassName('TForm').forEach(function (form) {
+      form.objectContainer.classList.remove('Active')
+    })
+    this.objectContainer.classList.add('Active')
+    return this
+  }
+
+  bringToFront () {
+    if (this.getProperty('modal')) {
+      return this
+    }
+    if (this === TApplication.getMainForm()) {
+      return this
     }
 
-    setActive() {
-        TApplication.getObjectsByClassName('TForm').forEach(function (form) {
-            form.objectContainer.classList.remove('Active');
-        })
-        this.objectContainer.classList.add('Active');
-        return this;
+    TApplication.getObjectsByClassName('TForm').forEach(function (form) {
+      form.style.zIndex = '1'
+    })
+    this.style.zIndex = Constants.BRING_TO_FRONT_Z_INDEX
+    return this
+  }
+
+  maximize () {
+    if (this.getProperty('noMaximizeButton')) {
+      return this
+    }
+    const container = this.objectContainer
+    const style = this.style
+    const box = container.getBoundingClientRect()
+    const widthDelta = window.innerWidth - box.width
+    const heightDelta = window.innerHeight - box.height
+    const animateOptions = {
+      duration: TApplication.animationSpeed,
+      timing: Constants.ANIMATION_FUNCTION_ARC
+    }
+    /* save previous position */
+    this.setProperty('positionBeforeMaximize', { top: box.top, left: box.left, width: box.width, height: box.height })
+
+    const onEndMaximize = () => {
+      this.objectContainer.classList.add('Maximized')
+      this.setProperty('maximized', true)
     }
 
-    bringToFront() {
-        if (this.getProperty('modal')) {
-            return this;
-        }
-        if (this === TApplication.getMainForm()) {
-            return this;
-        }
-          
-        TApplication.getObjectsByClassName('TForm').forEach(function (form) {
-            form.style.zIndex = '1';
-        })
-        this.style.zIndex = Constants.BRING_TO_FRONT_Z_INDEX;
-        return this;
+    Utils.animate(Object.assign({
+      draw: function (progress) {
+        style.top = (String(box.top - progress * box.top)) + 'px'
+      },
+      callback: onEndMaximize
+    },
+    animateOptions
+    ))
+    Utils.animate(Object.assign({
+      draw: function (progress) {
+        style.left = (String(box.left - progress * box.left)) + 'px'
+      }
+    },
+    animateOptions
+    ))
+    Utils.animate(Object.assign({
+      draw: function (progress) {
+        style.width = (String(box.width + progress * widthDelta)) + 'px'
+      }
+    },
+    animateOptions
+    ))
+    Utils.animate(Object.assign({
+      draw: function (progress) {
+        style.height = (String(box.height + progress * heightDelta)) + 'px'
+      }
+    },
+    animateOptions
+    ))
+    return this
+  }
+
+  restore () {
+    if (this.getProperty('noMaximizeButton')) {
+      return this
+    }
+    const style = this.style
+    const box = this.getProperty('positionBeforeMaximize')
+    const animateOptions = {
+      duration: TApplication.animationSpeed,
+      timing: Constants.ANIMATION_FUNCTION_ARC
+    }
+    if (!box) {
+      return this
+    }
+    const widthDelta = window.innerWidth - box.width
+    const heightDelta = window.innerHeight - box.height
+
+    const onEndRestore = () => {
+      this.objectContainer.classList.remove('Maximized')
+      this.setProperty('maximized', false)
     }
 
-    maximize() {
-        if (this.getProperty('noMaximizeButton')) {
-            return this;
-        }
-        let container = this.objectContainer;
-        let style = this.style;
-        let box = container.getBoundingClientRect();
-        let widthDelta = window.innerWidth - box.width;
-        let heightDelta = window.innerHeight - box.height;
-        let animateOptions = {
-            duration: TApplication.animationSpeed, 
-            timing: Constants.ANIMATION_FUNCTION_ARC
-        };
-        /* save previous position */
-        this.setProperty('positionBeforeMaximize', {top: box.top, left: box.left, width: box.width, height: box.height});
+    Utils.animate(Object.assign({
+      draw: function (progress) {
+        style.top = (String(progress * box.top)) + 'px'
+      },
+      callback: onEndRestore
+    },
+    animateOptions
+    ))
+    Utils.animate(Object.assign({
+      draw: function (progress) {
+        style.left = (String(progress * box.left)) + 'px'
+      }
+    },
+    animateOptions
+    ))
+    Utils.animate(Object.assign({
+      draw: function (progress) {
+        style.width = (String(window.innerWidth - progress * widthDelta)) + 'px'
+      }
+    },
+    animateOptions
+    ))
+    Utils.animate(Object.assign({
+      draw: function (progress) {
+        style.height = (String(window.innerHeight - progress * heightDelta)) + 'px'
+      }
+    },
+    animateOptions
+    ))
 
-        let onEndMaximize = () => {
-            this.objectContainer.classList.add('Maximized');
-            this.setProperty('maximized', true);
-        }
-
-        Utils.animate(Object.assign({
-                draw: function (progress) {
-                    style.top = (String(box.top - progress * box.top)) + 'px';
-                },
-                callback: onEndMaximize
-            },
-            animateOptions 
-        ));
-        Utils.animate(Object.assign({
-                draw: function (progress) {
-                    style.left = (String(box.left - progress * box.left)) + 'px';
-                }
-            },
-            animateOptions
-        ));
-        Utils.animate(Object.assign({
-                draw: function (progress) {
-                    style.width = (String(box.width + progress * widthDelta)) + 'px';
-                }
-            },
-            animateOptions
-        ));
-        Utils.animate(Object.assign({
-                draw: function (progress) {
-                    style.height = (String(box.height + progress * heightDelta)) + 'px';
-                }
-            },
-            animateOptions
-        ));
-        return this;
-    }
-
-    restore() {
-        if (this.getProperty('noMaximizeButton')) {
-            return this;
-        }
-        let style = this.style;
-        let box = this.getProperty('positionBeforeMaximize');
-        let animateOptions = {
-            duration: TApplication.animationSpeed, 
-            timing: Constants.ANIMATION_FUNCTION_ARC
-        };
-        if (!box) {
-            return this;
-        }
-        let widthDelta = window.innerWidth - box.width;
-        let heightDelta = window.innerHeight - box.height;
-
-        let onEndRestore = () => {
-            this.objectContainer.classList.remove('Maximized');
-            this.setProperty('maximized', false);
-        }
-         
-        Utils.animate(Object.assign({
-                draw: function (progress) {
-                    style.top = (String(progress*box.top)) + 'px';
-                },
-            callback: onEndRestore
-            },
-            animateOptions
-        ));
-        Utils.animate(Object.assign({
-                draw: function (progress) {
-                    style.left = (String(progress*box.left)) + 'px';
-                }
-            },
-            animateOptions
-        ));
-        Utils.animate(Object.assign({
-                draw: function (progress) {
-                    style.width = (String(window.innerWidth - progress * widthDelta)) + 'px';
-                }
-            },
-            animateOptions
-        ));
-        Utils.animate(Object.assign({
-                draw: function (progress) {
-                    style.height = (String(window.innerHeight - progress * heightDelta)) + 'px';
-                }
-            },
-            animateOptions
-        ));
-
-        return this;
-    }
-} 
+    return this
+  }
+}
 
 class TOverlay extends TControl {
-    constructor(properties) {
-        super(properties);
-    }
+  createNode () {
+    super.createNode()
+    this.objectContainer.classList.add('TOverlay')
+    this.style.zIndex = Constants.OVERLAY_Z_INDEX
+  }
 
-    createNode() {
-        super.createNode();
-        this.objectContainer.classList.add('TOverlay');
-        this.style.zIndex = Constants.OVERLAY_Z_INDEX;
-    }
+  show () {
+    this.style.opacity = '0'
+    super.show()
+    this.fadeIn()
+  }
 
-    show() {
-        this.style.opacity = '0';
-        super.show();
-        this.fadeIn();
-    }
-
-    hide() {
-        this.fadeOut(() => super.hide());
-    }
+  hide () {
+    this.fadeOut(() => super.hide())
+  }
 }
 
 export { TForm, TOverlay }

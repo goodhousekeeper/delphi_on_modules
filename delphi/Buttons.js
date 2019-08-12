@@ -1,4 +1,4 @@
-import TControl from './TControl.js';
+import TControl from './TControl.js'
 
 export default `
 /* Styles for TButton, TBitButton */
@@ -74,50 +74,49 @@ export default `
 .TApplication .TForm .TBitButton.Disabled .Icon {
     filter: grayscale(100%);
 }
-`;
+`
 
 class TButton extends TControl {
-    constructor(properties) {
-        super(properties);
+  constructor (properties) {
+    super(properties)
+  }
+
+  createNode () {
+    super.createNode()
+    const container = this.objectContainer
+    const caption = document.createElement('div')
+
+    container.classList.add('TButton')
+
+    container.appendChild(caption)
+    if (this.getProperty('toolTip')) {
+      container.title = this.getProperty('toolTip')
     }
 
-    createNode() {
-        super.createNode();
-        let container = this.objectContainer;
-        let caption = document.createElement('div');
-
-        container.classList.add('TButton');
-        
-        container.appendChild(caption);
-        if (this.getProperty('toolTip')) {
-            container.title = this.getProperty('toolTip');
-        }
-        
-        caption.className = 'Caption';
-        caption.id = container.id + '.Caption';
-        caption.style.lineHeight = (parseInt(container.style.height, 10) - 2) + 'px';
-        this.caption = this.getProperty('caption');
-    }
+    caption.className = 'Caption'
+    caption.id = container.id + '.Caption'
+    caption.style.lineHeight = (parseInt(container.style.height, 10) - 2) + 'px'
+    this.caption = this.getProperty('caption')
+  }
 }
 
 class TBitButton extends TButton {
-    constructor(properties) {
-        super(properties);
-    }
+  constructor (properties) {
+    super(properties)
+  }
 
-    createNode() {
-        super.createNode();
-        let container = this.objectContainer;
-        let icon = document.createElement('div');
-        container.classList.add('TBitButton');
-        container.appendChild(icon);
-        icon.className = 'Icon';
-        icon.id = container.id + '.Icon';
-        if (this.getProperty('icon')) {
-            this.icon = this.getProperty('icon');
-        }
+  createNode () {
+    super.createNode()
+    const container = this.objectContainer
+    const icon = document.createElement('div')
+    container.classList.add('TBitButton')
+    container.appendChild(icon)
+    icon.className = 'Icon'
+    icon.id = container.id + '.Icon'
+    if (this.getProperty('icon')) {
+      this.icon = this.getProperty('icon')
     }
+  }
 }
-
 
 export { TButton, TBitButton }

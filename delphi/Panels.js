@@ -1,4 +1,4 @@
-import TControl from './TControl.js';
+import TControl from './TControl.js'
 
 export default `
 /* Styles for TPanel */
@@ -30,36 +30,34 @@ export default `
     box-sizing: border-box;
     border-color: var(--panel-border-disabled-color);
 }
-`;
-
+`
 
 class TPanel extends TControl {
-    constructor(properties) {
-        super(properties);
-    }
+  constructor (properties) {
+    super(properties)
+  }
 
-    createNode() {
-        super.createNode();
-        let container = this.objectContainer;
-        container.classList.add('TPanel');
-        if (this.getProperty('lowered')) {
-            this.low();
-        }
-        if (this.getProperty('raised')) {
-            this.raise();
-        }
+  createNode () {
+    super.createNode()
+    const container = this.objectContainer
+    container.classList.add('TPanel')
+    if (this.getProperty('lowered')) {
+      this.low()
     }
+    if (this.getProperty('raised')) {
+      this.raise()
+    }
+  }
 
-    low() {
-        this.objectContainer.classList.remove('Raised');
-        this.objectContainer.classList.add('Lowered');
-    }
+  low () {
+    this.objectContainer.classList.remove('Raised')
+    this.objectContainer.classList.add('Lowered')
+  }
 
-    raise() {
-        this.objectContainer.classList.remove('Lowered');
-        this.objectContainer.classList.add('Raised');
-    }
-    
+  raise () {
+    this.objectContainer.classList.remove('Lowered')
+    this.objectContainer.classList.add('Raised')
+  }
 }
 
 export { TPanel }
