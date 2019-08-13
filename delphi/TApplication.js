@@ -126,7 +126,8 @@ Object.defineProperties(TApplication, {
           continue
         }
         if (componentLibrary[key]) {
-          throw new Error(`Component with name ${value.name} already exists`)
+          //throw new Error(`Component with name ${value.name} already exists`)
+          continue
         } else {
           componentLibrary[key] = value
         }
@@ -140,19 +141,24 @@ Object.defineProperties(TApplication, {
 
 /* Application Instance Initialize */
 Utils.addStyleNode(Constants.APPLICATION_STYLE)
+document.body.classList.add('TApplication')
+
+/* Add base components */
 
 TApplication.addComponentsToLibrary(Forms)
 TApplication.addComponentsToLibrary(Buttons)
 TApplication.addComponentsToLibrary(Panels)
 
-TApplication.caption = caption
-TApplication.icon = icon
-document.body.classList.add('TApplication')
 /* Add system Objects */
 TApplication.createObject(Constants.OVERLAY_PROPERTIES)
+
+/* Set up base properties */
+TApplication.caption = caption
+TApplication.icon = icon
+
 
 /* ----------------------------------------------------------------------------- */
 
 /* Named and default exports */
 export default TApplication
-export { TApplication }
+export { TApplication, Panels }

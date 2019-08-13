@@ -1,5 +1,5 @@
 /* Get application instance */
-import TApplication from '../delphi/TApplication.js'
+import {TApplication, Panels} from '../delphi/TApplication.js'
 /* Set up application instance */
 TApplication.caption = 'New project on Delphi.js'
 TApplication.mainFormName = 'mainForm'
@@ -10,6 +10,8 @@ TApplication.icon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAA
 
 // let splashForm
 let mainForm
+
+TApplication.addComponentsToLibrary(Panels)
 
 async function showMainForm () {
   const module = await import('./forms/main_form.js')
