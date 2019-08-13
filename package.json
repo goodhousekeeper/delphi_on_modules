@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "My tribute to Delphi 7 on Windows XP. Let the Web be a new home of yours",
   "scripts": {
-    "test": "standard --fix"
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -17,14 +17,6 @@
   "homepage": "https://github.com/goodhousekeeper/delphi_on_modules#readme",
   "devDependencies": {
     "eslint": "^6.1.0",
-    "babel-eslint": "^10.0.2",
-    "standard": "*"
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "globals": [
-      "CustomEvent",
-      "performance"
-    ]
+    "babel-eslint": "^10.0.2"
   }
 }
