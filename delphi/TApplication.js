@@ -9,6 +9,7 @@ import * as Panels from './Panels.js'
 /* Application instance */
 const TApplication = Object.create(null)
 /* Private properties */
+const componentModulesLoaded = []
 const componentLibrary = Object.create(null)
 const objectStorage = Object.create(null)
 const modalStack = []
@@ -51,6 +52,9 @@ Object.defineProperties(TApplication, {
   },
   modalStack: {
     value: modalStack
+  },
+  componentModulesLoaded: {
+    value: componentModulesLoaded
   },
   contentContainer: {
     value: document.body
@@ -119,19 +123,22 @@ Object.defineProperties(TApplication, {
     }
   },
   addComponentsToLibrary: {
-    value: (components) => {
-      for (const [key, value] of Object.entries(components)) {
+    value: (componentModule) => {
+      if (TApplication.componentModulesLoaded.indexOf(componentModule) !== -1 ) {
+        return false
+      }
+      for (const [key, value] of Object.entries(componentModule)) {
         if (key === 'default') {
           Utils.updateStyleNode(value)
           continue
         }
         if (componentLibrary[key]) {
-          //throw new Error(`Component with name ${value.name} already exists`)
-          continue
+          throw new Error(`Component with name ${value.name} already exists`)
         } else {
           componentLibrary[key] = value
         }
       }
+      TApplication.componentModulesLoaded.push(componentModule)
     }
   }
 
