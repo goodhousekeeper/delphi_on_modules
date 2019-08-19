@@ -10,7 +10,19 @@ TApplication.icon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAA
 /* Import forms */
 import * as mainFormModule from './forms/main_form.js'
 import * as splashFormModule from './forms/splash.js'
+import * as otherFormModule from './forms/one_more_form.js'
 
+/* Export TApplication, Modules and Forms */
+
+export {
+  TApplication,
+  /*-------------*/
+  Panels,
+  /*-------------*/
+  mainFormModule,
+  splashFormModule,
+  otherFormModule
+}
 
 let mainForm
 //let splashForm
@@ -21,7 +33,7 @@ function showMainForm () {
   mainForm = TApplication.createObject(mainFormModule.properties)
   mainForm.show()
   // mainForm.myFirstPanel.enabled(false);
-  mainFormModule.logics(TApplication)
+  mainFormModule.logics()
 }
 
 /*

@@ -49,9 +49,10 @@ const properties = {
   ]
 }
 
-import * as otherFormModule from './one_more_form.js'
+import  { TApplication as app, otherFormModule }  from '../init.js'
 
-const logics = (app) => {
+const logics = () => {
+  
   let oneMoreForm
   const button = app.mainForm.myFirstPanel.theVeryFirstButton
 
