@@ -49,20 +49,21 @@ const properties = {
   ]
 }
 
+import * as otherFormModule from './one_more_form.js'
+
 const logics = (app) => {
-  let otherForm
+  let oneMoreForm
   const button = app.mainForm.myFirstPanel.theVeryFirstButton
 
-  button.onClick(async () => {
+  button.onClick(() => {
     if (!button.enabled()) {
-      return Promise.resolve()
+      return false
     }
-    const otherFormModule = await import('./one_more_form.js')
-    if (!otherForm) {
-      otherForm = app.createObject(otherFormModule.properties)
+    if (!app.oneMoreForm) {
+      oneMoreForm = app.createObject(otherFormModule.properties)
       otherFormModule.logics()
     }
-    otherForm.showModal()
+    oneMoreForm.showModal()
   })
 }
 
