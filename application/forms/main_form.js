@@ -49,7 +49,7 @@ const properties = {
   ]
 }
 
-import  { TApplication as app, otherFormModule }  from '../init.js'
+import  { TApplication as app, otherFormModule }  from '../index.js'
 
 const logics = () => {
   
