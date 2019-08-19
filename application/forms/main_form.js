@@ -60,10 +60,8 @@ const logics = () => {
     if (!button.enabled()) {
       return false
     }
-    if (!app.oneMoreForm) {
-      oneMoreForm = app.createObject(otherFormModule.properties)
-      otherFormModule.logics()
-    }
+    oneMoreForm = app.createForm(otherFormModule.properties)
+    otherFormModule.logics()
     oneMoreForm.showModal()
   })
 }

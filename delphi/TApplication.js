@@ -68,6 +68,21 @@ Object.defineProperties(TApplication, {
       animationSpeed = Math.abs(parseInt(value, 10))
     }
   },
+  
+  createForm: {
+    value: function (properties) {
+      if (properties.className !== 'TForm') {
+        return this.createObject(properties)
+      }
+      let formObject = this.getObject(properties.name)
+      if (formObject) {
+        return formObject  
+      } else {
+        return this.createObject(properties)
+      }
+    }
+  },
+
   createObject: {
     value: function (properties) {
       const ownerName = properties.ownerName ? properties.ownerName : ''
@@ -154,7 +169,6 @@ document.body.classList.add('TApplication')
 
 TApplication.addComponentsToLibrary(Forms)
 TApplication.addComponentsToLibrary(Buttons)
-TApplication.addComponentsToLibrary(Panels)
 
 /* Add system Objects */
 TApplication.createObject(Constants.OVERLAY_PROPERTIES)
