@@ -62,7 +62,7 @@ const logics = () => {
     }
     oneMoreForm = app.createForm(otherFormModule.properties)
     otherFormModule.logics()
-    oneMoreForm.showModal()
+    oneMoreForm.show()
   })
 }
 

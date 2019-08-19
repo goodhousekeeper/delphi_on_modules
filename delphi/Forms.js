@@ -358,9 +358,14 @@ class TForm extends TControl {
     if (TApplication.modalStack.length > 0) {
       this.showModal()
     }
-    this.style.opacity = '0'
-    super.show()
-    this.align().bringToFront().setActive().fadeIn()
+    if (!this.getProperty('visible')) {
+      this.style.opacity = '0'
+      super.show()
+      this.align().bringToFront().fadeIn()
+    } else {
+      this.bringToFront()
+    }
+    setTimeout(() => {this.setActive()}, 0)
     return this
   }
 
@@ -368,16 +373,17 @@ class TForm extends TControl {
     const modalStack = TApplication.modalStack
 
     TApplication.overlay.show()
-
+    this.style.opacity = '0'
     super.show()
     this.style.zIndex = Constants.OVERLAY_Z_INDEX + 1
-    this.align().setActive().fadeIn()
+    this.align().fadeIn()
     if (modalStack.length > 0) {
       modalStack[modalStack.length - 1].style.zIndex = Constants.OVERLAY_Z_INDEX - 1
     }
     modalStack.push(this)
     this.setProperty('modal', true)
     this.setProperty('modalResult')
+    setTimeout(() => {this.setActive()}, 0)
   }
 
   hide () {
