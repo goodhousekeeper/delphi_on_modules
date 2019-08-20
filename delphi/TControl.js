@@ -83,14 +83,11 @@ export default class TControl extends TComponent {
 
   setEventListener (eventName, fnc, runOnce = false) {
     const that = this
+    const options = {}
     if (runOnce) {
-      that.objectContainer.addEventListener(eventName, function set (e) {
-        e.target.removeEventListener(e.type, set)
-        return fnc(e, that)
-      })
-    } else {
-      that.objectContainer.addEventListener(eventName, fnc, false)
+      options.once = true
     }
+    that.objectContainer.addEventListener(eventName, fnc, options)
   }
 
   show () {
