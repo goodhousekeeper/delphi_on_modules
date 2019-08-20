@@ -8,8 +8,4 @@ const properties = {
   noTitle: true
 }
 
-const logics = () => {
-
-}
-
-export { properties, logics }
+export { properties }

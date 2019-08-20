@@ -34,9 +34,8 @@ let mainForm
 TApplication.addComponentsToLibrary(Panels)
 
 function showMainForm () {
-  mainForm = TApplication.createForm(mainFormModule.properties)
+  mainForm = TApplication.createForm(mainFormModule)
   mainForm.show()
-  mainFormModule.logics()
 }
 
 /*

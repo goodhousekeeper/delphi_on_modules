@@ -47,8 +47,5 @@ const properties = {
   ]
 }
 
-const logics = () => {
 
-}
-
-export { properties, logics }
+export { properties }

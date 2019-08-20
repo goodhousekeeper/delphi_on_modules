@@ -51,7 +51,7 @@ const properties = {
 
 import  { TApplication as app, otherFormModule }  from '../index.js'
 
-const logics = () => {
+const onFormCreate = () => {
   
   let oneMoreForm
   const button = app.mainForm.myFirstPanel.theVeryFirstButton
@@ -60,10 +60,9 @@ const logics = () => {
     if (!button.enabled()) {
       return false
     }
-    oneMoreForm = app.createForm(otherFormModule.properties)
-    otherFormModule.logics()
-    oneMoreForm.show()
+    oneMoreForm = app.createForm(otherFormModule)
+    oneMoreForm.showModal()
   })
 }
 
-export { properties, logics }
+export { properties, onFormCreate }

@@ -70,15 +70,16 @@ Object.defineProperties(TApplication, {
   },
   
   createForm: {
-    value: function (properties) {
-      if (properties.className !== 'TForm') {
-        return this.createObject(properties)
-      }
-      let formObject = this.getObject(properties.name)
+    value: function (formModule) {
+      let formObject = this.getObject(formModule.properties.name)
       if (formObject) {
         return formObject  
       } else {
-        return this.createObject(properties)
+        formObject = this.createObject(formModule.properties)
+        if (formModule.onFormCreate) {
+          formModule.onFormCreate()
+        }
+        return formObject
       }
     }
   },
