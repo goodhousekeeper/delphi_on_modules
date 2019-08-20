@@ -72,15 +72,13 @@ Object.defineProperties(TApplication, {
   createForm: {
     value: function (formModule) {
       let formObject = this.getObject(formModule.properties.name)
-      if (formObject) {
-        return formObject  
-      } else {
+      if (!formObject) {
         formObject = this.createObject(formModule.properties)
         if (formModule.onFormCreate) {
-          formModule.onFormCreate()
+          formModule.onFormCreate(formObject)
         }
-        return formObject
       }
+      return formObject
     }
   },
 
@@ -167,7 +165,6 @@ Utils.addStyleNode(Constants.APPLICATION_STYLE)
 document.body.classList.add('TApplication')
 
 /* Add base components */
-
 TApplication.addComponentsToLibrary(Forms)
 TApplication.addComponentsToLibrary(Buttons)
 

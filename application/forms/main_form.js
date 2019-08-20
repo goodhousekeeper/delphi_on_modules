@@ -51,10 +51,9 @@ const properties = {
 
 import  { TApplication as app, otherFormModule }  from '../index.js'
 
-const onFormCreate = () => {
-  
+const onFormCreate = (formObject) => {
   let oneMoreForm
-  const button = app.mainForm.myFirstPanel.theVeryFirstButton
+  const button = formObject.myFirstPanel.theVeryFirstButton
 
   button.onClick(() => {
     if (!button.enabled()) {
