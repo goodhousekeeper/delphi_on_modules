@@ -47,5 +47,11 @@ const properties = {
   ]
 }
 
+const onFormCreate = (formObject) => {
+  formObject.onShow(() => {
+    console.info(formObject.getProperty('name') + 'is visible now.')
+  })
+}
 
-export { properties }
+
+export { properties, onFormCreate }
