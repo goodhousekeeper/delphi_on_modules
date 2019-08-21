@@ -54,6 +54,7 @@ import  { TApplication as app, otherFormModule }  from '../index.js'
 const onFormCreate = (formObject) => {
   let oneMoreForm
   const button = formObject.myFirstPanel.theVeryFirstButton
+  const button2 = formObject.myFirstPanel.theVeryFirstTBitButton
 
   button.onClick(() => {
     if (!button.enabled()) {
@@ -61,6 +62,13 @@ const onFormCreate = (formObject) => {
     }
     oneMoreForm = app.createForm(otherFormModule)
     oneMoreForm.showModal()
+  })
+
+  button2.onClick(() => {
+    if (!button2.enabled()) {
+      return false
+    }
+    oneMoreForm.destroy()
   })
 }
 

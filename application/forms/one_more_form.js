@@ -52,6 +52,15 @@ const onFormCreate = (formObject) => {
     console.info(formObject.getProperty('name') + 'is visible now.')
   },
   true)
+
+  const button = formObject.myFirstPanel.theVeryFirstButton
+
+  button.onClick(() => {
+    if (!button.enabled()) {
+      return false
+    }
+    formObject.myFirstPanel.destroy()
+  })
 }
 
 

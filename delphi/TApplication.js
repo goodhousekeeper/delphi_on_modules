@@ -115,13 +115,26 @@ Object.defineProperties(TApplication, {
     }
   },
   getObject: {
-    value: function (objectName) {
-      if (objectName === '') {
+    value: function (objectRegisterName) {
+      if (objectRegisterName === '') {
         return this
-      } else if (objectStorage[objectName]) {
-        return objectStorage[objectName]
+      } else if (objectStorage[objectRegisterName]) {
+        return objectStorage[objectRegisterName]
       } else {
         return false
+      }
+    }
+  },
+  removeObject: {
+    value: function (object) {
+      const registerName = object.getProperty('registerName')
+      const name = object.getProperty('name')
+      const ownerObject = object.getProperty('ownerObject')
+      if (objectStorage[registerName]) {
+        delete objectStorage[registerName]
+      }
+      if (ownerObject[name]) {
+        delete ownerObject[name]
       }
     }
   },
