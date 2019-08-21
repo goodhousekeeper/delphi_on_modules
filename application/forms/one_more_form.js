@@ -51,7 +51,7 @@ import  { TApplication as app }  from '../index.js'
 
 const onFormCreate = (formObject) => {
   formObject.onShow(() => {
-    console.info(formObject.getProperty('name') + 'is visible now.')
+    console.info(formObject.getProperty('name') + ' is visible now.')
   },
   true)
 
@@ -64,13 +64,12 @@ const onFormCreate = (formObject) => {
       return false
     }
     panel = app.destroyObject(panel)
-    console.info(button)
   })
 
-  panel.onDestroy = () => {
+  panel.onDestroy(() => {
     button = null
     panel = null
-  } 
+  })
 
 }
 

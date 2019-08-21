@@ -148,9 +148,6 @@ Object.defineProperties(TApplication, {
       if (object.destroyNode) {
         object.destroyNode()
       }
-      if (object.onDestroy) {
-        object.onDestroy()
-      }
       return null
     }
   },

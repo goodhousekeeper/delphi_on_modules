@@ -86,10 +86,14 @@ export default class TControl extends TComponent {
   }
 
   destroyNode() {
+    const objectContainer = this.objectContainer
     const ownerObject = this.getProperty('ownerObject')
     const ownerContentContainer = ownerObject.contentContainer
-    if (ownerContentContainer.contains(this.objectContainer)) {
-      ownerContentContainer.removeChild(this.objectContainer)   
+     
+    objectContainer.dispatchEvent(new CustomEvent('destroy'))
+     
+    if (ownerContentContainer.contains(objectContainer)) {
+      ownerContentContainer.removeChild(objectContainer)   
     }
     super.destroy()
     delete this.objectContainer
@@ -100,13 +104,16 @@ export default class TControl extends TComponent {
     delete this.icon
   }
 
+  onDestroy(fnc, runOnce) {
+    this.setEventListener('destroy', fnc, runOnce)
+  }
+
   setEventListener (eventName, fnc, runOnce = false) {
-    const that = this
     const options = {}
     if (runOnce) {
       options.once = true
     }
-    that.objectContainer.addEventListener(eventName, fnc, options)
+    this.objectContainer.addEventListener(eventName, fnc, options)
   }
 
   show () {
