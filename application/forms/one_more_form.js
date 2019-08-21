@@ -47,6 +47,8 @@ const properties = {
   ]
 }
 
+import  { TApplication as app }  from '../index.js'
+
 const onFormCreate = (formObject) => {
   formObject.onShow(() => {
     console.info(formObject.getProperty('name') + 'is visible now.')
@@ -59,7 +61,7 @@ const onFormCreate = (formObject) => {
     if (!button.enabled()) {
       return false
     }
-    formObject.myFirstPanel.destroy()
+    app.destroyObject(formObject.myFirstPanel)
   })
 }
 

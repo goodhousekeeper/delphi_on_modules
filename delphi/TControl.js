@@ -128,18 +128,6 @@ export default class TControl extends TComponent {
     this.setEventListener('click', fnc, runOnce)
   }
 
-  destroy() {
-    const ownerObject = this.getProperty('ownerObject')
-    const ownerContentContainer = ownerObject.contentContainer
-    this.content.forEach((object) => object.destroy())
-
-    TApplication.removeObject(this) 
-    if (ownerContentContainer.contains(this.objectContainer)) {
-      ownerContentContainer.removeChild(this.objectContainer)   
-    }
-    
-  }
-
   enabled (status) {
     const container = this.objectContainer
     switch (status) {
