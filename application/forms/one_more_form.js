@@ -47,6 +47,20 @@ const properties = {
   ]
 }
 
+const dynamicPanelProperties = 
+{
+  name: 'myDynamicPanel',
+  ownerName: 'oneMoreForm',
+  className: 'TPanel',
+  top: 116,
+  left: 8,
+  right: 8,
+  height: 100,
+  lowered: true,
+  contentProperties: []
+}
+
+
 import  { TApplication as app }  from '../index.js'
 
 const onFormCreate = (formObject) => {
@@ -55,9 +69,9 @@ const onFormCreate = (formObject) => {
   },
   true)
 
-  let button = formObject.myFirstPanel.theVeryFirstButton
   let panel = formObject.myFirstPanel
-  
+  let button = panel.theVeryFirstButton
+  let bitButton = panel.theVeryFirstTBitButton
 
   button.onClick(() => {
     if (!button.enabled()) {
@@ -66,8 +80,17 @@ const onFormCreate = (formObject) => {
     panel = app.destroyObject(panel)
   })
 
+  bitButton.onClick(() => {
+    if (!bitButton.enabled()) {
+      return false
+    }
+    app.createObject(dynamicPanelProperties)
+    console.info(formObject)
+  })
+
   panel.onDestroy(() => {
     button = null
+    bitButton = null
     panel = null
   })
 
