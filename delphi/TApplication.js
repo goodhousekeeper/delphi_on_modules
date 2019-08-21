@@ -97,7 +97,7 @@ Object.defineProperties(TApplication, {
       if (this.getObject(properties.registerName)) {
         throw new Error(`Object with name "${properties.registerName}" already exists.`)
       }
-      let newObject = new componentLibrary[properties.className](properties)
+      const newObject = new componentLibrary[properties.className](properties)
       objectStorage[properties.registerName] = newObject
       Object.defineProperty(ownerObject, properties.name, {
         value: newObject,
@@ -134,13 +134,10 @@ Object.defineProperties(TApplication, {
       const ownerContentContainer = ownerObject.contentContainer
       const objectContentIndex = ownerObject.content.indexOf(object)
 
-      console.info('Now we destroy ', object)
-
       for (let i = object.content.length -1; i > -1; i--) {
         TApplication.destroyObject(object.content[i])
       }
       if (objectStorage[registerName]) {
-        objectStorage[registerName] = null
         delete objectStorage[registerName]
       }
       if (ownerObject[name]) {
@@ -152,7 +149,7 @@ Object.defineProperties(TApplication, {
       if (ownerContentContainer.contains(object.objectContainer)) {
         ownerContentContainer.removeChild(object.objectContainer)   
       }
-      object = null
+      return null
     }
   },
   getObjectsByClassName: {

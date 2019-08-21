@@ -68,8 +68,7 @@ const onFormCreate = (formObject) => {
     if (!button2.enabled()) {
       return false
     }
-    app.destroyObject(oneMoreForm)
-    console.info(oneMoreForm)
+    oneMoreForm = app.destroyObject(oneMoreForm)
   })
 }
 
