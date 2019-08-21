@@ -4,9 +4,14 @@ export default class TComponent {
   constructor (properties) {
     Object.defineProperties(this, {
       _properties: {
-        value: properties
+        value: properties,
+        configurable: true
       }
     })
+  }
+
+  destroy() {
+    delete this._properties
   }
 
   setProperty (name, value) {

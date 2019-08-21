@@ -39,16 +39,20 @@ export default class TControl extends TComponent {
 
     Object.defineProperties(this, {
       objectContainer: {
-        value: objectContainer
+        value: objectContainer,
+        configurable: true
       },
       contentContainer: {
-        value: contentContainer
+        value: contentContainer,
+        configurable: true
       },
       content: {
-        value: content
+        value: content,
+        configurable: true
       },
       style: {
-        value: objectContainer.style
+        value: objectContainer.style,
+        configurable: true
       },
       caption: {
         configurable: true,
@@ -79,6 +83,21 @@ export default class TControl extends TComponent {
     if (this.getProperty('visible') === true) {
       this.show()
     }
+  }
+
+  destroyNode() {
+    const ownerObject = this.getProperty('ownerObject')
+    const ownerContentContainer = ownerObject.contentContainer
+    if (ownerContentContainer.contains(this.objectContainer)) {
+      ownerContentContainer.removeChild(this.objectContainer)   
+    }
+    super.destroy()
+    delete this.objectContainer
+    delete this.contentContainer
+    delete this.content
+    delete this.style
+    delete this.caption
+    delete this.icon
   }
 
   setEventListener (eventName, fnc, runOnce = false) {

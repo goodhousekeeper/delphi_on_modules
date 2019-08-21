@@ -131,7 +131,6 @@ Object.defineProperties(TApplication, {
       const registerName = object.getProperty('registerName')
       const name = object.getProperty('name')
       const ownerObject = object.getProperty('ownerObject')
-      const ownerContentContainer = ownerObject.contentContainer
       const objectContentIndex = ownerObject.content.indexOf(object)
 
       for (let i = object.content.length -1; i > -1; i--) {
@@ -146,8 +145,8 @@ Object.defineProperties(TApplication, {
       if (objectContentIndex > -1) {
         ownerObject.content.splice(objectContentIndex, 1)
       }
-      if (ownerContentContainer.contains(object.objectContainer)) {
-        ownerContentContainer.removeChild(object.objectContainer)   
+      if (object.destroyNode) {
+        object.destroyNode()
       }
       return null
     }

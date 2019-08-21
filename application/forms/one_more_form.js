@@ -57,13 +57,16 @@ const onFormCreate = (formObject) => {
 
   const button = formObject.myFirstPanel.theVeryFirstButton
 
-  let button2 = formObject.myFirstPanel.theVeryFirstTBitButton
+  let panel = formObject.myFirstPanel
+  let button2 = panel.theVeryFirstTBitButton
+  
 
   button.onClick(() => {
     if (!button.enabled()) {
       return false
     }
-    button2 = app.destroyObject(button2)
+    panel = app.destroyObject(panel)
+    console.info(button2)
   })
 }
 
