@@ -133,8 +133,8 @@ Object.defineProperties(TApplication, {
       const ownerObject = object.getProperty('ownerObject')
       const objectContentIndex = ownerObject.content.indexOf(object)
 
-      for (let i = object.content.length -1; i > -1; i--) {
-        TApplication.destroyObject(object.content[i])
+      if (object.getProperty('contentProperties')) {
+        object.deleteContent()
       }
       if (objectStorage[registerName]) {
         delete objectStorage[registerName]
@@ -147,6 +147,9 @@ Object.defineProperties(TApplication, {
       }
       if (object.destroyNode) {
         object.destroyNode()
+      }
+      if (object.onDestroy) {
+        object.onDestroy()
       }
       return null
     }

@@ -33,4 +33,10 @@ export default class TComponent {
       TApplication.createObject(objectProperties)
     })
   }
+
+  deleteContent() {
+    for (let i = this.content.length -1; i > -1; i--) {
+      TApplication.destroyObject(this.content[i])
+    }
+  }
 }
