@@ -19,7 +19,6 @@ const properties = {
       right: 8,
       height: 100,
       raised: true,
-      borderRadius: 5,
       contentProperties: [
         {
           name: 'theVeryFirstButton',
@@ -52,10 +51,29 @@ const properties = {
       top: 116,
       left: 8,
       right: 8,
-      height: 120,
+      height: 100,
       lowered: true,
       contentProperties: []
-  }
+    },
+    {
+      name: 'myThirdPanel',
+      className: 'TPanel',
+      top: 224,
+      left: 8,
+      right: 8,
+      height: 100,
+      contentProperties: []
+    },
+    {
+      name: 'myFirstTGroupBox',
+      className: 'TGroupBox',
+      top: 332,
+      left: 8,
+      right: 8,
+      height: 100,
+      caption: 'I am TGroupBox',
+      contentProperties: []
+    }
 
   ]
 }
