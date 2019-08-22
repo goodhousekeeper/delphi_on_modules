@@ -8,14 +8,16 @@ export default `
     background-color: var(--form-back-layer);
     border: 1px solid var(--panel-border-color);
     box-shadow: inset 1px 1px 0 0 var(--panel-border-shadow-color), 1px 1px 0 0 var(--panel-border-shadow-color);
+    margin: 0 1px 1px 0;
 }
 
 .TApplication .TForm .TPanel .ContentContainer {
-    top: 0;
+    top: 1px;
     right: 0;
     bottom: 0;
-    left: 0;
+    left: 1px;
 }
+
 .TApplication .TForm .TPanel.Lowered {
     box-sizing: border-box;
     border-right-color: var(--panel-border-shadow-color);
@@ -41,6 +43,13 @@ export default `
   border-radius: 4px;
 }
 
+.TApplication .TForm .TGroupBox .ContentContainer {
+  top: 12px;
+  right: 0;
+  bottom: 0;
+  left: 1px;
+}
+
 .TApplication .TForm .TGroupBox .Caption {
   display: inline-block;
   padding: 0 4px;
@@ -54,7 +63,6 @@ export default `
 .TApplication .TForm .TGroupBox.Disabled .Caption {
   color:  var(--panel-border-disabled-color);
 }
-
 
 `
 
@@ -92,7 +100,6 @@ class TGroupBox extends TControl {
     caption.className = 'Caption'
     caption.id = container.id + '.Caption'
     this.caption = this.getProperty('caption')
-
   }
 }  
 
