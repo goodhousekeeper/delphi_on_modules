@@ -19,6 +19,7 @@ const properties = {
       right: 8,
       height: 100,
       raised: true,
+      borderRadius: 5,
       contentProperties: [
         {
           name: 'theVeryFirstButton',
@@ -44,7 +45,17 @@ const properties = {
           textAlign: 'left'
         }
       ]
-    }
+    },
+    {
+      name: 'mySecondPanel',
+      className: 'TPanel',
+      top: 116,
+      left: 8,
+      right: 8,
+      height: 120,
+      lowered: true,
+      contentProperties: []
+  }
 
   ]
 }

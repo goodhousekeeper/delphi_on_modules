@@ -26,6 +26,7 @@ export default class TControl extends TComponent {
       left: this.getProperty('left') !== undefined ? this.getProperty('left') + 'px' : '',
       right: this.getProperty('right') !== undefined ? this.getProperty('right') + 'px' : '',
       bottom: this.getProperty('bottom') !== undefined ? this.getProperty('bottom') + 'px' : '',
+      borderRadius: this.getProperty('borderRadius') !== undefined ? this.getProperty('borderRadius') + 'px' : 0,
       visibility: 'hidden'
     })
 
