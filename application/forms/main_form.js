@@ -53,7 +53,18 @@ const properties = {
       right: 8,
       height: 100,
       lowered: true,
-      contentProperties: []
+      overflowX: true,
+      overflowY: true,
+      contentProperties: [
+        {
+          name: 'myInnerPanel',
+          className: 'TPanel',
+          top: 50,
+          left: 100,
+          right: -100,
+          height: 200
+        }
+      ]
     },
     {
       name: 'myThirdPanel',
@@ -62,7 +73,17 @@ const properties = {
       left: 8,
       right: 8,
       height: 100,
-      contentProperties: []
+      overflowY: true,
+      contentProperties: [
+        {
+          name: 'myInnerPanel',
+          className: 'TPanel',
+          top: 50,
+          left: 100,
+          right: -100,
+          height: 200
+        }
+      ]
     },
     {
       name: 'myFirstTGroupBox',

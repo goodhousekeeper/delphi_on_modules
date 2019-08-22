@@ -70,7 +70,14 @@ class TPanel extends TControl {
   createNode () {
     super.createNode()
     const container = this.objectContainer
+    const contentContainer = this.contentContainer
     container.classList.add('TPanel')
+    if (contentContainer) {
+      Object.assign(contentContainer.style, {
+        overflowX: this.getProperty('overflowX') ? 'scroll' : 'hidden',
+        overflowY: this.getProperty('overflowY') ? 'scroll' : 'hidden'
+      })
+    }
     if (this.getProperty('lowered')) {
       this.low()
     }
