@@ -50,12 +50,12 @@ const properties = {
 const dynamicPanelProperties = 
 {
   name: 'myDynamicPanel',
-  ownerName: 'oneMoreForm',
+  ownerName: 'oneMoreForm.myFirstPanel',
   className: 'TPanel',
-  top: 116,
-  left: 8,
+  top: 8,
+  bottom: 8,
   right: 8,
-  height: 100,
+  width: 300,
   lowered: true,
   contentProperties: []
 }
