@@ -47,7 +47,7 @@ export default `
 }
 
 .TApplication .TForm .TButton.Disabled .Caption {
-    color:  var(--button-border-disabled-color);
+    color:  var(--form-color-disabled);
 }
 
 .TApplication .TForm .TBitButton .Caption {

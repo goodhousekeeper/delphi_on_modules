@@ -61,7 +61,7 @@ export default `
 }
 
 .TApplication .TForm .TGroupBox.Disabled .Caption {
-  color:  var(--panel-border-disabled-color);
+  color:  var(--form-color-disabled);
 }
 
 `

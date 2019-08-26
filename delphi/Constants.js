@@ -37,6 +37,7 @@ body {
     background-size: auto;
     background-repeat: repeat;
     --form-color: #1F2933;
+    --form-color-disabled: #ACA899;
     --form-shadow-color: #FFF;
     --form-back-layer: #EEEBD6;
     --form-caption-color: #FFF;
