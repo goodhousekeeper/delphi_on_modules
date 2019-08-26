@@ -272,6 +272,8 @@ class TForm extends TControl {
 
         style.width = (box.width) + 'px'
         style.height = (box.height) + 'px'
+
+        container.classList.remove('Maximized')
         document.onmousemove = (e) => moveAt(e)
         container.onmouseup = () => endTransition()
       })

@@ -56,14 +56,6 @@ const properties = {
       overflowX: true,
       overflowY: true,
       contentProperties: [
-        {
-          name: 'myInnerPanel',
-          className: 'TPanel',
-          top: 50,
-          left: 100,
-          right: -100,
-          height: 200
-        }
       ]
     },
     {
@@ -75,14 +67,6 @@ const properties = {
       height: 100,
       overflowY: true,
       contentProperties: [
-        {
-          name: 'myInnerPanel',
-          className: 'TPanel',
-          top: 50,
-          left: 100,
-          right: -100,
-          height: 200
-        }
       ]
     },
     {
