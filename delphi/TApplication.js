@@ -5,6 +5,7 @@ import * as Constants from './Constants.js'
 import * as Forms from './Forms.js'
 import * as Buttons from './Buttons.js'
 import * as Panels from './Panels.js'
+import * as Inputs from './Inputs.js'
 
 /* Application instance */
 const TApplication = Object.create(null)
@@ -193,6 +194,7 @@ document.body.classList.add('TApplication')
 /* Add base components */
 TApplication.addComponentsToLibrary(Forms)
 TApplication.addComponentsToLibrary(Buttons)
+TApplication.addComponentsToLibrary(Inputs)
 
 /* Add system Objects */
 TApplication.createObject(Constants.OVERLAY_PROPERTIES)
