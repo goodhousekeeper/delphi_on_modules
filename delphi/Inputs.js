@@ -6,6 +6,7 @@ export default `
   background-color: var(--input-background-color);
   border: 1px solid var(--input-border-color);
 }
+
 .TApplication .TForm .TEdit .Input{
   border: none;
   background-color: transparent;
@@ -24,7 +25,12 @@ export default `
   font-family: inherit;
 }
 .TApplication .TForm .TEdit.Disabled .Input {
-  color:  var(--form-color-disabled);    
+  color: var(--form-color-disabled);    
+}
+
+.TApplication .TForm .TEdit.Invalidated {
+  background-color: var(--input-background-invalidated-color);
+  border-color: var(--input-border-invalidated-color);
 }
 `
 
