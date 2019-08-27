@@ -35,9 +35,9 @@ class TEdit extends TControl {
     const input = document.createElement('div')
     Object.defineProperties(this, {
       value: {
-        get: () => document.getElementById(container.id + '.Input').innerText,
+        get: () => document.getElementById(container.id + '.Input').textContent,
         set: (newText) => {
-          document.getElementById(container.id + '.Input').innerText = newText || ''
+          document.getElementById(container.id + '.Input').textContent = newText || ''
         }
       },
     })
