@@ -50,6 +50,8 @@ body {
     --panel-border-color: #ACA899;
     --panel-border-shadow-color: #FFF;
     --panel-border-disabled-color: #C9C7BA;
+    --input-background-color: #FFF;
+    --input-border-color: #7F9DB9;
 }
 `
 
