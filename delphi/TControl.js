@@ -143,7 +143,7 @@ export default class TControl extends TComponent {
   }
 
   onInput (fnc, runOnce) {
-    this.setEventListener('oninput', fnc, runOnce)
+    this.setEventListener('input', fnc, runOnce)
   }
 
   click () {

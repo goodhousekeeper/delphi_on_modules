@@ -110,6 +110,7 @@ const onFormCreate = (formObject) => {
   let oneMoreForm
   const button = formObject.myFirstPanel.theVeryFirstButton
   const button2 = formObject.myFirstPanel.theVeryFirstTBitButton
+  const edit = formObject.myFirstPanel.theVeryFirstEdit
 
   button.onClick(() => {
     if (!button.enabled()) {
@@ -124,6 +125,11 @@ const onFormCreate = (formObject) => {
       return false
     }
     oneMoreForm = app.destroyObject(oneMoreForm)
+  })
+
+ 
+  edit.onInput(() => {
+    console.info('onInput fires with', edit.input)
   })
 }
 
