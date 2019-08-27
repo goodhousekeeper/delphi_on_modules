@@ -46,7 +46,7 @@ const properties = {
         {
           name: 'theVeryFirstEdit',
           className: 'TEdit',
-          text: '<p>I am the First TEdit</p>',
+          placeholder: 'Type something here...',
           height: 26,
           top: 8,
           width: 150,

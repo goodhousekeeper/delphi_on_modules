@@ -24,6 +24,10 @@ export default `
   font-style: inherit;
   font-family: inherit;
 }
+.TApplication .TForm .TEdit .Input[contenteditable=true]:empty::before {
+  content: attr(placeholder);
+  opacity: 0.5;
+}
 .TApplication .TForm .TEdit.Disabled .Input {
   color: var(--form-color-disabled);    
 }
@@ -51,8 +55,10 @@ class TEdit extends TControl {
     input.className = 'Input'
     input.id = container.id + '.Input'
     input.style.lineHeight = (parseInt(container.style.height, 10) - 2) + 'px'
-    input.contentEditable = "true"
     container.appendChild(input)
+    if (this.getProperty('placeholder')) {
+      input.setAttribute('placeholder', this.getProperty('placeholder'))
+    }
     if (this.getProperty('text')) {
       this.value = this.getProperty('text')
     }
