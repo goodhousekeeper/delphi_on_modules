@@ -83,6 +83,8 @@ export default class TControl extends TComponent {
     if (this.getProperty('visible') === true) {
       this.show()
     }
+
+    this.invalidated(false)
   }
 
   destroyNode() {
