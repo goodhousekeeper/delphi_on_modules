@@ -34,7 +34,7 @@ class TEdit extends TControl {
     const container = this.objectContainer
     const input = document.createElement('div')
     Object.defineProperties(this, {
-      input: {
+      value: {
         get: () => document.getElementById(container.id + '.Input').innerText,
         set: (newText) => {
           document.getElementById(container.id + '.Input').innerText = newText || ''
@@ -48,7 +48,7 @@ class TEdit extends TControl {
     input.contentEditable = "true"
     container.appendChild(input)
     if (this.getProperty('text')) {
-      this.input = this.getProperty('text')
+      this.value = this.getProperty('text')
     }
     if (this.getProperty('enabled') === false) {
       this.enabled(false)

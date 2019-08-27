@@ -46,10 +46,10 @@ const properties = {
         {
           name: 'theVeryFirstEdit',
           className: 'TEdit',
-          text: 'I am TEdit',
+          text: 'I am the First TEdit',
           height: 26,
           top: 8,
-          width: 120,
+          width: 150,
           left: 140,
           textAlign: 'left',
           color: 'blue'
@@ -58,10 +58,10 @@ const properties = {
         {
           name: 'theSecondEdit',
           className: 'TEdit',
-          text: 'I am TEdit',
+          text: 'I am the Second TEdit',
           height: 26,
           top: 42,
-          width: 120,
+          width: 150,
           left: 140,
           enabled: false,
           color: 'red'
