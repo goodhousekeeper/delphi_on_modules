@@ -16,6 +16,12 @@ export default `
   overflow: hidden;
   text-shadow: none;
   user-select: text;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  text-align: inherit;
+  font-style: inherit;
+  font-family: inherit;
 }
 .TApplication .TForm .TEdit.Disabled .Input {
   color:  var(--form-color-disabled);    

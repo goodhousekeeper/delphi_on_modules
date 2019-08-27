@@ -51,7 +51,8 @@ const properties = {
           top: 8,
           width: 120,
           left: 140,
-          textAlign: 'left'
+          textAlign: 'left',
+          color: 'blue'
         },
         
         {
@@ -62,7 +63,8 @@ const properties = {
           top: 42,
           width: 120,
           left: 140,
-          enabled: false
+          enabled: false,
+          color: 'red'
         }
       ]
     },
