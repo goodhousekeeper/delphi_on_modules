@@ -7,6 +7,7 @@ export default class TControl extends TComponent {
   createNode () {
     const objectContainer = document.createElement('div')
     let contentContainer = document.createElement('div')
+    let caption = document.createElement('div')
     const content = []
     objectContainer.id = this.getProperty('registerName')
     this.getProperty('ownerObject').contentContainer.appendChild(objectContainer)
@@ -28,14 +29,6 @@ export default class TControl extends TComponent {
       bottom: this.getProperty('bottom') !== undefined ? this.getProperty('bottom') + 'px' : '',
       visibility: 'hidden'
     })
-
-    if (this.getProperty('contentProperties') !== undefined) {
-      contentContainer.id = `${objectContainer.id}.ContentContainer`
-      contentContainer.className = `${this.getProperty('className')}ContentContainer`
-      objectContainer.appendChild(contentContainer)
-    } else {
-      contentContainer = undefined
-    }
 
     Object.defineProperties(this, {
       objectContainer: {
@@ -72,6 +65,23 @@ export default class TControl extends TComponent {
         }
       }
     })
+
+    if (this.getProperty('contentProperties') !== undefined) {
+      contentContainer.id = `${objectContainer.id}.ContentContainer`
+      contentContainer.className = `${this.getProperty('className')}ContentContainer`
+      objectContainer.appendChild(contentContainer)
+    } else {
+      contentContainer = undefined
+    }
+
+    if (this.getProperty('caption') !== undefined) {
+      objectContainer.appendChild(caption)
+      caption.className = 'Caption'
+      caption.id = `${objectContainer.id}.Caption`
+      this.caption = this.getProperty('caption')
+    } else {
+      delete this.caption 
+    }
 
     if (this.getProperty('enabled') === false) {
       this.enabled(false)

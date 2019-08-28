@@ -84,7 +84,6 @@ class TPanel extends TControl {
     if (this.getProperty('raised')) {
       this.raise()
     }
-    delete this.caption
     delete this.icon
   }
 

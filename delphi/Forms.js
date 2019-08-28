@@ -236,7 +236,7 @@ class TForm extends TControl {
       container.classList.toggle('noTitle', true)
     } else {
       const title = document.createElement('div')
-      const caption = document.createElement('div')
+      const caption = document.getElementById(`${container.id}.Caption`)
       let maximizeButton = document.createElement('div')
       let restoreButton = document.createElement('div')
       const closeButton = document.createElement('div')
@@ -253,11 +253,8 @@ class TForm extends TControl {
       } else {
         this.icon = TApplication.icon
       }
-
       title.appendChild(caption)
-      caption.className = 'Caption'
-      caption.id = container.id + '.Caption'
-      this.caption = this.getProperty('caption')
+
       caption.addEventListener('mousedown', (e) => {
         const moveAt = (e) => {
           style.left = e.pageX - deltaX + 'px'
