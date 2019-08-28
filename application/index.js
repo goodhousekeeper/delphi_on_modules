@@ -15,6 +15,8 @@ import * as mainFormModule from './forms/main_form.js'
 import * as splashFormModule from './forms/splash.js'
 import * as otherFormModule from './forms/one_more_form.js'
 
+import * as buttonsFormModule from './forms/buttons_form.js'
+
 /* Export TApplication, Modules and Forms */
 export {
   TApplication,
@@ -23,13 +25,14 @@ export {
   /*-------------*/
   mainFormModule,
   splashFormModule,
-  otherFormModule
+  otherFormModule,
+  buttonsFormModule
 }
 
 /* Initial custom code */
 
 let mainForm
-//let splashForm
+let splashForm
 
 TApplication.addComponentsToLibrary(Panels)
 
@@ -38,18 +41,19 @@ function showMainForm () {
   mainForm.show()
 }
 
-/*
+
 function showSplashForm () {
-  splashForm = TApplication.createForm(splashFormModule.properties)
+  splashForm = TApplication.createForm(splashFormModule)
   splashForm.show()
 }
 
+showMainForm()
+
+/*
 showSplashForm()
 
 setTimeout(() => {
   splashForm.hide()
   showMainForm()
-}, 5000)
+}, 1000)
 */
-
-showMainForm()

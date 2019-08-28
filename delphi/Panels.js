@@ -11,7 +11,7 @@ export default `
     margin: 0 1px 1px 0;
 }
 
-.TApplication .TForm .TPanel .ContentContainer {
+.TApplication .TForm .TPanel .TPanelContentContainer {
     top: 1px;
     right: 0;
     bottom: 0;
@@ -39,11 +39,11 @@ export default `
 }
 
 .TApplication .TForm .TGroupBox {
-  margin-top: 12px;
+  margin-top: 8px;
   border-radius: 4px;
 }
 
-.TApplication .TForm .TGroupBox .ContentContainer {
+.TApplication .TForm .TGroupBox .TGroupBoxContentContainer {
   top: 12px;
   right: 0;
   bottom: 0;
@@ -53,10 +53,10 @@ export default `
 .TApplication .TForm .TGroupBox .Caption {
   display: inline-block;
   padding: 0 4px;
-  top: -12px;
+  top: -8px;
   left: 8px;
-  height: 24px;
-  line-height: 24px; 
+  height: 16px;
+  line-height: 16px; 
   background-color: var(--form-back-layer);
 }
 
@@ -84,6 +84,8 @@ class TPanel extends TControl {
     if (this.getProperty('raised')) {
       this.raise()
     }
+    delete this.caption
+    delete this.icon
   }
 
   low () {
@@ -107,6 +109,7 @@ class TGroupBox extends TControl {
     caption.className = 'Caption'
     caption.id = container.id + '.Caption'
     this.caption = this.getProperty('caption')
+    delete this.icon
   }
 }  
 
