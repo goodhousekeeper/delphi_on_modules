@@ -84,7 +84,6 @@ class TPanel extends TControl {
     if (this.getProperty('raised')) {
       this.raise()
     }
-    delete this.icon
   }
 
   low () {
@@ -103,7 +102,6 @@ class TGroupBox extends TControl {
     super.createNode()
     const container = this.objectContainer
     container.classList.add('TGroupBox')
-    delete this.icon
   }
 }  
 
