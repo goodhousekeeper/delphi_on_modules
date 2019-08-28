@@ -80,7 +80,7 @@ export default `
     height: 24px;
     cursor: pointer;
 }
-.TApplication .TForm .Title .Icon, 
+.TApplication .TForm .Title .TFormIcon, 
 .TApplication .TForm .Title .TFormCaption,
 .TApplication .TForm .Title .Buttons
  {
@@ -88,7 +88,7 @@ export default `
     top: 0;
 }
 
-.TApplication .TForm .Title .Icon {
+.TApplication .TForm .Title .TFormIcon {
     width: 24px;
     left: 0;
     background-repeat: no-repeat;
@@ -197,6 +197,9 @@ class TForm extends TControl {
     this.setProperty('modal', false)
     this.setProperty('modalResult', false)
     this.setProperty('maximized', false)
+    if (this.getProperty('icon') === undefined) {
+      this.setProperty('icon', TApplication.icon)
+    }
   }
 
   createNode () {
@@ -237,22 +240,16 @@ class TForm extends TControl {
     } else {
       const title = document.createElement('div')
       const caption = document.getElementById(`${container.id}.Caption`)
+      const icon = document.getElementById(`${container.id}.Icon`)
       let maximizeButton = document.createElement('div')
       let restoreButton = document.createElement('div')
       const closeButton = document.createElement('div')
-      const icon = document.createElement('div')
 
       container.appendChild(title)
       title.className = 'Title'
 
       title.appendChild(icon)
-      icon.className = 'Icon'
-      icon.id = container.id + '.Icon'
-      if (this.getProperty('icon')) {
-        this.icon = this.getProperty('icon')
-      } else {
-        this.icon = TApplication.icon
-      }
+
       title.appendChild(caption)
 
       caption.addEventListener('mousedown', (e) => {

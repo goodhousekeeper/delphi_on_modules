@@ -8,6 +8,7 @@ export default class TControl extends TComponent {
     const objectContainer = document.createElement('div')
     let contentContainer = document.createElement('div')
     let caption = document.createElement('div')
+    let icon = document.createElement('div')    
     const content = []
     objectContainer.id = this.getProperty('registerName')
     this.getProperty('ownerObject').contentContainer.appendChild(objectContainer)
@@ -80,7 +81,18 @@ export default class TControl extends TComponent {
       caption.id = `${objectContainer.id}.Caption`
       this.caption = this.getProperty('caption')
     } else {
+      caption = undefined
       delete this.caption 
+    }
+
+    if (this.getProperty('icon') !== undefined) {
+      objectContainer.appendChild(icon)
+      icon.className =  `${this.getProperty('className')}Icon`
+      icon.id = `${objectContainer.id}.Icon`
+      this.icon = this.getProperty('icon')
+    } else {
+      icon = undefined
+      delete this.icon 
     }
 
     if (this.getProperty('enabled') === false) {

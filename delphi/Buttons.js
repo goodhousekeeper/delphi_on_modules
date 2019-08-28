@@ -58,7 +58,7 @@ export default `
     left: 24px;    
 }
 
-.TApplication .TForm .TBitButton .Icon {
+.TApplication .TForm .TBitButton .TBitButtonIcon {
     top: 0;
     bottom: 0;
     left: 0;
@@ -67,15 +67,15 @@ export default `
     filter: grayscale(25%);
 }
 
-.TApplication .TForm .TBitButton:hover .Icon {
+.TApplication .TForm .TBitButton:hover .TBitButtonIcon {
     filter: grayscale(0%);
 }
 
-.TApplication .TForm .TBitButton:active .Icon {
+.TApplication .TForm .TBitButton:active .TBitButtonIcon {
     filter: grayscale(75%);
 }
 
-.TApplication .TForm .TBitButton.Disabled .Icon {
+.TApplication .TForm .TBitButton.Disabled .TBitButtonIcon {
     filter: grayscale(100%);
 }
 `
@@ -101,14 +101,7 @@ class TBitButton extends TButton {
   createNode () {
     super.createNode()
     const container = this.objectContainer
-    const icon = document.createElement('div')
     container.classList.add('TBitButton')
-    container.appendChild(icon)
-    icon.className = 'Icon'
-    icon.id = container.id + '.Icon'
-    if (this.getProperty('icon')) {
-      this.icon = this.getProperty('icon')
-    }
   }
 }
 
