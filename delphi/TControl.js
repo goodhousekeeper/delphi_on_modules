@@ -76,7 +76,7 @@ export default class TControl extends TComponent {
 
     if (this.getProperty('caption') !== undefined) {
       objectContainer.appendChild(caption)
-      caption.className = 'Caption'
+      caption.className =  `${this.getProperty('className')}Caption`
       caption.id = `${objectContainer.id}.Caption`
       this.caption = this.getProperty('caption')
     } else {

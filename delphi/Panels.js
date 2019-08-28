@@ -50,7 +50,7 @@ export default `
   left: 1px;
 }
 
-.TApplication .TForm .TGroupBox .Caption {
+.TApplication .TForm .TGroupBox .TGroupBoxCaption {
   display: inline-block;
   padding: 0 4px;
   top: -8px;
@@ -60,7 +60,7 @@ export default `
   background-color: var(--form-back-layer);
 }
 
-.TApplication .TForm .TGroupBox.Disabled .Caption {
+.TApplication .TForm .TGroupBox.Disabled .TGroupBoxCaption {
   color:  var(--form-color-disabled);
 }
 
@@ -102,12 +102,7 @@ class TGroupBox extends TControl {
   createNode () {
     super.createNode()
     const container = this.objectContainer
-    const caption = document.createElement('div')
     container.classList.add('TGroupBox')
-    container.appendChild(caption)
-    caption.className = 'Caption'
-    caption.id = container.id + '.Caption'
-    this.caption = this.getProperty('caption')
     delete this.icon
   }
 }  

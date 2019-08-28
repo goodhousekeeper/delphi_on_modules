@@ -81,7 +81,7 @@ export default `
     cursor: pointer;
 }
 .TApplication .TForm .Title .Icon, 
-.TApplication .TForm .Title .Caption,
+.TApplication .TForm .Title .TFormCaption,
 .TApplication .TForm .Title .Buttons
  {
     height: 24px;
@@ -96,7 +96,7 @@ export default `
     background-size: 16px 16px;
   }
 
-.TApplication .TForm .Title .Caption {
+.TApplication .TForm .Title .TFormCaption {
     left: 24px;
     right: 48px;
     white-space: nowrap;
@@ -177,7 +177,7 @@ export default `
     display: none;
 }
 
-.TApplication .TForm.noMaximizeButton .Title .Caption {
+.TApplication .TForm.noMaximizeButton .Title .TFormCaption {
     right: 24px;
 }
 

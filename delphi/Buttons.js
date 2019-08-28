@@ -13,7 +13,9 @@ export default `
     inset  1px  1px 1px 1px #F0F0F0;
 }
 
-.TApplication .TForm .TButton .Caption {
+.TApplication .TForm .TButton .TButtonCaption,
+.TApplication .TForm .TBitButton .TBitButtonCaption
+ {
     top: 0;
     right: 0;
     bottom: 0;
@@ -46,11 +48,13 @@ export default `
     cursor: default;
 }
 
-.TApplication .TForm .TButton.Disabled .Caption {
+.TApplication .TForm .TButton.Disabled .TButtonCaption,
+.TApplication .TForm .TBitButton.Disabled .TBitButtonCaption
+ {
     color:  var(--form-color-disabled);
 }
 
-.TApplication .TForm .TBitButton .Caption {
+.TApplication .TForm .TBitButton .TBitButtonCaption {
     left: 24px;    
 }
 
@@ -80,7 +84,7 @@ class TButton extends TControl {
   createNode () {
     super.createNode()
     const container = this.objectContainer
-    const caption = document.createElement('div')
+    const caption = document.getElementById(`${container.id}.Caption`)
 
     container.classList.add('TButton')
 
@@ -89,10 +93,7 @@ class TButton extends TControl {
       container.title = this.getProperty('toolTip')
     }
 
-    caption.className = 'Caption'
-    caption.id = container.id + '.Caption'
     caption.style.lineHeight = (parseInt(container.style.height, 10) - 2) + 'px'
-    this.caption = this.getProperty('caption')
   }
 }
 
