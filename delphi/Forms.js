@@ -81,7 +81,7 @@ export default `
     cursor: pointer;
 }
 .TApplication .TForm .TFormTitle .TFormIcon, 
-.TApplication .TForm .TFormTitle .TFormCaption,
+.TApplication .TForm .TFormTitle .TForm__Caption,
 .TApplication .TForm .TFormTitle .Buttons
  {
     height: 24px;
@@ -96,7 +96,7 @@ export default `
     background-size: 16px 16px;
   }
 
-.TApplication .TForm .TFormTitle .TFormCaption {
+.TApplication .TForm .TFormTitle .TForm__Caption {
     left: 24px;
     right: 48px;
     white-space: nowrap;
@@ -177,7 +177,7 @@ export default `
     display: none;
 }
 
-.TApplication .TForm.noMaximizeButton .TFormTitle .TFormCaption {
+.TApplication .TForm.noMaximizeButton .TFormTitle .TForm__Caption {
     right: 24px;
 }
 

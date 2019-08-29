@@ -50,7 +50,7 @@ export default `
   left: 1px;
 }
 
-.TApplication .TForm .TGroupBox .TGroupBoxCaption {
+.TApplication .TForm .TGroupBox .TGroupBox__Caption {
   display: inline-block;
   padding: 0 4px;
   top: -8px;
@@ -60,7 +60,7 @@ export default `
   background-color: var(--form-back-layer);
 }
 
-.TApplication .TForm .TGroupBox.Disabled .TGroupBoxCaption {
+.TApplication .TForm .TGroupBox.Disabled .TGroupBox__Caption {
   color:  var(--form-color-disabled);
 }
 

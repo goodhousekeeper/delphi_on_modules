@@ -13,8 +13,8 @@ export default `
     inset  1px  1px 1px 1px #F0F0F0;
 }
 
-.TApplication .TForm .TButton .TButtonCaption,
-.TApplication .TForm .TBitButton .TBitButtonCaption
+.TApplication .TForm .TButton .TButton__Caption,
+.TApplication .TForm .TBitButton .TBitButton__Caption
  {
     top: 0;
     right: 0;
@@ -48,13 +48,13 @@ export default `
     cursor: default;
 }
 
-.TApplication .TForm .TButton.Disabled .TButtonCaption,
-.TApplication .TForm .TBitButton.Disabled .TBitButtonCaption
+.TApplication .TForm .TButton.Disabled .TButton__Caption,
+.TApplication .TForm .TBitButton.Disabled .TBitButton__Caption
  {
     color:  var(--form-color-disabled);
 }
 
-.TApplication .TForm .TBitButton .TBitButtonCaption {
+.TApplication .TForm .TBitButton .TBitButton__Caption {
     left: 24px;    
 }
 
