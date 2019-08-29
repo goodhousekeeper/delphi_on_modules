@@ -7,7 +7,7 @@ export default `
   border: 1px solid var(--input-border-color);
 }
 
-.TApplication .TForm .TEdit .Input{
+.TApplication .TForm .TEdit .TEdit__Input{
   border: none;
   background-color: transparent;
   top: 0;
@@ -24,11 +24,11 @@ export default `
   font-style: inherit;
   font-family: inherit;
 }
-.TApplication .TForm .TEdit .Input[contenteditable=true]:empty::before {
+.TApplication .TForm .TEdit .TEdit__Input[contenteditable=true]:empty::before {
   content: attr(placeholder);
   opacity: 0.5;
 }
-.TApplication .TForm .TEdit.Disabled .Input {
+.TApplication .TForm .TEdit.Disabled .TEdit__Input {
   color: var(--form-color-disabled);    
 }
 
@@ -52,7 +52,7 @@ class TEdit extends TControl {
       },
     })
     container.classList.add('TEdit')
-    input.className = 'Input'
+    input.className = 'TEdit__Input'
     input.id = container.id + '.Input'
     input.style.lineHeight = (parseInt(container.style.height, 10) - 2) + 'px'
     container.appendChild(input)
