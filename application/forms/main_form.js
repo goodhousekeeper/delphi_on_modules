@@ -125,8 +125,23 @@ const onFormCreate = (formObject) => {
   const buttonsForm = app.createForm(buttonsFormModule)
   const button = formObject.myFirstPanel.theVeryFirstButton
   const button2 = formObject.myFirstPanel.theVeryFirstTBitButton
-  const edit = formObject.myFirstPanel.theVeryFirstEdit
   const buttonsFormButton = formObject.openFormComponentsTGroupBox.showButtonsForm
+
+
+  formObject.hideQuery = function (callback) {
+    /*
+    let dlg = TApplication.messageDlgConfirmation('Вы действительно хотите завершить работу с приложением?')
+    dlg.onHide(function () {
+      if (dlg.modalResult === TApplication.mrYes) {
+        TApplication.terminate()
+      }
+    }, true)
+    */
+   console.info('mainForm hideQuery')
+   if (callback) {
+    callback()
+   }
+  }
 
   buttonsFormButton.onClick(() => {
     if (!button.enabled()) {
@@ -139,8 +154,7 @@ const onFormCreate = (formObject) => {
     if (!button.enabled()) {
       return false
     }
-    oneMoreForm = app.createForm(otherFormModule)
-    oneMoreForm.showModal()
+    oneMoreForm = app.createForm(otherFormModule).showModal()
   })
 
   button2.onClick(() => {
