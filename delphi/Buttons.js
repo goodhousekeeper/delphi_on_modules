@@ -58,7 +58,7 @@ export default `
     left: 24px;    
 }
 
-.TApplication .TForm .TBitButton .TBitButtonIcon {
+.TApplication .TForm .TBitButton .TBitButton__Icon {
     top: 0;
     bottom: 0;
     left: 0;
@@ -67,15 +67,15 @@ export default `
     filter: grayscale(25%);
 }
 
-.TApplication .TForm .TBitButton:hover .TBitButtonIcon {
+.TApplication .TForm .TBitButton:hover .TBitButton__Icon {
     filter: grayscale(0%);
 }
 
-.TApplication .TForm .TBitButton:active .TBitButtonIcon {
+.TApplication .TForm .TBitButton:active .TBitButton__Icon {
     filter: grayscale(75%);
 }
 
-.TApplication .TForm .TBitButton.Disabled .TBitButtonIcon {
+.TApplication .TForm .TBitButton.Disabled .TBitButton__Icon {
     filter: grayscale(100%);
 }
 `

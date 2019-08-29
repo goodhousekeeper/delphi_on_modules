@@ -87,7 +87,7 @@ export default class TControl extends TComponent {
 
     if (this.getProperty('icon') !== undefined) {
       objectContainer.appendChild(icon)
-      icon.className =  `${this.getProperty('className')}Icon`
+      icon.className =  `${this.getProperty('className')}__Icon`
       icon.id = `${objectContainer.id}.Icon`
       this.icon = this.getProperty('icon')
     } else {

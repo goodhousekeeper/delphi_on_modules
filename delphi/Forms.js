@@ -80,7 +80,7 @@ export default `
     height: 24px;
     cursor: pointer;
 }
-.TApplication .TForm .TFormTitle .TFormIcon, 
+.TApplication .TForm .TFormTitle .TForm__Icon, 
 .TApplication .TForm .TFormTitle .TForm__Caption,
 .TApplication .TForm .TFormTitle .Buttons
  {
@@ -88,7 +88,7 @@ export default `
     top: 0;
 }
 
-.TApplication .TForm .TFormTitle .TFormIcon {
+.TApplication .TForm .TFormTitle .TForm__Icon {
     width: 24px;
     left: 0;
     background-repeat: no-repeat;
