@@ -16,6 +16,7 @@ import * as splashFormModule from './forms/splash.js'
 import * as otherFormModule from './forms/one_more_form.js'
 
 import * as buttonsFormModule from './forms/buttons_form.js'
+import * as inputsFormModule from './forms/inputs_form.js'
 
 /* Export TApplication, Modules and Forms */
 export {
@@ -26,7 +27,8 @@ export {
   mainFormModule,
   splashFormModule,
   otherFormModule,
-  buttonsFormModule
+  buttonsFormModule,
+  inputsFormModule
 }
 
 /* Initial custom code */

@@ -31,6 +31,17 @@ const properties = {
           icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAXNJREFUeNrEk8tqwlAQhicnJ6m5LSSg4KaCUujORVYBwVVfwAfwSXwHH6CvUAlCV6UgLgqF7hQqhSyyE0Ehai71knQm7a7VtLjogX+ROef/+WaGCGmawjmHwZmHd7tdEAQBDocDMMZkURQtrNdQyglfhHLR88IzDMZgt9tBkiSWbdudVqvVLhQK5jF3HMeL4XB4NxqNPlsgAkmS6OKq2Wy2Oefmfr+HY6J7ekfviUDGQVpIUcOQm8lkYiLJ9145h2KxCOVyGbDNLCQMQ5Vj4m+xwXVd8DwPKpVKRhwEAWN/wIZqtQqz2Qy22y2sVqvFZrOJeYaBZirmrgxDiAS1dBxngCFvnDDITFvIO4Td6/Wc6XT6gJ+vpVLpmRMG4eBgzLyAKIoWhmHcY9Ct7/tZTcSB6NijUq/XL2VZVmilPwnNy36/PxiPx4+4DW+9XoOmaSA0Go2L+XxuY9g1SjsBEHxhP+m6/o4eUFUVhH//mc4O+BBgAMk901dp5NndAAAAAElFTkSuQmCC',
           textAlign: 'left'
         },
+        {
+          name: 'showInputsForm',
+          className: 'TBitButton',
+          caption: 'View inputs',
+          height: 26,
+          top: 42,
+          width: 120,
+          left: 8,
+          icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUhJREFUeNqcUjtug0AQnYUt6FxHQrkBJ+AM6WgiUaJENO4oIgHyDSgRgQO4SEVOYImCS6Smc2HExwZMdjaiAJtA8qSn1c4Mj5k3S3e73RMAPMAKXK/X0b3v+wxs237tVyJN056J9F3X8dOyrBeBXVAJgiDgf5gj1jRNA1VVQRiG/MzzHCgLEkwahsGLfsPlcuHUNI2fp9MJaJIkEEURYCfItm1vOOT2+/2bLMvHQZBSmgmDMaZpLpqIbZdl+V7XNScT/+QeIHzfX7MIYB+OtkEVRRF1Xb9Z0RSCIEAcx8dBRJKknzgzg+CcruvC+XyeJdZMO8GRKEsSDDiOA38FF8AODocD/Be8A1VVYTBzDqIo3vemKAruwXa75S3NEWuY0WT6QmmWZRQd9jxvcQvs5dFpnGw2m2em9Lhy5C9CyMdIYOn9L+FbgAEA/2pJllIXXlIAAAAASUVORK5CYII=',
+          textAlign: 'left'
+        },
       ]
     },
     {
@@ -118,14 +129,21 @@ const properties = {
   ]
 }
 
-import  { TApplication as app, otherFormModule, buttonsFormModule }  from '../index.js'
+import  { 
+  TApplication as app, 
+  otherFormModule, 
+  buttonsFormModule,
+  inputsFormModule
+ }  from '../index.js'
 
 const onFormCreate = (formObject) => {
   let oneMoreForm
   const buttonsForm = app.createForm(buttonsFormModule)
+  const inputsForm = app.createForm(inputsFormModule)
   const button = formObject.myFirstPanel.theVeryFirstButton
   const button2 = formObject.myFirstPanel.theVeryFirstTBitButton
   const buttonsFormButton = formObject.openFormComponentsTGroupBox.showButtonsForm
+  const inputsFormButton = formObject.openFormComponentsTGroupBox.showInputsForm
 
 
   formObject.hideQuery = function (callback) {
@@ -150,6 +168,13 @@ const onFormCreate = (formObject) => {
     buttonsForm.show()
   })
 
+  inputsFormButton.onClick(() => {
+    if (!button.enabled()) {
+      return false
+    }
+    inputsForm.show()
+  })
+
   button.onClick(() => {
     if (!button.enabled()) {
       return false
@@ -165,6 +190,7 @@ const onFormCreate = (formObject) => {
   })
 
   buttonsForm.show()
+  inputsForm.show()
 
 }
 
