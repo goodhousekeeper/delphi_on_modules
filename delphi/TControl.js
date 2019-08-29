@@ -101,10 +101,15 @@ export default class TControl extends TComponent {
       this.setProperty('enabled', true)
     }
 
-    this.setProperty('visible', this.getProperty('visible') === undefined ? true : Boolean(this.getProperty('visible')))
+    if (this.getProperty('className') !=='TForm') {
+      this.setProperty('visible', this.getProperty('visible') === undefined ? true : Boolean(this.getProperty('visible')))
+      
     if (this.getProperty('visible') === true) {
       this.show()
     }
+    }
+
+    
 
     this.invalidated(false)
   }

@@ -359,6 +359,7 @@ class TForm extends TControl {
       super.show()
       this.align().bringToFront().fadeIn()
     } else {
+      this.style.visibility = 'unset'
       this.bringToFront()
     }
     setTimeout(() => {this.setActive()}, 0)
