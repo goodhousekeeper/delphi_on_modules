@@ -44,10 +44,11 @@ export default `
 }
 
 .TApplication .TForm .TGroupBox .TGroupBox__ContentContainer {
-  top: 12px;
+  top: 8px;
   right: 0;
   bottom: 0;
   left: 1px;
+  overflow: hidden
 }
 
 .TApplication .TForm .TGroupBox .TGroupBox__Caption {

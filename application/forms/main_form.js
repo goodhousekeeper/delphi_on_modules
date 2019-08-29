@@ -122,6 +122,7 @@ import  { TApplication as app, otherFormModule, buttonsFormModule }  from '../in
 
 const onFormCreate = (formObject) => {
   let oneMoreForm
+  const buttonsForm = app.createForm(buttonsFormModule)
   const button = formObject.myFirstPanel.theVeryFirstButton
   const button2 = formObject.myFirstPanel.theVeryFirstTBitButton
   const edit = formObject.myFirstPanel.theVeryFirstEdit
@@ -131,7 +132,7 @@ const onFormCreate = (formObject) => {
     if (!button.enabled()) {
       return false
     }
-    app.createForm(buttonsFormModule).show()
+    buttonsForm.show()
   })
 
   button.onClick(() => {
@@ -148,6 +149,8 @@ const onFormCreate = (formObject) => {
     }
     oneMoreForm = app.destroyObject(oneMoreForm)
   })
+
+  buttonsForm.show()
 
 }
 

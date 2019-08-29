@@ -17,9 +17,9 @@ export default `
 .TApplication .TForm .TBitButton .TBitButton__Caption
  {
     top: 0;
-    right: 0;
+    right: 4px;
     bottom: 0;
-    left: 0;
+    left: 4px;
     background-color: transparent;
     color: inherit;
     font-weight: inherit;
@@ -74,6 +74,7 @@ export default `
 .TApplication .TForm .TBitButton:active .TBitButton__Icon {
     filter: grayscale(75%);
 }
+
 
 .TApplication .TForm .TBitButton.Disabled .TBitButton__Icon {
     filter: grayscale(100%);
