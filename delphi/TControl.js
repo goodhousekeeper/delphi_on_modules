@@ -69,7 +69,7 @@ export default class TControl extends TComponent {
 
     if (this.getProperty('contentProperties') !== undefined) {
       contentContainer.id = `${objectContainer.id}.ContentContainer`
-      contentContainer.className = `${this.getProperty('className')}ContentContainer`
+      contentContainer.className = `${this.getProperty('className')}__ContentContainer`
       objectContainer.appendChild(contentContainer)
     } else {
       contentContainer = undefined

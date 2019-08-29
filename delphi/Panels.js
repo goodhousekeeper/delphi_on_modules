@@ -11,7 +11,7 @@ export default `
     margin: 0 1px 1px 0;
 }
 
-.TApplication .TForm .TPanel .TPanelContentContainer {
+.TApplication .TForm .TPanel .TPanel__ContentContainer {
     top: 1px;
     right: 0;
     bottom: 0;
@@ -43,7 +43,7 @@ export default `
   border-radius: 4px;
 }
 
-.TApplication .TForm .TGroupBox .TGroupBoxContentContainer {
+.TApplication .TForm .TGroupBox .TGroupBox__ContentContainer {
   top: 12px;
   right: 0;
   bottom: 0;

@@ -152,7 +152,7 @@ export default `
     display: none;
 }
 
-.TApplication .TForm .TFormContentContainer {
+.TApplication .TForm .TForm__ContentContainer {
     top: 30px;
     right: 4px;
     bottom: 4px;
@@ -164,7 +164,7 @@ export default `
 .TApplication .TForm.noTitle .TFormTitle {
     display: none;
 }
-.TApplication .TForm.noTitle .TFormContentContainer {
+.TApplication .TForm.noTitle .TForm__ContentContainer {
     top: 4px;
 }
 
