@@ -58,11 +58,12 @@ const properties = {
     {
       name: 'myFirstPanel',
       className: 'TPanel',
-      top: 150,
+      top: 140,
       left: 8,
       right: 8,
       height: 100,
       raised: true,
+      enabled: false, 
       contentProperties: [
         {
           name: 'theVeryFirstButton',

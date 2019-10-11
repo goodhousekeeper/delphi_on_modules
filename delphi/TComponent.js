@@ -30,6 +30,9 @@ export default class TComponent {
 
     contentProperties.forEach((objectProperties) => {
       objectProperties.ownerName = this.getProperty('registerName')
+      if (this.getProperty('enabled') === false) {
+        objectProperties.enabled = false
+      }
       TApplication.createObject(objectProperties)
     })
   }
