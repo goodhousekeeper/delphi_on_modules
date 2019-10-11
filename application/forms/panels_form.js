@@ -3,7 +3,7 @@ const properties = {
     className: 'TForm',
     caption: 'Delphi.js - Panels',
     width: 500,
-    height: 224,
+    height: 400,
     left: 1060,
     top: 20,
     noMaximizeButton: true,
@@ -33,7 +33,50 @@ const properties = {
         contentProperties: [
          
         ]
-      }
+      },
+      {
+        name: 'defaultTPanel',
+        className: 'TPanel',
+        top: 124,
+        left: 8,
+        width: 234,
+        height: 100,
+        contentProperties: [
+        ]
+      },
+      {
+        name: 'disabledTPanel',
+        className: 'TPanel',
+        top: 124,
+        right: 8,
+        width: 234,
+        height: 100,
+        enabled: false,
+        contentProperties: [
+        ]
+      },
+      {
+        name: 'loweredTPanel',
+        className: 'TPanel',
+        top: 234,
+        left: 8,
+        width: 234,
+        height: 100,
+        lowered: true,
+        contentProperties: [
+        ]
+      },
+      {
+        name: 'raisedTPanel',
+        className: 'TPanel',
+        top: 234,
+        right: 8,
+        width: 234,
+        height: 100,
+        raised: true,
+        contentProperties: [
+        ]
+      },
     ]
   }
   
