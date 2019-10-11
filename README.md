@@ -1,3 +1,9 @@
 # My tribute to Delphi 7
+## Let the Web be your new home 
 
-Let the web be your new home. Rewrite form scratch using ES6 modules and features
+Features:
+* Rewrite from the scratch with ES6 modules and features in mind
+* Expandable components Library
+* Lazy components loading
+* JSON-based objects definition
+* Creating and destroying objects on run-time
