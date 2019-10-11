@@ -3,7 +3,7 @@ const properties = {
     className: 'TForm',
     caption: 'Delphi.js - Panels',
     width: 500,
-    height: 400,
+    height: 590,
     left: 1060,
     top: 20,
     noMaximizeButton: true,
@@ -58,7 +58,7 @@ const properties = {
       {
         name: 'loweredTPanel',
         className: 'TPanel',
-        top: 234,
+        top: 232,
         left: 8,
         width: 234,
         height: 100,
@@ -69,7 +69,7 @@ const properties = {
       {
         name: 'raisedTPanel',
         className: 'TPanel',
-        top: 234,
+        top: 232,
         right: 8,
         width: 234,
         height: 100,
@@ -77,6 +77,76 @@ const properties = {
         contentProperties: [
         ]
       },
+      {
+        name: 'overflowXTPanel',
+        className: 'TPanel',
+        top: 340,
+        left: 8,
+        width: 234,
+        height: 100,
+        lowered: true,
+        overflowX: true,
+        contentProperties: [
+            {
+                name: 'overflowXInsideTGroupBox',
+                className: 'TGroupBox',
+                top: 8,
+                left: 20,
+                width: 400,
+                height: 50,
+                caption: 'TPanel with horisontal scroll',
+                contentProperties: [
+                ]
+              }
+        ]
+      },
+      {
+        name: 'overflowYTPanel',
+        className: 'TPanel',
+        top: 340,
+        right: 8,
+        width: 234,
+        height: 100,
+        lowered: true,
+        overflowY: true,
+        contentProperties: [
+            {
+                name: 'overflowYInsideTGroupBox',
+                className: 'TGroupBox',
+                top: 20,
+                left: 20,
+                right: 20,
+                height: 200,
+                caption: 'Vertical scroll',
+                contentProperties: [
+                ]
+              }
+        ]
+      },
+      {
+        name: 'overflowALLTPanel',
+        className: 'TPanel',
+        top: 448,
+        left: 8,
+        right: 8,
+        height: 100,
+        lowered: true,
+        overflowX: true,
+        overflowY: true,
+        contentProperties: [
+            {
+                name: 'overflowAllTGroupBox',
+                className: 'TGroupBox',
+                top: 20,
+                left: 20,
+                width: 500,
+                height: 200,
+                caption: 'TPanel with both vertical and horisontal scroll',
+                contentProperties: [
+                ]
+              }
+        ]
+      },      
     ]
   }
   
