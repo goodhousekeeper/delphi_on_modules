@@ -268,6 +268,9 @@ class TForm extends TControl {
         style.height = (box.height) + 'px'
 
         container.classList.remove('Maximized')
+
+        this.bringToFront()
+
         document.onmousemove = (e) => moveAt(e)
         container.onmouseup = () => endTransition()
       })
@@ -322,6 +325,9 @@ class TForm extends TControl {
         const deltaY = e.pageY - box.height
 
         container.classList.remove('Maximized')
+
+        this.bringToFront()
+        
         document.onmousemove = (e) => sizeAt(e)
         container.onmouseup = () => endTransition()
       })
