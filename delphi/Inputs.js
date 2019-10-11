@@ -24,7 +24,7 @@ export default `
   font-style: inherit;
   font-family: inherit;
 }
-.TApplication .TForm .TEdit .TEdit__Input[contenteditable=true]:empty::before {
+.TApplication .TForm .TEdit .TEdit__Input[contenteditable=true]:empty:before {
   content: attr(placeholder);
   opacity: 0.5;
 }
