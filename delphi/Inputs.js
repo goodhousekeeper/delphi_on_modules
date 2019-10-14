@@ -1,6 +1,11 @@
 import TControl from './TControl.js'
 
 export default `
+[contenteditable] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
 .TApplication .TForm .TEdit {
   box-sizing: border-box;
   background-color: var(--input-background-color);
