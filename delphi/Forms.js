@@ -208,7 +208,7 @@ class TForm extends TControl {
     const container = this.objectContainer
     /* ------------------------------------------------------------------------------ */
     container.classList.add('TForm')
-    container.addEventListener('click', () => this.bringToFront().setActive())
+    container.onclick = () => this.bringToFront().setActive()
     /* ------------------------------------------------------------------------------ */
     style.height = this.getProperty('height') ? (this.getProperty('height') + 'px') : ''
     style.width = this.getProperty('width') ? (this.getProperty('width') + 'px') : ''
@@ -252,7 +252,7 @@ class TForm extends TControl {
 
       title.appendChild(caption)
 
-      caption.addEventListener('mousedown', (e) => {
+      caption.onmousedown = (e) => {
         const moveAt = (e) => {
           style.left = e.pageX - deltaX + 'px'
           style.top = e.pageY - deltaY + 'px'
@@ -273,15 +273,15 @@ class TForm extends TControl {
 
         document.onmousemove = (e) => moveAt(e)
         container.onmouseup = () => endTransition()
-      })
+      }
 
-      caption.addEventListener('dblclick', () => {
+      caption.ondblclick = () => {
         if (this.getProperty('maximized')) {
           this.restore()
         } else {
           this.maximize()
         }
-      })
+      }
 
       if (this.getProperty('noMaximizeButton')) {
         maximizeButton = undefined
@@ -290,18 +290,18 @@ class TForm extends TControl {
         title.appendChild(maximizeButton)
         maximizeButton.className = 'Buttons MaximizeButton'
         maximizeButton.id = container.id + '.MaximizeButton'
-        maximizeButton.addEventListener('click', () => this.maximize())
+        maximizeButton.onclick = () => this.maximize()
 
         title.appendChild(restoreButton)
         restoreButton.className = 'Buttons RestoreButton'
         restoreButton.id = container.id + '.RestoreButton'
-        restoreButton.addEventListener('click', () => this.restore())
+        restoreButton.onclick = () => this.restore()
       }
 
       title.appendChild(closeButton)
       closeButton.className = 'Buttons CloseButton'
       closeButton.id = container.id + '.CloseButton'
-      closeButton.addEventListener('click', () => this.hide())
+      closeButton.onclick = () => this.hide()
     }
     /* ------------------------------------------------------------------------------ */
 
@@ -312,7 +312,7 @@ class TForm extends TControl {
 
       this.contentContainer.appendChild(sizeHandle)
 
-      sizeHandle.addEventListener('mousedown', (e) => {
+      sizeHandle.onmousedown = (e) => {
         const sizeAt = (e) => {
           style.width = e.pageX - deltaX + 'px'
           style.height = e.pageY - deltaY + 'px'
@@ -330,7 +330,7 @@ class TForm extends TControl {
         
         document.onmousemove = (e) => sizeAt(e)
         container.onmouseup = () => endTransition()
-      })
+      }
     }
 
     /* ------------------------------------------------------------------------------ */
