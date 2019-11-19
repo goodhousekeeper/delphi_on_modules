@@ -41,6 +41,11 @@ export default `
   background-color: var(--input-background-invalidated-color);
   border-color: var(--input-border-invalidated-color);
 }
+
+.TApplication .TForm .TEdit.Disabled {
+  background-color: var(--input-background-disabled-color);
+  border-color: var(--input-border-disabled-color);
+}
 `
 
 class TEdit extends TControl {

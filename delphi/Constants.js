@@ -54,6 +54,8 @@ body {
     --input-background-invalidated-color: #FFE3E3;
     --input-border-color: #7F9DB9;
     --input-border-invalidated-color: #E12D39;
+    --input-background-disabled-color: #F5F4EA;    
+    --input-border-disabled-color: #C9C7BA;
 }
 `
 
