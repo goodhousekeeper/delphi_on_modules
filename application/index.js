@@ -52,13 +52,13 @@ function showSplashForm () {
   splashForm.show()
 }
 
-showMainForm()
+//showMainForm()
 
-/*
+
 showSplashForm()
 
 setTimeout(() => {
   splashForm.hide()
   showMainForm()
-}, 1000)
-*/
+}, 2000)
+
