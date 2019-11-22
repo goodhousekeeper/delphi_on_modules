@@ -68,4 +68,9 @@ export default class Utils {
       }
     })
   }
+
+  static getAbsolutePathToResource(resourcePath) {
+    const location = window.location.href
+    return `${location.replace('/index.html','')}/${resourcePath}`
+  }
 }

@@ -20,6 +20,16 @@ const properties = {
       caption: 'Choose components to view',
       contentProperties: [
         {
+          name: 'authorTPicture', 
+          className:"TPicture",
+          top:8,
+          right:8,
+          width: 90,
+          height: 90,
+          backgroundSize:"cover",
+          imagePath:"application/resources/images/photo.jpg"
+        },
+        {
           name: 'showButtonsForm',
           className: 'TBitButton',
           caption: 'View buttons',
