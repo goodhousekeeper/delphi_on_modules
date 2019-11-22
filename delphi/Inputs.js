@@ -50,7 +50,8 @@ export default `
 .TApplication .TForm .TStaticText {
   box-sizing: border-box;
 }
-.TApplication .TForm .TStaticText .Caption {
+
+.TApplication .TForm .TStaticText .TStaticText__Caption {
   top: 0;
   right: 0;
   bottom: 0;
@@ -65,6 +66,11 @@ export default `
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0;
+}
+
+.TApplication .TForm .TStaticText.Disabled .TStaticText__Caption
+ {
+    color:  var(--form-color-disabled);
 }
 
 `
@@ -118,7 +124,8 @@ class TStaticText extends TControl {
     super.createNode()
     const container = this.objectContainer
     const caption = document.getElementById(`${container.id}.Caption`)
-    let lineCount = this.getProperty('lineCount') || 1
+    const lineCount = this.getProperty('lineCount') || 1
+    container.classList.add('TStaticText')
     if (!this.getProperty('multiLine')) {
       caption.style.lineHeight = (parseInt(container.style.height, 10) / lineCount) + 'px'
     }

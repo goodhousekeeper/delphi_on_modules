@@ -81,7 +81,26 @@ const properties = {
         height: 200,
         caption: 'TStaticText component',
         contentProperties: [
-
+          {
+            name: 'disabledTStaticText',
+            className: 'TStaticText',
+            caption: 'Disabled TStaticText with textAlign: center',
+            height: 26,
+            top: 30,
+            right: 8,
+            left: 8,
+            textAlign: 'center',
+            enabled: false 
+          },
+          {
+            name: 'defaultTStaticText',
+            className: 'TStaticText',
+            caption: 'Default TStaticText with default color and alignment',
+            height: 26,
+            top: 4,
+            right: 8,
+            left: 8
+          }
         ]
       }
     ]
