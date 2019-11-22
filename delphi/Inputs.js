@@ -124,11 +124,12 @@ class TStaticText extends TControl {
     super.createNode()
     const container = this.objectContainer
     const caption = document.getElementById(`${container.id}.Caption`)
-    const lineCount = this.getProperty('lineCount') || 1
     container.classList.add('TStaticText')
+   
     if (!this.getProperty('multiLine')) {
-      caption.style.lineHeight = (parseInt(container.style.height, 10) / lineCount) + 'px'
+      caption.style.lineHeight = (parseInt(container.style.height, 10)) + 'px'
     }
+    
   }
 
 }
