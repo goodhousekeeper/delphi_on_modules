@@ -591,16 +591,21 @@ class TPicture extends TControl {
       backgroundClip: this.getProperty('backgroundClip') !== undefined ? this.getProperty('backgroundClip') : '',
       backgroundSize: this.getProperty('backgroundSize') !== undefined ? this.getProperty('backgroundSize') : ''
     })
+    if (this.getProperty('image')) {
+      this.setImage(this.getProperty('image'))
+    }
     if (this.getProperty('imagePath')) {
       this.setImageByPath(this.getProperty('imagePath'))
     }
   }
 
+  setImage (image) {
+    console.info(image)
+    this.style.backgroundImage = `url(${image})`
+  }
+
   setImageByPath (imagePath) {
-    console.info(Utils.getAbsolutePathToResource(imagePath))
-    if (imagePath) {
-      this.style.backgroundImage = `url(${Utils.getAbsolutePathToResource(imagePath)})`
-    } 
+    this.setImage(Utils.getAbsolutePathToResource(imagePath))
   }
 }
 

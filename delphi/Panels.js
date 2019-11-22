@@ -13,8 +13,8 @@ export default `
 
 .TApplication .TForm .TPanel .TPanel__ContentContainer {
     top: 1px;
-    right: 0;
-    bottom: 0;
+    right: 1px;
+    bottom: 1px;
     left: 1px;
 }
 
