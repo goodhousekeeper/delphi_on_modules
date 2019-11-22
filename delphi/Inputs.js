@@ -46,6 +46,27 @@ export default `
   background-color: var(--input-background-disabled-color);
   border-color: var(--input-border-disabled-color);
 }
+
+.TApplication .TForm .TStaticText {
+  box-sizing: border-box;
+}
+.TApplication .TForm .TStaticText .Caption {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  text-align: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0;
+}
+
 `
 
 class TEdit extends TControl {
@@ -92,4 +113,17 @@ class TEdit extends TControl {
   }
 }
 
-export { TEdit }
+class TStaticText extends TControl {
+  createNode () {
+    super.createNode()
+    const container = this.objectContainer
+    const caption = document.getElementById(`${container.id}.Caption`)
+    let lineCount = this.getProperty('lineCount') || 1
+    if (!this.getProperty('multiLine')) {
+      caption.style.lineHeight = (parseInt(container.style.height, 10) / lineCount) + 'px'
+    }
+  }
+
+}
+
+export { TEdit, TStaticText }

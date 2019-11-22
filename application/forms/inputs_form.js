@@ -3,7 +3,7 @@ const properties = {
     className: 'TForm',
     caption: 'Delphi.js - Inputs',
     width: 500,
-    height: 258,
+    height: 468,
     left: 540,
     top: 390,
     noMaximizeButton: true,
@@ -70,6 +70,18 @@ const properties = {
             fontSize: '20px',
             textAlign: 'right'
           }
+        ]
+      },
+      {
+        name: 'TStaticTextTGroupBox',
+        className: 'TGroupBox',
+        top: 218,
+        left: 8,
+        right: 8,
+        height: 200,
+        caption: 'TStaticText component',
+        contentProperties: [
+
         ]
       }
     ]
