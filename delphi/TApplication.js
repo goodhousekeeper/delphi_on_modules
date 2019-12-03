@@ -71,10 +71,10 @@ Object.defineProperties(TApplication, {
     },
 
     createForm: {
-        value: function (formModule) {
-            let formObject = this.getObject(formModule.properties.name);
+        value: (formModule) => {
+            let formObject = TApplication.getObject(formModule.properties.name);
             if (!formObject) {
-                formObject = this.createObject(formModule.properties);
+                formObject = TApplication.createObject(formModule.properties);
                 if (formModule.onFormCreate) {
                     formModule.onFormCreate(formObject)
                 }
@@ -84,9 +84,9 @@ Object.defineProperties(TApplication, {
     },
 
     createObject: {
-        value: function (properties) {
+        value: (properties) => {
             const ownerName = properties.ownerName ? properties.ownerName : '';
-            const ownerObject = this.getObject(ownerName);
+            const ownerObject = TApplication.getObject(ownerName);
 
             if (ownerName !== '') {
                 properties.registerName = `${ownerName}.${properties.name}`
@@ -95,7 +95,7 @@ Object.defineProperties(TApplication, {
             }
 
             properties.ownerObject = ownerObject;
-            if (this.getObject(properties.registerName)) {
+            if (TApplication.getObject(properties.registerName)) {
                 throw new Error(`Object with name "${properties.registerName}" already exists.`)
             }
             const newObject = new componentLibrary[properties.className](properties);
@@ -116,18 +116,18 @@ Object.defineProperties(TApplication, {
         }
     },
     getObject: {
-        value: function (objectRegisterName) {
+        value: (objectRegisterName) => {
             if (objectRegisterName === '') {
-                return this
+                return TApplication;
             } else if (objectStorage[objectRegisterName]) {
                 return objectStorage[objectRegisterName]
             } else {
-                return false
+                return false;
             }
         }
     },
     destroyObject: {
-        value: function (object) {
+        value: (object) => {
             const registerName = object.getProperty('registerName');
             const name = object.getProperty('name');
             const ownerObject = object.getProperty('ownerObject');
