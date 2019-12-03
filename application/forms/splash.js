@@ -17,6 +17,6 @@ const properties = {
       imagePath:'application/resources/images/splash.jpg'
     },
   ]
-}
+};
 
 export { properties }
