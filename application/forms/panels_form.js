@@ -148,11 +148,11 @@ const properties = {
         ]
       },      
     ]
-  }
+  };
   
   const onFormCreate = (formObject) => {
   
-  }
+  };
   
   
   export { properties, onFormCreate }
