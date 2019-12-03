@@ -139,12 +139,12 @@ const properties = {
         ]
       }
     ]
-  }
+  };
   
 const onFormCreate = (formObject) => {
-    const invalidatedTEdit = formObject.TEditTGroupBox.invalidatedTEdit
-    invalidatedTEdit.invalidated(true)
-}
+    const invalidatedTEdit = formObject.TEditTGroupBox.invalidatedTEdit;
+    invalidatedTEdit.invalidated(true);
+};
   
 export { properties, onFormCreate }
   

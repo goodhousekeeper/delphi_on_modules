@@ -600,7 +600,6 @@ class TPicture extends TControl {
   }
 
   setImage (image) {
-    console.info(image);
     this.style.backgroundImage = `url(${image})`;
   }
 
