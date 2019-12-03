@@ -72,31 +72,31 @@ const ANIMATION_FUNCTION_ARC = (timeFraction) => 1 - Math.sin(Math.acos(timeFrac
 
 const OVERLAY_Z_INDEX = 1000000;
 const OVERLAY_PROPERTIES = {
-  name: 'overlay',
-  className: 'TOverlay',
-  visible: false
+    name: 'overlay',
+    className: 'TOverlay',
+    visible: false
 };
 
 const MODAL_RESULT_CLOSE = 'mrClose';
 
 /* ------------------------------------------------------------------------------------------ */
 export {
-  APPLICATION_STYLES,
+    APPLICATION_STYLES,
 
-  STYLE_TAG_TITLE,
+    STYLE_TAG_TITLE,
 
-  DISABLED_CLASS_NAME,
-  CHECKED_CLASS_NAME,
-  UNCHECKED_CLASS_NAME,
-  INVALIDATED_CLASS_NAME,
-  BRING_TO_FRONT_Z_INDEX,
+    DISABLED_CLASS_NAME,
+    CHECKED_CLASS_NAME,
+    UNCHECKED_CLASS_NAME,
+    INVALIDATED_CLASS_NAME,
+    BRING_TO_FRONT_Z_INDEX,
 
-  ANIMATION_SPEED,
-  ANIMATION_FUNCTION_LINEAR,
-  ANIMATION_FUNCTION_ARC,
+    ANIMATION_SPEED,
+    ANIMATION_FUNCTION_LINEAR,
+    ANIMATION_FUNCTION_ARC,
 
-  OVERLAY_Z_INDEX,
-  OVERLAY_PROPERTIES,
+    OVERLAY_Z_INDEX,
+    OVERLAY_PROPERTIES,
 
-  MODAL_RESULT_CLOSE
+    MODAL_RESULT_CLOSE
 }

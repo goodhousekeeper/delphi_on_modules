@@ -198,414 +198,423 @@ const MODULE_STYLES = `
 `;
 
 class TForm extends TControl {
-  constructor (properties) {
-    super(properties);
-    this.setProperty('modal', false);
-    this.setProperty('modalResult', false);
-    this.setProperty('maximized', false);
-    if (this.getProperty('icon') === undefined) {
-      this.setProperty('icon', TApplication.icon);
-    }
-  }
-
-  createNode () {
-    super.createNode();
-    const style = this.style;
-    const container = this.objectContainer;
-    /* ------------------------------------------------------------------------------ */
-    container.classList.add('TForm');
-    container.onclick = () => this.bringToFront().setActive();
-    /* ------------------------------------------------------------------------------ */
-    style.height = this.getProperty('height') ? (this.getProperty('height') + 'px') : '';
-    style.width = this.getProperty('width') ? (this.getProperty('width') + 'px') : '';
-    /* ------------------------------------------------------------------------------ */
-    const borderTop = document.createElement('div');
-    const borderRight = document.createElement('div');
-    const borderBottom = document.createElement('div');
-    const borderLeft = document.createElement('div');
-    borderTop.className = 'Borders BorderTop';
-    borderRight.className = 'Borders BorderRight';
-    borderBottom.className = 'Borders BorderBottom';
-    borderLeft.className = 'Borders BorderLeft';
-    container.appendChild(borderTop);
-    container.appendChild(borderRight);
-    container.appendChild(borderBottom);
-    container.appendChild(borderLeft);
-
-    /* ------------------------------------------------------------------------------ */
-    const endTransition = () => {
-      document.onmousemove = null;
-      container.onmouseup = null;
-      style.opacity = '1.0';
-    };
-
-    /* ------------------------------------------------------------------------------ */
-    if (this.getProperty('noTitle')) {
-      style.height = (this.getProperty('height') + 'px');
-      container.classList.toggle('noTitle', true);
-    } else {
-      const title = document.createElement('div');
-      const caption = document.getElementById(`${container.id}.Caption`);
-      const icon = document.getElementById(`${container.id}.Icon`);
-      let maximizeButton = document.createElement('div');
-      let restoreButton = document.createElement('div');
-      const closeButton = document.createElement('div');
-
-      container.appendChild(title);
-      title.className = `${this.getProperty('className')}__Title`;
-
-      title.appendChild(icon);
-
-      title.appendChild(caption);
-
-      caption.onmousedown = (e) => {
-        const moveAt = (e) => {
-          style.left = e.pageX - deltaX + 'px';
-          style.top = e.pageY - deltaY + 'px';
-          if (style.opacity !== '0.5') {
-            style.opacity = '0.5'
-          }
-        };
-        const box = container.getBoundingClientRect();
-        const deltaX = e.pageX - box.left;
-        const deltaY = e.pageY - box.top;
-
-        style.width = (box.width) + 'px';
-        style.height = (box.height) + 'px';
-
-        container.classList.remove('Maximized');
-
-        this.bringToFront();
-
-        document.onmousemove = (e) => moveAt(e);
-        container.onmouseup = () => endTransition();
-      };
-
-      caption.ondblclick = () => {
-        if (this.getProperty('maximized')) {
-          this.restore();
-        } else {
-          this.maximize();
-        }
-      };
-
-      if (this.getProperty('noMaximizeButton')) {
-        maximizeButton = undefined;
-        restoreButton = undefined;
-      } else {
-        title.appendChild(maximizeButton);
-        maximizeButton.className = 'Buttons MaximizeButton';
-        maximizeButton.id = container.id + '.MaximizeButton';
-        maximizeButton.onclick = () => this.maximize();
-
-        title.appendChild(restoreButton);
-        restoreButton.className = 'Buttons RestoreButton';
-        restoreButton.id = container.id + '.RestoreButton';
-        restoreButton.onclick = () => this.restore();
-      }
-
-      title.appendChild(closeButton);
-      closeButton.className = 'Buttons CloseButton';
-      closeButton.id = container.id + '.CloseButton';
-      closeButton.onclick = () => this.hide();
-    }
-    /* ------------------------------------------------------------------------------ */
-
-    if (this.getProperty('sizeable')) {
-      const sizeHandle = document.createElement('div');
-      sizeHandle.id = `${container.id}.SizeHandle`;
-      sizeHandle.className = 'SizeHandle';
-
-      this.contentContainer.appendChild(sizeHandle);
-
-      sizeHandle.onmousedown = (e) => {
-        const sizeAt = (e) => {
-          style.width = e.pageX - deltaX + 'px';
-          style.height = e.pageY - deltaY + 'px';
-          if (style.opacity !== '0.5') {
-            style.opacity = '0.5';
-          }
-        };
-        const box = container.getBoundingClientRect();
-        const deltaX = e.pageX - box.width;
-        const deltaY = e.pageY - box.height;
-
-        container.classList.remove('Maximized');
-
-        this.bringToFront();
-        
-        document.onmousemove = (e) => sizeAt(e);
-        container.onmouseup = () => endTransition()
-      }
-    }
-
-    /* ------------------------------------------------------------------------------ */
-  }
-
-  align () {
-    const container = this.objectContainer;
-    const style = this.style;
-    let containerWidth = parseInt(style.width, 10);
-    let containerHeight = parseInt(style.height, 10);
-
-    if (!this.getProperty('screenCenter')) {
-      return this;
-    }
-    if (container.offsetWidth > 0) {
-      containerWidth = container.offsetWidth;
-    }
-    if (container.offsetHeight > 0) {
-      containerHeight = container.offsetHeight;
-    }
-    style.left = (window.innerWidth - containerWidth) / 2 + 'px';
-    style.top = (window.innerHeight - containerHeight) / 2 + 'px';
-    return this;
-  }
-
-  show () {
-    if (TApplication.modalStack.length > 0) {
-      this.showModal();
-    }
-    if (!this.getProperty('visible')) {
-      this.style.opacity = '0';
-      super.show();
-      this.align().bringToFront().fadeIn();
-    } else {
-      this.style.visibility = 'unset';
-      this.bringToFront();
-    }
-    setTimeout(() => {this.setActive()}, 0);
-    return this;
-  }
-
-  showModal () {
-    const modalStack = TApplication.modalStack;
-
-    TApplication.overlay.show();
-    this.style.opacity = '0';
-    super.show();
-    this.style.zIndex = Constants.OVERLAY_Z_INDEX + 1;
-    this.align().fadeIn();
-    if (modalStack.length > 0) {
-      modalStack[modalStack.length - 1].style.zIndex = Constants.OVERLAY_Z_INDEX - 1;
-    }
-    modalStack.push(this);
-    this.setProperty('modal', true);
-    this.setProperty('modalResult');
-    setTimeout(() => {this.setActive()}, 0);
-  }
-
-  hide () {
-    const modalStack = TApplication.modalStack;
-
-    const afterFade = () => {
-      super.hide();
-      if (modalStack.length > 0) {
-        const form = modalStack[modalStack.length - 1];
-        form.style.zIndex = Constants.OVERLAY_Z_INDEX + 1;
-        form.setActive();
-      } else {
-        TApplication.getMainForm().setActive();
-      }
-    }
-
-    const afterHideQuery = () => {
-      if (this.getProperty('modal')) {
+    constructor(properties) {
+        super(properties);
         this.setProperty('modal', false);
-        modalStack.pop();
-        if (modalStack.length === 0) {
-          TApplication.overlay.hide();
+        this.setProperty('modalResult', false);
+        this.setProperty('maximized', false);
+        if (this.getProperty('icon') === undefined) {
+            this.setProperty('icon', TApplication.icon);
         }
-        if (!this.getProperty('modalResult')) {
-          this.setProperty('modalResult', Constants.MODAL_RESULT_CLOSE);
+    }
+
+    createNode() {
+        super.createNode();
+        const style = this.style;
+        const container = this.objectContainer;
+        /* ------------------------------------------------------------------------------ */
+        container.classList.add('TForm');
+        container.onclick = () => this.bringToFront().setActive();
+        /* ------------------------------------------------------------------------------ */
+        style.height = this.getProperty('height') ? (this.getProperty('height') + 'px') : '';
+        style.width = this.getProperty('width') ? (this.getProperty('width') + 'px') : '';
+        /* ------------------------------------------------------------------------------ */
+        const borderTop = document.createElement('div');
+        const borderRight = document.createElement('div');
+        const borderBottom = document.createElement('div');
+        const borderLeft = document.createElement('div');
+        borderTop.className = 'Borders BorderTop';
+        borderRight.className = 'Borders BorderRight';
+        borderBottom.className = 'Borders BorderBottom';
+        borderLeft.className = 'Borders BorderLeft';
+        container.appendChild(borderTop);
+        container.appendChild(borderRight);
+        container.appendChild(borderBottom);
+        container.appendChild(borderLeft);
+
+        /* ------------------------------------------------------------------------------ */
+        const endTransition = () => {
+            document.onmousemove = null;
+            container.onmouseup = null;
+            style.opacity = '1.0';
+        };
+
+        /* ------------------------------------------------------------------------------ */
+        if (this.getProperty('noTitle')) {
+            style.height = (this.getProperty('height') + 'px');
+            container.classList.toggle('noTitle', true);
+        } else {
+            const title = document.createElement('div');
+            const caption = document.getElementById(`${container.id}.Caption`);
+            const icon = document.getElementById(`${container.id}.Icon`);
+            let maximizeButton = document.createElement('div');
+            let restoreButton = document.createElement('div');
+            const closeButton = document.createElement('div');
+
+            container.appendChild(title);
+            title.className = `${this.getProperty('className')}__Title`;
+
+            title.appendChild(icon);
+
+            title.appendChild(caption);
+
+            caption.onmousedown = (e) => {
+                const moveAt = (e) => {
+                    style.left = e.pageX - deltaX + 'px';
+                    style.top = e.pageY - deltaY + 'px';
+                    if (style.opacity !== '0.5') {
+                        style.opacity = '0.5'
+                    }
+                };
+                const box = container.getBoundingClientRect();
+                const deltaX = e.pageX - box.left;
+                const deltaY = e.pageY - box.top;
+
+                style.width = (box.width) + 'px';
+                style.height = (box.height) + 'px';
+
+                container.classList.remove('Maximized');
+
+                this.bringToFront();
+
+                document.onmousemove = (e) => moveAt(e);
+                container.onmouseup = () => endTransition();
+            };
+
+            caption.ondblclick = () => {
+                if (this.getProperty('maximized')) {
+                    this.restore();
+                } else {
+                    this.maximize();
+                }
+            };
+
+            if (this.getProperty('noMaximizeButton')) {
+                maximizeButton = undefined;
+                restoreButton = undefined;
+            } else {
+                title.appendChild(maximizeButton);
+                maximizeButton.className = 'Buttons MaximizeButton';
+                maximizeButton.id = container.id + '.MaximizeButton';
+                maximizeButton.onclick = () => this.maximize();
+
+                title.appendChild(restoreButton);
+                restoreButton.className = 'Buttons RestoreButton';
+                restoreButton.id = container.id + '.RestoreButton';
+                restoreButton.onclick = () => this.restore();
+            }
+
+            title.appendChild(closeButton);
+            closeButton.className = 'Buttons CloseButton';
+            closeButton.id = container.id + '.CloseButton';
+            closeButton.onclick = () => this.hide();
         }
-      }
-      this.fadeOut(afterFade);
-    };
+        /* ------------------------------------------------------------------------------ */
 
-    if (this.hideQuery) {
-      this.hideQuery(afterHideQuery)
-    } else {
-      afterHideQuery()
+        if (this.getProperty('sizeable')) {
+            const sizeHandle = document.createElement('div');
+            sizeHandle.id = `${container.id}.SizeHandle`;
+            sizeHandle.className = 'SizeHandle';
+
+            this.contentContainer.appendChild(sizeHandle);
+
+            sizeHandle.onmousedown = (e) => {
+                const sizeAt = (e) => {
+                    style.width = e.pageX - deltaX + 'px';
+                    style.height = e.pageY - deltaY + 'px';
+                    if (style.opacity !== '0.5') {
+                        style.opacity = '0.5';
+                    }
+                };
+                const box = container.getBoundingClientRect();
+                const deltaX = e.pageX - box.width;
+                const deltaY = e.pageY - box.height;
+
+                container.classList.remove('Maximized');
+
+                this.bringToFront();
+
+                document.onmousemove = (e) => sizeAt(e);
+                container.onmouseup = () => endTransition()
+            }
+        }
+
+        /* ------------------------------------------------------------------------------ */
     }
-  }
 
-  setActive () {
-    TApplication.getObjectsByClassName('TForm').forEach(function (form) {
-      form.objectContainer.classList.remove('Active');
-    });
-    this.objectContainer.classList.add('Active');
-    return this;
-  }
+    align() {
+        const container = this.objectContainer;
+        const style = this.style;
+        let containerWidth = parseInt(style.width, 10);
+        let containerHeight = parseInt(style.height, 10);
 
-  bringToFront () {
-    if (this.getProperty('modal')) {
-      return this;
+        if (!this.getProperty('screenCenter')) {
+            return this;
+        }
+        if (container.offsetWidth > 0) {
+            containerWidth = container.offsetWidth;
+        }
+        if (container.offsetHeight > 0) {
+            containerHeight = container.offsetHeight;
+        }
+        style.left = (window.innerWidth - containerWidth) / 2 + 'px';
+        style.top = (window.innerHeight - containerHeight) / 2 + 'px';
+        return this;
     }
-    if (this === TApplication.getMainForm()) {
-      return this;
+
+    show() {
+        if (TApplication.modalStack.length > 0) {
+            this.showModal();
+        }
+        if (!this.getProperty('visible')) {
+            this.style.opacity = '0';
+            super.show();
+            this.align().bringToFront().fadeIn();
+        } else {
+            this.style.visibility = 'unset';
+            this.bringToFront();
+        }
+        setTimeout(() => {
+            this.setActive()
+        }, 0);
+        return this;
     }
 
-    TApplication.getObjectsByClassName('TForm').forEach(function (form) {
-      form.style.zIndex = '1';
-    });
-    this.style.zIndex = Constants.BRING_TO_FRONT_Z_INDEX;
-    return this;
-  }
+    showModal() {
+        const modalStack = TApplication.modalStack;
 
-  maximize () {
-    if (this.getProperty('noMaximizeButton')) {
-      return this;
+        TApplication.overlay.show();
+        this.style.opacity = '0';
+        super.show();
+        this.style.zIndex = Constants.OVERLAY_Z_INDEX + 1;
+        this.align().fadeIn();
+        if (modalStack.length > 0) {
+            modalStack[modalStack.length - 1].style.zIndex = Constants.OVERLAY_Z_INDEX - 1;
+        }
+        modalStack.push(this);
+        this.setProperty('modal', true);
+        this.setProperty('modalResult');
+        setTimeout(() => {
+            this.setActive()
+        }, 0);
     }
-    const container = this.objectContainer;
-    const style = this.style;
-    const box = container.getBoundingClientRect();
-    const widthDelta = window.innerWidth - box.width;
-    const heightDelta = window.innerHeight - box.height;
-    const animateOptions = {
-      duration: TApplication.animationSpeed,
-      timing: Constants.ANIMATION_FUNCTION_ARC
-    };
-    /* save previous position */
-    this.setProperty('positionBeforeMaximize', { top: box.top, left: box.left, width: box.width, height: box.height });
 
-    const onEndMaximize = () => {
-      this.objectContainer.classList.add('Maximized');
-      this.setProperty('maximized', true);
-    };
+    hide() {
+        const modalStack = TApplication.modalStack;
 
-    Utils.animate(Object.assign({
-      draw: function (progress) {
-        style.top = (String(box.top - progress * box.top)) + 'px';
-      },
-      callback: onEndMaximize
-    },
-    animateOptions
-    ));
-    Utils.animate(Object.assign({
-      draw: function (progress) {
-        style.left = (String(box.left - progress * box.left)) + 'px';
-      }
-    },
-    animateOptions
-    ));
-    Utils.animate(Object.assign({
-      draw: function (progress) {
-        style.width = (String(box.width + progress * widthDelta)) + 'px'
-      }
-    },
-    animateOptions
-    ));
-    Utils.animate(Object.assign({
-      draw: function (progress) {
-        style.height = (String(box.height + progress * heightDelta)) + 'px'
-      }
-    },
-    animateOptions
-    ));
-    return this
-  }
+        const afterFade = () => {
+            super.hide();
+            if (modalStack.length > 0) {
+                const form = modalStack[modalStack.length - 1];
+                form.style.zIndex = Constants.OVERLAY_Z_INDEX + 1;
+                form.setActive();
+            } else {
+                TApplication.getMainForm().setActive();
+            }
+        };
 
-  restore () {
-    if (this.getProperty('noMaximizeButton')) {
-      return this
+        const afterHideQuery = () => {
+            if (this.getProperty('modal')) {
+                this.setProperty('modal', false);
+                modalStack.pop();
+                if (modalStack.length === 0) {
+                    TApplication.overlay.hide();
+                }
+                if (!this.getProperty('modalResult')) {
+                    this.setProperty('modalResult', Constants.MODAL_RESULT_CLOSE);
+                }
+            }
+            this.fadeOut(afterFade);
+        };
+
+        if (this.hideQuery) {
+            this.hideQuery(afterHideQuery)
+        } else {
+            afterHideQuery()
+        }
     }
-    const style = this.style;
-    const box = this.getProperty('positionBeforeMaximize');
-    const animateOptions = {
-      duration: TApplication.animationSpeed,
-      timing: Constants.ANIMATION_FUNCTION_ARC
-    };
-    if (!box) {
-      return this
+
+    setActive() {
+        TApplication.getObjectsByClassName('TForm').forEach(function (form) {
+            form.objectContainer.classList.remove('Active');
+        });
+        this.objectContainer.classList.add('Active');
+        return this;
     }
-    const widthDelta = window.innerWidth - box.width;
-    const heightDelta = window.innerHeight - box.height;
 
-    const onEndRestore = () => {
-      this.objectContainer.classList.remove('Maximized');
-      this.setProperty('maximized', false)
-    };
+    bringToFront() {
+        if (this.getProperty('modal')) {
+            return this;
+        }
+        if (this === TApplication.getMainForm()) {
+            return this;
+        }
 
-    Utils.animate(Object.assign({
-      draw: function (progress) {
-        style.top = (String(progress * box.top)) + 'px';
-      },
-      callback: onEndRestore
-    },
-    animateOptions
-    ));
-    Utils.animate(Object.assign({
-      draw: function (progress) {
-        style.left = (String(progress * box.left)) + 'px';
-      }
-    },
-    animateOptions
-    ));
-    Utils.animate(Object.assign({
-      draw: function (progress) {
-        style.width = (String(window.innerWidth - progress * widthDelta)) + 'px';
-      }
-    },
-    animateOptions
-    ));
-    Utils.animate(Object.assign({
-      draw: function (progress) {
-        style.height = (String(window.innerHeight - progress * heightDelta)) + 'px';
-      }
-    },
-    animateOptions
-    ));
+        TApplication.getObjectsByClassName('TForm').forEach(function (form) {
+            form.style.zIndex = '1';
+        });
+        this.style.zIndex = Constants.BRING_TO_FRONT_Z_INDEX;
+        return this;
+    }
 
-    return this;
-  }
+    maximize() {
+        if (this.getProperty('noMaximizeButton')) {
+            return this;
+        }
+        const container = this.objectContainer;
+        const style = this.style;
+        const box = container.getBoundingClientRect();
+        const widthDelta = window.innerWidth - box.width;
+        const heightDelta = window.innerHeight - box.height;
+        const animateOptions = {
+            duration: TApplication.animationSpeed,
+            timing: Constants.ANIMATION_FUNCTION_ARC
+        };
+        /* save previous position */
+        this.setProperty('positionBeforeMaximize', {
+            top: box.top,
+            left: box.left,
+            width: box.width,
+            height: box.height
+        });
+
+        const onEndMaximize = () => {
+            this.objectContainer.classList.add('Maximized');
+            this.setProperty('maximized', true);
+        };
+
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.top = (String(box.top - progress * box.top)) + 'px';
+                },
+                callback: onEndMaximize
+            },
+            animateOptions
+        ));
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.left = (String(box.left - progress * box.left)) + 'px';
+                }
+            },
+            animateOptions
+        ));
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.width = (String(box.width + progress * widthDelta)) + 'px'
+                }
+            },
+            animateOptions
+        ));
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.height = (String(box.height + progress * heightDelta)) + 'px'
+                }
+            },
+            animateOptions
+        ));
+        return this
+    }
+
+    restore() {
+        if (this.getProperty('noMaximizeButton')) {
+            return this
+        }
+        const style = this.style;
+        const box = this.getProperty('positionBeforeMaximize');
+        const animateOptions = {
+            duration: TApplication.animationSpeed,
+            timing: Constants.ANIMATION_FUNCTION_ARC
+        };
+        if (!box) {
+            return this
+        }
+        const widthDelta = window.innerWidth - box.width;
+        const heightDelta = window.innerHeight - box.height;
+
+        const onEndRestore = () => {
+            this.objectContainer.classList.remove('Maximized');
+            this.setProperty('maximized', false)
+        };
+
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.top = (String(progress * box.top)) + 'px';
+                },
+                callback: onEndRestore
+            },
+            animateOptions
+        ));
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.left = (String(progress * box.left)) + 'px';
+                }
+            },
+            animateOptions
+        ));
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.width = (String(window.innerWidth - progress * widthDelta)) + 'px';
+                }
+            },
+            animateOptions
+        ));
+        Utils.animate(Object.assign({
+                draw: function (progress) {
+                    style.height = (String(window.innerHeight - progress * heightDelta)) + 'px';
+                }
+            },
+            animateOptions
+        ));
+
+        return this;
+    }
 }
 
 class TOverlay extends TControl {
-  createNode () {
-    super.createNode();
-    this.objectContainer.classList.add('TOverlay');
-    this.style.zIndex = Constants.OVERLAY_Z_INDEX;
-  }
+    createNode() {
+        super.createNode();
+        this.objectContainer.classList.add('TOverlay');
+        this.style.zIndex = Constants.OVERLAY_Z_INDEX;
+    }
 
-  show () {
-    this.style.opacity = '0';
-    super.show();
-    this.fadeIn();
-  }
+    show() {
+        this.style.opacity = '0';
+        super.show();
+        this.fadeIn();
+    }
 
-  hide () {
-    this.fadeOut(() => super.hide());
-  }
+    hide() {
+        this.fadeOut(() => super.hide());
+    }
 }
 
 class TPicture extends TControl {
-  createNode () {
-    super.createNode();
-    const container = this.objectContainer;
-    container.classList.add('TPicture');
-    Object.assign(container.style, {
-      backgroundColor: this.getProperty('backgroundColor') !== undefined ? this.getProperty('backgroundColor') : '',
-      backgroundRepeat: this.getProperty('backgroundRepeat') !== undefined ? this.getProperty('backgroundRepeat') : '',
-      backgroundPosition: this.getProperty('backgroundPosition') !== undefined ? this.getProperty('backgroundPosition') : '',
-      backgroundClip: this.getProperty('backgroundClip') !== undefined ? this.getProperty('backgroundClip') : '',
-      backgroundSize: this.getProperty('backgroundSize') !== undefined ? this.getProperty('backgroundSize') : ''
-    });
-    if (this.getProperty('image')) {
-      this.setImage(this.getProperty('image'));
+    createNode() {
+        super.createNode();
+        const container = this.objectContainer;
+        container.classList.add('TPicture');
+        Object.assign(container.style, {
+            backgroundColor: this.getProperty('backgroundColor') !== undefined ? this.getProperty('backgroundColor') : '',
+            backgroundRepeat: this.getProperty('backgroundRepeat') !== undefined ? this.getProperty('backgroundRepeat') : '',
+            backgroundPosition: this.getProperty('backgroundPosition') !== undefined ? this.getProperty('backgroundPosition') : '',
+            backgroundClip: this.getProperty('backgroundClip') !== undefined ? this.getProperty('backgroundClip') : '',
+            backgroundSize: this.getProperty('backgroundSize') !== undefined ? this.getProperty('backgroundSize') : ''
+        });
+        if (this.getProperty('image')) {
+            this.setImage(this.getProperty('image'));
+        }
+        if (this.getProperty('imagePath')) {
+            this.setImageByPath(this.getProperty('imagePath'));
+        }
     }
-    if (this.getProperty('imagePath')) {
-      this.setImageByPath(this.getProperty('imagePath'));
+
+    setImage(image) {
+        this.style.backgroundImage = `url(${image})`;
     }
-  }
 
-  setImage (image) {
-    this.style.backgroundImage = `url(${image})`;
-  }
-
-  setImageByPath (imagePath) {
-    this.setImage(Utils.getAbsolutePathToResource(imagePath));
-  }
+    setImageByPath(imagePath) {
+        this.setImage(Utils.getAbsolutePathToResource(imagePath));
+    }
 }
 
-export { MODULE_STYLES, TForm, TOverlay, TPicture }
+export {MODULE_STYLES, TForm, TOverlay, TPicture}

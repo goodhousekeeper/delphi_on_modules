@@ -68,42 +68,42 @@ const MODULE_STYLES = `
 `;
 
 class TPanel extends TControl {
-  createNode () {
-    super.createNode();
-    const container = this.objectContainer;
-    const contentContainer = this.contentContainer;
-    container.classList.add('TPanel');
-    if (contentContainer) {
-      Object.assign(contentContainer.style, {
-        overflowX: this.getProperty('overflowX') ? 'scroll' : 'hidden',
-        overflowY: this.getProperty('overflowY') ? 'scroll' : 'hidden'
-      })
+    createNode() {
+        super.createNode();
+        const container = this.objectContainer;
+        const contentContainer = this.contentContainer;
+        container.classList.add('TPanel');
+        if (contentContainer) {
+            Object.assign(contentContainer.style, {
+                overflowX: this.getProperty('overflowX') ? 'scroll' : 'hidden',
+                overflowY: this.getProperty('overflowY') ? 'scroll' : 'hidden'
+            })
+        }
+        if (this.getProperty('lowered')) {
+            this.low()
+        }
+        if (this.getProperty('raised')) {
+            this.raise()
+        }
     }
-    if (this.getProperty('lowered')) {
-      this.low()
-    }
-    if (this.getProperty('raised')) {
-      this.raise()
-    }
-  }
 
-  low () {
-    this.objectContainer.classList.remove('Raised');
-    this.objectContainer.classList.add('Lowered');
-  }
+    low() {
+        this.objectContainer.classList.remove('Raised');
+        this.objectContainer.classList.add('Lowered');
+    }
 
-  raise () {
-    this.objectContainer.classList.remove('Lowered');
-    this.objectContainer.classList.add('Raised');
-  }
+    raise() {
+        this.objectContainer.classList.remove('Lowered');
+        this.objectContainer.classList.add('Raised');
+    }
 }
 
 class TGroupBox extends TControl {
-  createNode () {
-    super.createNode();
-    const container = this.objectContainer;
-    container.classList.add('TGroupBox');
-  }
-}  
+    createNode() {
+        super.createNode();
+        const container = this.objectContainer;
+        container.classList.add('TGroupBox');
+    }
+}
 
-export { MODULE_STYLES, TPanel, TGroupBox }
+export {MODULE_STYLES, TPanel, TGroupBox}

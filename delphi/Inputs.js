@@ -76,60 +76,60 @@ const MODULE_STYLES = `
 `;
 
 class TEdit extends TControl {
-  createNode () {
-    super.createNode();
-    const container = this.objectContainer;
-    const input = document.createElement('div');
-    Object.defineProperties(this, {
-      value: {
-        get: () => document.getElementById(container.id + '.Input').textContent,
-        set: (newText) => {
-          document.getElementById(container.id + '.Input').textContent = newText || ''
+    createNode() {
+        super.createNode();
+        const container = this.objectContainer;
+        const input = document.createElement('div');
+        Object.defineProperties(this, {
+            value: {
+                get: () => document.getElementById(container.id + '.Input').textContent,
+                set: (newText) => {
+                    document.getElementById(container.id + '.Input').textContent = newText || ''
+                }
+            },
+        });
+        container.classList.add('TEdit');
+        input.className = 'TEdit__Input';
+        input.id = container.id + '.Input';
+        input.style.lineHeight = (parseInt(container.style.height, 10) - 2) + 'px';
+        container.appendChild(input);
+        if (this.getProperty('placeholder')) {
+            input.setAttribute('placeholder', this.getProperty('placeholder'));
         }
-      },
-    });
-    container.classList.add('TEdit');
-    input.className = 'TEdit__Input';
-    input.id = container.id + '.Input';
-    input.style.lineHeight = (parseInt(container.style.height, 10) - 2) + 'px';
-    container.appendChild(input);
-    if (this.getProperty('placeholder')) {
-      input.setAttribute('placeholder', this.getProperty('placeholder'));
-    }
-    if (this.getProperty('text')) {
-      this.value = this.getProperty('text');
-    }
-    if (this.getProperty('enabled') === false) {
-      this.enabled(false);
-    } else {
-      this.enabled(true);
+        if (this.getProperty('text')) {
+            this.value = this.getProperty('text');
+        }
+        if (this.getProperty('enabled') === false) {
+            this.enabled(false);
+        } else {
+            this.enabled(true);
+        }
+
     }
 
-  }
-
-  enabled (status) {
-    const result = super.enabled(status);
-    const input = document.getElementById(this.objectContainer.id + '.Input');
-    if (result !== undefined) {
-        return result;
+    enabled(status) {
+        const result = super.enabled(status);
+        const input = document.getElementById(this.objectContainer.id + '.Input');
+        if (result !== undefined) {
+            return result;
+        }
+        if (input) {
+            input.contentEditable = status;
+        }
     }
-    if (input) {
-      input.contentEditable = status;
-    }
-  }
 }
 
 class TStaticText extends TControl {
-  createNode () {
-    super.createNode();
-    const container = this.objectContainer;
-    const caption = document.getElementById(`${container.id}.Caption`);
-    container.classList.add('TStaticText');
-   
-    if (!this.getProperty('multiLine')) {
-      caption.style.lineHeight = (parseInt(container.style.height, 10)) + 'px';
+    createNode() {
+        super.createNode();
+        const container = this.objectContainer;
+        const caption = document.getElementById(`${container.id}.Caption`);
+        container.classList.add('TStaticText');
+
+        if (!this.getProperty('multiLine')) {
+            caption.style.lineHeight = (parseInt(container.style.height, 10)) + 'px';
+        }
     }
-  }
 }
 
-export { MODULE_STYLES, TEdit, TStaticText }
+export {MODULE_STYLES, TEdit, TStaticText}

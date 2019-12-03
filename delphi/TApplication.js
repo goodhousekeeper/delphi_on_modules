@@ -23,164 +23,164 @@ let animationSpeed = Constants.ANIMATION_SPEED;
 /* ----------------------------------------------------------------------------- */
 
 Object.defineProperties(TApplication, {
-  caption: {
-    get: () => caption,
-    set: (newCaption) => {
-      caption = newCaption;
-      document.title = newCaption;
-    }
-  },
-  icon: {
-    get: () => icon,
-    set: (newIcon) => {
-      icon = newIcon;
-      Utils.addFaviconNode(newIcon);
-      TApplication.getObjectsByClassName('TForm').forEach(function (form) {
-        if (form.icon) {
-          form.icon = newIcon;
+    caption: {
+        get: () => caption,
+        set: (newCaption) => {
+            caption = newCaption;
+            document.title = newCaption;
         }
-      })
-    }
-  },
-  mainFormName: {
-    get: () => mainFormName,
-    set: (newName) => {
-      mainFormName = newName;
-    }
-  },
-  getMainForm: {
-    value: () => TApplication.getObject(mainFormName)
-  },
-  modalStack: {
-    value: modalStack
-  },
-  componentModulesLoaded: {
-    value: componentModulesLoaded
-  },
-  contentContainer: {
-    value: document.body
-  },
-  content: {
-    value: content
-  },
-  animationSpeed: {
-    get: () => animationSpeed,
-    set: (value) => {
-      animationSpeed = Math.abs(parseInt(value, 10))
-    }
-  },
-  
-  createForm: {
-    value: function (formModule) {
-      let formObject = this.getObject(formModule.properties.name);
-      if (!formObject) {
-        formObject = this.createObject(formModule.properties);
-        if (formModule.onFormCreate) {
-          formModule.onFormCreate(formObject)
+    },
+    icon: {
+        get: () => icon,
+        set: (newIcon) => {
+            icon = newIcon;
+            Utils.addFaviconNode(newIcon);
+            TApplication.getObjectsByClassName('TForm').forEach(function (form) {
+                if (form.icon) {
+                    form.icon = newIcon;
+                }
+            })
         }
-      }
-      return formObject
-    }
-  },
-
-  createObject: {
-    value: function (properties) {
-      const ownerName = properties.ownerName ? properties.ownerName : '';
-      const ownerObject = this.getObject(ownerName);
-
-      if (ownerName !== '') {
-        properties.registerName = `${ownerName}.${properties.name}`
-      } else {
-        properties.registerName = `${properties.name}`
-      }
-
-      properties.ownerObject = ownerObject;
-      if (this.getObject(properties.registerName)) {
-        throw new Error(`Object with name "${properties.registerName}" already exists.`)
-      }
-      const newObject = new componentLibrary[properties.className](properties);
-      objectStorage[properties.registerName] = newObject;
-      Object.defineProperty(ownerObject, properties.name, {
-        value: newObject,
-        configurable: true
-      });
-      ownerObject.content.push(newObject);
-      if (newObject.createNode) {
-        newObject.createNode()
-      }
-      if (properties.contentProperties) {
-        newObject.createContent()
-      }
-
-      return newObject
-    }
-  },
-  getObject: {
-    value: function (objectRegisterName) {
-      if (objectRegisterName === '') {
-        return this
-      } else if (objectStorage[objectRegisterName]) {
-        return objectStorage[objectRegisterName]
-      } else {
-        return false
-      }
-    }
-  },
-  destroyObject: {
-    value: function (object) {
-      const registerName = object.getProperty('registerName');
-      const name = object.getProperty('name');
-      const ownerObject = object.getProperty('ownerObject');
-      const objectContentIndex = ownerObject.content.indexOf(object);
-
-      if (object.getProperty('contentProperties')) {
-        object.deleteContent()
-      }
-      if (objectStorage[registerName]) {
-        delete objectStorage[registerName]
-      }
-      if (ownerObject[name]) {
-        delete ownerObject[name]
-      }
-      if (objectContentIndex > -1) {
-        ownerObject.content.splice(objectContentIndex, 1)
-      }
-      if (object.destroyNode) {
-        object.destroyNode()
-      }
-      return null
-    }
-  },
-  getObjectsByClassName: {
-    value: (className) => {
-      const result = [];
-      for (const [key, value] of Object.entries(objectStorage)) {
-        if (objectStorage[key].getProperty('className') === className) {
-          result.push(value);
+    },
+    mainFormName: {
+        get: () => mainFormName,
+        set: (newName) => {
+            mainFormName = newName;
         }
-      }
-      return result;
-    }
-  },
-  addComponentsToLibrary: {
-    value: (componentModule) => {
-      if (TApplication.componentModulesLoaded.indexOf(componentModule) !== -1 ) {
-        return false;
-      }
-      for (const [key, value] of Object.entries(componentModule)) {
-        if (key === 'MODULE_STYLES') {
-          Utils.updateStyleNode(value);
-          continue;
+    },
+    getMainForm: {
+        value: () => TApplication.getObject(mainFormName)
+    },
+    modalStack: {
+        value: modalStack
+    },
+    componentModulesLoaded: {
+        value: componentModulesLoaded
+    },
+    contentContainer: {
+        value: document.body
+    },
+    content: {
+        value: content
+    },
+    animationSpeed: {
+        get: () => animationSpeed,
+        set: (value) => {
+            animationSpeed = Math.abs(parseInt(value, 10))
         }
-        if (componentLibrary[key]) {
-          throw new Error(`Component with name ${value.name} already exists`);
-        } else {
-          componentLibrary[key] = value;
+    },
+
+    createForm: {
+        value: function (formModule) {
+            let formObject = this.getObject(formModule.properties.name);
+            if (!formObject) {
+                formObject = this.createObject(formModule.properties);
+                if (formModule.onFormCreate) {
+                    formModule.onFormCreate(formObject)
+                }
+            }
+            return formObject
         }
-      }
-      TApplication.componentModulesLoaded.push(componentModule);
+    },
+
+    createObject: {
+        value: function (properties) {
+            const ownerName = properties.ownerName ? properties.ownerName : '';
+            const ownerObject = this.getObject(ownerName);
+
+            if (ownerName !== '') {
+                properties.registerName = `${ownerName}.${properties.name}`
+            } else {
+                properties.registerName = `${properties.name}`
+            }
+
+            properties.ownerObject = ownerObject;
+            if (this.getObject(properties.registerName)) {
+                throw new Error(`Object with name "${properties.registerName}" already exists.`)
+            }
+            const newObject = new componentLibrary[properties.className](properties);
+            objectStorage[properties.registerName] = newObject;
+            Object.defineProperty(ownerObject, properties.name, {
+                value: newObject,
+                configurable: true
+            });
+            ownerObject.content.push(newObject);
+            if (newObject.createNode) {
+                newObject.createNode()
+            }
+            if (properties.contentProperties) {
+                newObject.createContent()
+            }
+
+            return newObject
+        }
+    },
+    getObject: {
+        value: function (objectRegisterName) {
+            if (objectRegisterName === '') {
+                return this
+            } else if (objectStorage[objectRegisterName]) {
+                return objectStorage[objectRegisterName]
+            } else {
+                return false
+            }
+        }
+    },
+    destroyObject: {
+        value: function (object) {
+            const registerName = object.getProperty('registerName');
+            const name = object.getProperty('name');
+            const ownerObject = object.getProperty('ownerObject');
+            const objectContentIndex = ownerObject.content.indexOf(object);
+
+            if (object.getProperty('contentProperties')) {
+                object.deleteContent()
+            }
+            if (objectStorage[registerName]) {
+                delete objectStorage[registerName]
+            }
+            if (ownerObject[name]) {
+                delete ownerObject[name]
+            }
+            if (objectContentIndex > -1) {
+                ownerObject.content.splice(objectContentIndex, 1)
+            }
+            if (object.destroyNode) {
+                object.destroyNode()
+            }
+            return null
+        }
+    },
+    getObjectsByClassName: {
+        value: (className) => {
+            const result = [];
+            for (const [key, value] of Object.entries(objectStorage)) {
+                if (objectStorage[key].getProperty('className') === className) {
+                    result.push(value);
+                }
+            }
+            return result;
+        }
+    },
+    addComponentsToLibrary: {
+        value: (componentModule) => {
+            if (TApplication.componentModulesLoaded.indexOf(componentModule) !== -1) {
+                return false;
+            }
+            for (const [key, value] of Object.entries(componentModule)) {
+                if (key === 'MODULE_STYLES') {
+                    Utils.updateStyleNode(value);
+                    continue;
+                }
+                if (componentLibrary[key]) {
+                    throw new Error(`Component with name ${value.name} already exists`);
+                } else {
+                    componentLibrary[key] = value;
+                }
+            }
+            TApplication.componentModulesLoaded.push(componentModule);
+        }
     }
-  }
 });
 
 /* ----------------------------------------------------------------------------- */
@@ -206,4 +206,4 @@ TApplication.icon = icon;
 
 /* Named and default exports */
 export default TApplication
-export { TApplication, Panels }
+export {TApplication, Panels}
