@@ -83,26 +83,26 @@ export default `
 
 class TButton extends TControl {
   createNode () {
-    super.createNode()
-    const container = this.objectContainer
-    const caption = document.getElementById(`${container.id}.Caption`)
+    super.createNode();
+    const container = this.objectContainer;
+    const caption = document.getElementById(`${container.id}.Caption`);
 
-    container.classList.add('TButton')
+    container.classList.add('TButton');
 
-    container.appendChild(caption)
+    container.appendChild(caption);
     if (this.getProperty('toolTip')) {
-      container.title = this.getProperty('toolTip')
+      container.title = this.getProperty('toolTip');
     }
 
-    caption.style.lineHeight = (parseInt(container.style.height, 10) - 2) + 'px'
+    caption.style.lineHeight = (parseInt(container.style.height, 10) - 2) + 'px';
   }
 }
 
 class TBitButton extends TButton {
   createNode () {
-    super.createNode()
-    const container = this.objectContainer
-    container.classList.add('TBitButton')
+    super.createNode();
+    const container = this.objectContainer;
+    container.classList.add('TBitButton');
   }
 }
 
