@@ -44,7 +44,7 @@ const properties = {
     }
 
   ]
-}
+};
 
 const dynamicPanelProperties = 
 {
@@ -57,43 +57,42 @@ const dynamicPanelProperties =
   width: 300,
   lowered: true,
   contentProperties: []
-}
-
+};
 
 import  { TApplication as app }  from '../index.js'
 
 const onFormCreate = (formObject) => {
   formObject.onShow(() => {
-    console.info(formObject.getProperty('name') + ' is visible now.')
+    console.info(formObject.getProperty('name') + ' is visible now.');
   },
-  true)
+  true);
 
-  let panel = formObject.myFirstPanel
-  let button = panel.theVeryFirstButton
-  let bitButton = panel.theVeryFirstTBitButton
+  let panel = formObject.myFirstPanel;
+  let button = panel.theVeryFirstButton;
+  let bitButton = panel.theVeryFirstTBitButton;
 
   button.onClick(() => {
     if (!button.enabled()) {
       return false
     }
-    panel = app.destroyObject(panel)
-  })
+    panel = app.destroyObject(panel);
+  });
 
   bitButton.onClick(() => {
     if (!bitButton.enabled()) {
-      return false
+      return false;
     }
-    app.createObject(dynamicPanelProperties)
-    console.info(formObject)
-  })
+    app.createObject(dynamicPanelProperties);
+    console.info(formObject);
+  });
 
   panel.onDestroy(() => {
-    button = null
-    bitButton = null
-    panel = null
+    button = null;
+    bitButton = null;
+    panel = null;
   })
 
-}
+};
 
 
 export { properties, onFormCreate }
