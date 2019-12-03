@@ -1,6 +1,6 @@
 import TControl from './TControl.js'
 
-export default `
+const MODULE_STYLES = `
 [contenteditable] {
   -webkit-user-select: text;
   user-select: text;
@@ -73,7 +73,7 @@ export default `
     color:  var(--form-color-disabled);
 }
 
-`
+`;
 
 class TEdit extends TControl {
   createNode () {
@@ -132,4 +132,4 @@ class TStaticText extends TControl {
   }
 }
 
-export { TEdit, TStaticText }
+export { MODULE_STYLES, TEdit, TStaticText }

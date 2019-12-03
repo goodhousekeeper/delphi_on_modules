@@ -3,7 +3,7 @@ import TControl from './TControl.js'
 import Utils from './Utils.js'
 import * as Constants from './Constants.js'
 
-export default `
+const MODULE_STYLES = `
 /* Styles for TOverlay, TForm, TMessageDlg */
 
 .TOverlay {
@@ -195,7 +195,7 @@ export default `
     background-clip: border-box;
     background-size: auto;
   }
-`
+`;
 
 class TForm extends TControl {
   constructor (properties) {
@@ -608,4 +608,4 @@ class TPicture extends TControl {
   }
 }
 
-export { TForm, TOverlay, TPicture }
+export { MODULE_STYLES, TForm, TOverlay, TPicture }

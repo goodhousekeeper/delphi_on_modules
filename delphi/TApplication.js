@@ -168,7 +168,7 @@ Object.defineProperties(TApplication, {
         return false;
       }
       for (const [key, value] of Object.entries(componentModule)) {
-        if (key === 'default') {
+        if (key === 'MODULE_STYLES') {
           Utils.updateStyleNode(value);
           continue;
         }
@@ -186,7 +186,7 @@ Object.defineProperties(TApplication, {
 /* ----------------------------------------------------------------------------- */
 
 /* Application Instance Initialize */
-Utils.addStyleNode(Constants.APPLICATION_STYLE);
+Utils.addStyleNode(Constants.APPLICATION_STYLES);
 document.body.classList.add('TApplication');
 
 /* Add base components */

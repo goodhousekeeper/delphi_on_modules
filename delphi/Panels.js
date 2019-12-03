@@ -1,6 +1,6 @@
 import TControl from './TControl.js'
 
-export default `
+const MODULE_STYLES = `
 /* Styles for TPanel */
 
 .TApplication .TForm .TPanel, .TApplication .TForm .TGroupBox {
@@ -65,7 +65,7 @@ export default `
   color:  var(--form-color-disabled);
 }
 
-`
+`;
 
 class TPanel extends TControl {
   createNode () {
@@ -106,4 +106,4 @@ class TGroupBox extends TControl {
   }
 }  
 
-export { TPanel, TGroupBox }
+export { MODULE_STYLES, TPanel, TGroupBox }

@@ -1,6 +1,6 @@
 import TControl from './TControl.js'
 
-export default `
+const MODULE_STYLES = `
 /* Styles for TButton, TBitButton */
 
 .TApplication .TForm .TButton {
@@ -79,7 +79,7 @@ export default `
 .TApplication .TForm .TBitButton.Disabled .TBitButton__Icon {
     filter: grayscale(100%);
 }
-`
+`;
 
 class TButton extends TControl {
   createNode () {
@@ -106,4 +106,4 @@ class TBitButton extends TButton {
   }
 }
 
-export { TButton, TBitButton }
+export { MODULE_STYLES, TButton, TBitButton }

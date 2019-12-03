@@ -1,7 +1,7 @@
 /**
  * Constants
  */
-const APPLICATION_STYLE = `
+const APPLICATION_STYLES = `
 /* Reset styles, styles for TApplication,  setting up css variables */
 
 * {
@@ -81,7 +81,7 @@ const MODAL_RESULT_CLOSE = 'mrClose';
 
 /* ------------------------------------------------------------------------------------------ */
 export {
-  APPLICATION_STYLE,
+  APPLICATION_STYLES,
 
   STYLE_TAG_TITLE,
 
