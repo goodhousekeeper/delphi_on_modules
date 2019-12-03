@@ -69,10 +69,10 @@ export default `
 
 class TPanel extends TControl {
   createNode () {
-    super.createNode()
-    const container = this.objectContainer
-    const contentContainer = this.contentContainer
-    container.classList.add('TPanel')
+    super.createNode();
+    const container = this.objectContainer;
+    const contentContainer = this.contentContainer;
+    container.classList.add('TPanel');
     if (contentContainer) {
       Object.assign(contentContainer.style, {
         overflowX: this.getProperty('overflowX') ? 'scroll' : 'hidden',
@@ -88,21 +88,21 @@ class TPanel extends TControl {
   }
 
   low () {
-    this.objectContainer.classList.remove('Raised')
-    this.objectContainer.classList.add('Lowered')
+    this.objectContainer.classList.remove('Raised');
+    this.objectContainer.classList.add('Lowered');
   }
 
   raise () {
-    this.objectContainer.classList.remove('Lowered')
-    this.objectContainer.classList.add('Raised')
+    this.objectContainer.classList.remove('Lowered');
+    this.objectContainer.classList.add('Raised');
   }
 }
 
 class TGroupBox extends TControl {
   createNode () {
-    super.createNode()
-    const container = this.objectContainer
-    container.classList.add('TGroupBox')
+    super.createNode();
+    const container = this.objectContainer;
+    container.classList.add('TGroupBox');
   }
 }  
 
