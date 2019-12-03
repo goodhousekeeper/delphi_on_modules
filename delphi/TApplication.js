@@ -4,7 +4,6 @@ import * as Constants from './Constants.js'
 
 import * as Forms from './Forms.js'
 import * as Buttons from './Buttons.js'
-import * as Panels from './Panels.js'
 import * as Inputs from './Inputs.js'
 
 /* Application instance */
@@ -35,7 +34,7 @@ Object.defineProperties(TApplication, {
         set: (newIcon) => {
             icon = newIcon;
             Utils.addFaviconNode(newIcon);
-            TApplication.getObjectsByClassName('TForm').forEach(function (form) {
+            TApplication.getObjectsByClassName('TForm').forEach(form => {
                 if (form.icon) {
                     form.icon = newIcon;
                 }
@@ -66,7 +65,7 @@ Object.defineProperties(TApplication, {
     animationSpeed: {
         get: () => animationSpeed,
         set: (value) => {
-            animationSpeed = Math.abs(parseInt(value, 10))
+            animationSpeed = Math.abs(parseInt(value, 10));
         }
     },
 
@@ -204,6 +203,4 @@ TApplication.icon = icon;
 
 /* ----------------------------------------------------------------------------- */
 
-/* Named and default exports */
 export default TApplication
-export {TApplication, Panels}

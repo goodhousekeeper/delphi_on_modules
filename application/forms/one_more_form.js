@@ -46,26 +46,26 @@ const properties = {
   ]
 };
 
-const dynamicPanelProperties = 
-{
-  name: 'myDynamicPanel',
-  ownerName: 'oneMoreForm.myFirstPanel',
-  className: 'TPanel',
-  top: 8,
-  bottom: 8,
-  right: 8,
-  width: 300,
-  lowered: true,
-  contentProperties: []
-};
+const dynamicPanelProperties =
+    {
+      name: 'myDynamicPanel',
+      ownerName: 'oneMoreForm.myFirstPanel',
+      className: 'TPanel',
+      top: 8,
+      bottom: 8,
+      right: 8,
+      width: 300,
+      lowered: true,
+      contentProperties: []
+    };
 
-import  { TApplication as app }  from '../index.js'
+import {TApplication as app} from '../index.js'
 
 const onFormCreate = (formObject) => {
   formObject.onShow(() => {
-    console.info(formObject.getProperty('name') + ' is visible now.');
-  },
-  true);
+        console.info(formObject.getProperty('name') + ' is visible now.');
+      },
+      true);
 
   let panel = formObject.myFirstPanel;
   let button = panel.theVeryFirstButton;
@@ -95,4 +95,4 @@ const onFormCreate = (formObject) => {
 };
 
 
-export { properties, onFormCreate }
+export {properties, onFormCreate}

@@ -1,5 +1,8 @@
 /* Get application instance */
-import {TApplication, Panels} from '../delphi/TApplication.js'
+import TApplication from '../delphi/TApplication.js'
+
+/* Get additional modules */
+import * as Panels from '../delphi/Panels.js'
 
 /* Set up application instance */
 TApplication.caption = 'New project on Delphi.js';
@@ -28,7 +31,7 @@ export {
   mainFormModule,
   splashFormModule,
   otherFormModule,
-  
+
   buttonsFormModule,
   inputsFormModule,
   panelsFormModule
@@ -41,13 +44,13 @@ let splashForm;
 
 TApplication.addComponentsToLibrary(Panels);
 
-function showMainForm () {
+function showMainForm() {
   mainForm = TApplication.createForm(mainFormModule);
   mainForm.show();
 }
 
 
-function showSplashForm () {
+function showSplashForm() {
   splashForm = TApplication.createForm(splashFormModule);
   splashForm.show();
 }
