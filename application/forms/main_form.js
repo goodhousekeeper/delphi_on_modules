@@ -124,7 +124,7 @@ const properties = {
     }
 
   ]
-}
+};
 
 import  { 
   TApplication as app, 
@@ -135,20 +135,20 @@ import  {
  }  from '../index.js'
 
 const onFormCreate = (formObject) => {
-  let oneMoreForm
-  const buttonsForm = app.createForm(buttonsFormModule)
-  const inputsForm = app.createForm(inputsFormModule)
-  const panelsForm = app.createForm(panelsFormModule)
+  let oneMoreForm;
+  const buttonsForm = app.createForm(buttonsFormModule);
+  const inputsForm = app.createForm(inputsFormModule);
+  const panelsForm = app.createForm(panelsFormModule);
 
-  const viewComponentsGroupBox = formObject.openFormComponentsTGroupBox
+  const viewComponentsGroupBox = formObject.openFormComponentsTGroupBox;
 
-  const buttonsFormButton = viewComponentsGroupBox.showButtonsForm
-  const inputsFormButton = viewComponentsGroupBox.showInputsForm
-  const panelsFormButton = viewComponentsGroupBox.showPanelsForm
+  const buttonsFormButton = viewComponentsGroupBox.showButtonsForm;
+  const inputsFormButton = viewComponentsGroupBox.showInputsForm;
+  const panelsFormButton = viewComponentsGroupBox.showPanelsForm;
 
   /* TODO add modal forms and dynamically create / destroy components */ 
-  const button = formObject.myFirstPanel.theVeryFirstButton
-  const button2 = formObject.myFirstPanel.theVeryFirstTBitButton
+  const button = formObject.myFirstPanel.theVeryFirstButton;
+  const button2 = formObject.myFirstPanel.theVeryFirstTBitButton;
 
 
   formObject.hideQuery = function (callback) {
@@ -160,11 +160,11 @@ const onFormCreate = (formObject) => {
       }
     }, true)
     */
-   console.info('mainForm hideQuery')
+   console.info('mainForm hideQuery');
    if (callback) {
     callback()
    }
-  }
+  };
 
   /* Open form with various buttons */ 
   buttonsFormButton.onClick(() => {
@@ -172,7 +172,7 @@ const onFormCreate = (formObject) => {
       return false
     }
     buttonsForm.show()
-  })
+  });
 
   /* Open form with various inputs */ 
   inputsFormButton.onClick(() => {
@@ -180,7 +180,7 @@ const onFormCreate = (formObject) => {
       return false
     }
     inputsForm.show()
-  })
+  });
 
   /* Open form with various panels */ 
   panelsFormButton.onClick(() => {
@@ -188,7 +188,7 @@ const onFormCreate = (formObject) => {
       return false
     }
     panelsForm.show()
-  })
+  });
 
   /* ------------------------------------------------------------- */
   
@@ -197,23 +197,23 @@ const onFormCreate = (formObject) => {
       return false
     }
     oneMoreForm = app.createForm(otherFormModule).showModal()
-  })
+  });
 
   button2.onClick(() => {
     if (!button2.enabled()) {
       return false
     }
     oneMoreForm = app.destroyObject(oneMoreForm)
-  })
+  });
 
   /* ------------------------------------------------------------- */
 /*
   buttonsForm.show()
   inputsForm.show()
 */
-  buttonsFormButton.click()
-  inputsFormButton.click()
-  panelsFormButton.click()
-}
+  buttonsFormButton.click();
+  inputsFormButton.click();
+  panelsFormButton.click();
+};
 
 export { properties, onFormCreate }
