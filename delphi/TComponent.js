@@ -23,15 +23,15 @@ export default class TComponent {
   }
 
   createContent () {
-    const contentProperties = this.getProperty('contentProperties')
+    const contentProperties = this.getProperty('contentProperties');
     if (!contentProperties) {
-      return this
+      return this;
     }
 
     contentProperties.forEach((objectProperties) => {
-      objectProperties.ownerName = this.getProperty('registerName')
+      objectProperties.ownerName = this.getProperty('registerName');
       if (this.getProperty('enabled') === false) {
-        objectProperties.enabled = false
+        objectProperties.enabled = false;
       }
       TApplication.createObject(objectProperties)
     })
@@ -39,7 +39,7 @@ export default class TComponent {
 
   deleteContent() {
     for (let i = this.content.length -1; i > -1; i--) {
-      TApplication.destroyObject(this.content[i])
+      TApplication.destroyObject(this.content[i]);
     }
   }
 }
