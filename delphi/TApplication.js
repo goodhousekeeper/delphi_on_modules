@@ -1,7 +1,7 @@
-/* Import components module */
 import Utils from './Utils.js'
 import * as Constants from './Constants.js'
 
+/* Import essential components module */
 import * as Forms from './Forms.js'
 import * as Buttons from './Buttons.js'
 import * as Inputs from './Inputs.js'
