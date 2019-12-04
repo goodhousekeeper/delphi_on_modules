@@ -5,6 +5,7 @@ import * as Constants from './Constants.js'
 import * as Forms from './Forms.js'
 import * as Buttons from './Buttons.js'
 import * as Inputs from './Inputs.js'
+import * as Panels from '../delphi/Panels.js'
 
 /* Application instance */
 const TApplication = Object.create(null);
@@ -202,5 +203,5 @@ TApplication.icon = icon;
 
 
 /* ----------------------------------------------------------------------------- */
-
-export default TApplication
+export default TApplication;
+export {TApplication, Panels /* and other non-essential modules */}

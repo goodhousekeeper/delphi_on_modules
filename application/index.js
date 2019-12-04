@@ -1,8 +1,7 @@
 /* Get application instance */
-import TApplication from '../delphi/TApplication.js'
+import {TApplication, Panels} from '../delphi/TApplication.js'
 
-/* Get additional modules */
-import * as Panels from '../delphi/Panels.js'
+/* Get custom component modules */
 
 /* Set up application instance */
 TApplication.caption = 'New project on Delphi.js';
