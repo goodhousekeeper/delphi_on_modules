@@ -5,19 +5,8 @@
   "scripts": {
     "test": ""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/goodhousekeeper/delphi_on_modules.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/goodhousekeeper/delphi_on_modules/issues"
-  },
+  "keywords": [],
+  "author": "goodhousekeeper",
   "homepage": "https://github.com/goodhousekeeper/delphi_on_modules#readme",
-  "devDependencies": {
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.2.2",
-    "eslint-utils": ">=1.4.1"
-  }
+  "license": "MIT"
 }
