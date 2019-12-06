@@ -183,19 +183,17 @@ Utils.addStyleNode(Constants.APPLICATION_STYLES);
 document.body.classList.add('TApplication');
 
 /* Add base components */
-
 TApplication.addComponentsToLibrary(Forms);
 TApplication.addComponentsToLibrary(Buttons);
 TApplication.addComponentsToLibrary(Inputs);
 
-/* Add system Objects */
+/* Add core Objects */
 TApplication.createObject(Constants.OVERLAY_PROPERTIES);
 
 /* Set up base properties */
 TApplication.caption = caption;
 TApplication.icon = icon;
 
-
 /* ----------------------------------------------------------------------------- */
+
 export default TApplication;
-export {TApplication}
