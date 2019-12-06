@@ -59,8 +59,6 @@ const dynamicPanelProperties =
       contentProperties: []
     };
 
-import {TApplication as app} from '../index.js'
-
 const onFormCreate = (formObject) => {
   formObject.onShow(() => {
         console.info(formObject.getProperty('name') + ' is visible now.');

@@ -127,7 +127,7 @@ const properties = {
 };
 
 import {
-  TApplication as app,
+  App,
   otherFormModule,
   buttonsFormModule,
   inputsFormModule,
@@ -136,9 +136,9 @@ import {
 
 const onFormCreate = (formObject) => {
   let oneMoreForm;
-  const buttonsForm = app.createForm(buttonsFormModule);
-  const inputsForm = app.createForm(inputsFormModule);
-  const panelsForm = app.createForm(panelsFormModule);
+  const buttonsForm = App.createForm(buttonsFormModule);
+  const inputsForm = App.createForm(inputsFormModule);
+  const panelsForm = App.createForm(panelsFormModule);
 
   const viewComponentsGroupBox = formObject.openFormComponentsTGroupBox;
 
@@ -153,10 +153,10 @@ const onFormCreate = (formObject) => {
 
   formObject.hideQuery = function (callback) {
     /*
-    let dlg = TApplication.messageDlgConfirmation('Вы действительно хотите завершить работу с приложением?')
+    let dlg = App.messageDlgConfirmation('Вы действительно хотите завершить работу с приложением?')
     dlg.onHide(function () {
-      if (dlg.modalResult === TApplication.mrYes) {
-        TApplication.terminate()
+      if (dlg.modalResult === App.mrYes) {
+        App.terminate()
       }
     }, true)
     */
