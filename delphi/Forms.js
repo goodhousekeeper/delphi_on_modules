@@ -1,4 +1,4 @@
-import {Utils, Constants, TApplication, TControl} from './internal.js'
+import {Constants, Utils, TControl, TApplication} from './internal.js'
 
 const MODULE_STYLES = `
 /* Styles for TOverlay, TForm, TMessageDlg */

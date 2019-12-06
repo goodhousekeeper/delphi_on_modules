@@ -184,8 +184,6 @@ document.body.classList.add('TApplication');
 
 /* Add base components */
 
-console.info(Forms);
-
 TApplication.addComponentsToLibrary(Forms);
 TApplication.addComponentsToLibrary(Buttons);
 TApplication.addComponentsToLibrary(Inputs);
