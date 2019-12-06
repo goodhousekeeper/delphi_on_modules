@@ -1,11 +1,4 @@
-import Utils from './Utils.js'
-import * as Constants from './Constants.js'
-
-/* Import essential components module */
-import * as Forms from './Forms.js'
-import * as Buttons from './Buttons.js'
-import * as Inputs from './Inputs.js'
-import * as Panels from '../delphi/Panels.js'
+import {Utils, Constants, Forms, Buttons, Inputs} from './internal.js'
 
 /* Application instance */
 const TApplication = Object.create(null);
@@ -190,6 +183,9 @@ Utils.addStyleNode(Constants.APPLICATION_STYLES);
 document.body.classList.add('TApplication');
 
 /* Add base components */
+
+console.info(Forms);
+
 TApplication.addComponentsToLibrary(Forms);
 TApplication.addComponentsToLibrary(Buttons);
 TApplication.addComponentsToLibrary(Inputs);
@@ -204,4 +200,4 @@ TApplication.icon = icon;
 
 /* ----------------------------------------------------------------------------- */
 export default TApplication;
-export {TApplication, Panels /* and other non-essential modules */}
+export {TApplication}

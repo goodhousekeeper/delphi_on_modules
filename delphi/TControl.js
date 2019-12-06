@@ -1,7 +1,4 @@
-import TApplication from './TApplication.js'
-import TComponent from './TComponent.js'
-import * as Constants from './Constants.js'
-import Utils from './Utils.js'
+import {Utils, Constants, TApplication, TComponent} from './internal.js'
 
 export default class TControl extends TComponent {
     createNode() {
