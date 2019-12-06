@@ -1,5 +1,5 @@
 {
-  "name": "delphi.js",
+  "name": "delphi.js boilerplate",
   "version": "1.0.0",
   "description": "My tribute to Delphi 7 on Windows XP. Let the Web be a new home of yours",
   "scripts": {
@@ -8,5 +8,12 @@
   "keywords": [],
   "author": "goodhousekeeper",
   "homepage": "https://github.com/goodhousekeeper/delphi_on_modules#readme",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2"
+  },
+  "dependencies": {
+    "delphi-js": "^1.0.2"
+  }
 }
