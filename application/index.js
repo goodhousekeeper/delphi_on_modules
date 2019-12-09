@@ -1,5 +1,6 @@
 /* Get application instance */
-import {TApplication as App, Panels} from '../delphi-js/index.js'
+//import {TApplication as App, Panels} from '../delphi-js/index.js'
+import {TApplication as App, Panels} from '../node_modules/delphi-js'
 
 /* Get custom component modules */
 
