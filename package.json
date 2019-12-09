@@ -1,5 +1,5 @@
 {
-  "name": "delphi.js boilerplate",
+  "name": "delphi-js boilerplate",
   "version": "1.0.0",
   "description": "My tribute to Delphi 7 on Windows XP. Let the Web be a new home of yours",
   "scripts": {
@@ -14,6 +14,6 @@
     "eslint": "^6.7.2"
   },
   "dependencies": {
-    "delphi-js": "^1.1.1"
+    "delphi-js": "^1.1.2"
   }
 }
