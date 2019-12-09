@@ -196,14 +196,14 @@ const onFormCreate = (formObject) => {
     if (!button.enabled()) {
       return false
     }
-    oneMoreForm = app.createForm(otherFormModule).showModal()
+    oneMoreForm = App.createForm(otherFormModule).showModal()
   });
 
   button2.onClick(() => {
     if (!button2.enabled()) {
       return false
     }
-    oneMoreForm = app.destroyObject(oneMoreForm)
+    oneMoreForm = App.destroyObject(oneMoreForm)
   });
 
   /* ------------------------------------------------------------- */
