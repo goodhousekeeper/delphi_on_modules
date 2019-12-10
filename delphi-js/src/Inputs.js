@@ -38,13 +38,13 @@ const MODULE_STYLES = `
 }
 
 .TApplication .TForm .TEdit.Invalidated {
-  background-color: var(--input-background-invalidated-color);
-  border-color: var(--input-border-invalidated-color);
+  background-color: var(--input-invalidated-background-color);
+  border-color: var(--input-invalidated-border-color);
 }
 
 .TApplication .TForm .TEdit.Disabled {
-  background-color: var(--input-background-disabled-color);
-  border-color: var(--input-border-disabled-color);
+  background-color: var(--input-disabled-background-color);
+  border-color: var(--input-disabled-border-color);
 }
 
 .TApplication .TForm .TStaticText {
