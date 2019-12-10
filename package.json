@@ -9,10 +9,6 @@
   "author": "goodhousekeeper",
   "homepage": "https://github.com/goodhousekeeper/delphi_on_modules#readme",
   "license": "MIT",
-  "devDependencies": {
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.7.2"
-  },
   "dependencies": {
     "delphi-js": "^1.1.2"
   }
