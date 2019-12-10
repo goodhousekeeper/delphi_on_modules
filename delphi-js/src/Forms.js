@@ -19,7 +19,7 @@ const MODULE_STYLES = `
     min-width: 100px;
     color: var(--form-color);
     text-shadow: 1px 1px 0 var(--form-shadow-color);
-    background-color: var(--form-back-layer);
+    background-color: var(--form-back-layer-color);
 }
 
 .TApplication .TForm .Borders {

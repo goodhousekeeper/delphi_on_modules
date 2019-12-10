@@ -51,7 +51,7 @@ const MODULE_STYLES = `
 .TApplication .TForm .TButton.Disabled .TButton__Caption,
 .TApplication .TForm .TBitButton.Disabled .TBitButton__Caption
  {
-    color:  var(--form-color-disabled);
+    color:  var(--form-disabled-color);
 }
 
 .TApplication .TForm .TBitButton .TBitButton__Caption {

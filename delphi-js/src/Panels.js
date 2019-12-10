@@ -5,7 +5,7 @@ const MODULE_STYLES = `
 
 .TApplication .TForm .TPanel, .TApplication .TForm .TGroupBox {
     box-sizing: border-box;
-    background-color: var(--form-back-layer);
+    background-color: var(--form-back-layer-color);
     border: 1px solid var(--panel-border-color);
     box-shadow: inset 1px 1px 0 0 var(--panel-border-shadow-color), 1px 1px 0 0 var(--panel-border-shadow-color);
     margin: 0 1px 1px 0;
@@ -58,11 +58,11 @@ const MODULE_STYLES = `
   left: 8px;
   height: 16px;
   line-height: 16px; 
-  background-color: var(--form-back-layer);
+  background-color: var(--form-back-layer-color);
 }
 
 .TApplication .TForm .TGroupBox.Disabled .TGroupBox__Caption {
-  color:  var(--form-color-disabled);
+  color:  var(--form-disabled-color);
 }
 
 `;

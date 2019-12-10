@@ -34,7 +34,7 @@ const MODULE_STYLES = `
   opacity: 0.5;
 }
 .TApplication .TForm .TEdit.Disabled .TEdit__Input {
-  color: var(--form-color-disabled);    
+  color: var(--form-disabled-color);    
 }
 
 .TApplication .TForm .TEdit.Invalidated {
@@ -70,7 +70,7 @@ const MODULE_STYLES = `
 
 .TApplication .TForm .TStaticText.Disabled .TStaticText__Caption
  {
-    color:  var(--form-color-disabled);
+    color:  var(--form-disabled-color);
 }
 
 `;

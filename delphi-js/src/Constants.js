@@ -36,10 +36,9 @@ body {
     background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAAAXNSR0IArs4c6QAAAAZQTFRF////zsrFFOhhzwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfbCA8IIAxOHyTqAAAAbElEQVR42u3PMQ0AAAgDsMlHNhqWcHC0Dpqp5S0XFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXF5cjC3IDYNdXepeXAAAAAElFTkSuQmCC');
     background-size: auto;
     background-repeat: repeat;
-    --form-color: #1F2933;
-    --form-color-disabled: #ACA899;
+    --form-disabled-color: #ACA899;
     --form-shadow-color: #FFF;
-    --form-back-layer: #EEEBD6;
+    --form-back-layer-color: #EEEBD6;
     --form-caption-color: #FFF;
     --form-caption-shadow-color: #072BA2;
     --button-background-color: #F3F3F3;
