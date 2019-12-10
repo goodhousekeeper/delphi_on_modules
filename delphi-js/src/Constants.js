@@ -24,18 +24,11 @@ html {
     -ms-user-select: none;
     user-select: none;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    font-size: 14px;
     overflow: auto;
 }
 
-body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background-color: #E6E6E6;
-    background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAAAXNSR0IArs4c6QAAAAZQTFRF////zsrFFOhhzwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfbCA8IIAxOHyTqAAAAbElEQVR42u3PMQ0AAAgDsMlHNhqWcHC0Dpqp5S0XFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXF5cjC3IDYNdXepeXAAAAAElFTkSuQmCC');
-    background-size: auto;
-    background-repeat: repeat;
+:root {
+    --font-size: 14px;
     --form-disabled-color: #ACA899;
     --form-shadow-color: #FFF;
     --form-back-layer-color: #EEEBD6;
@@ -55,6 +48,17 @@ body {
     --input-border-invalidated-color: #E12D39;
     --input-background-disabled-color: #F5F4EA;    
     --input-border-disabled-color: #C9C7BA;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #E6E6E6;
+    background-image: url('data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAAAXNSR0IArs4c6QAAAAZQTFRF////zsrFFOhhzwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfbCA8IIAxOHyTqAAAAbElEQVR42u3PMQ0AAAgDsMlHNhqWcHC0Dpqp5S0XFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXF5cjC3IDYNdXepeXAAAAAElFTkSuQmCC');
+    background-size: auto;
+    background-repeat: repeat;
+    font-size: var(--font-size);
 }
 `;
 
