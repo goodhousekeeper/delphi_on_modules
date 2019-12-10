@@ -62,7 +62,7 @@ const MODULE_STYLES = `
 }
 
 .TApplication .TForm .TGroupBox.Disabled .TGroupBox__Caption {
-  color:  var(--form-disabled-color);
+  color:  var(--font-disabled-color);
 }
 
 `;

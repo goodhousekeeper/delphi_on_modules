@@ -29,8 +29,9 @@ html {
 
 :root {
     --font-size: 14px;
-    --form-disabled-color: #ACA899;
-    --form-shadow-color: #FFF;
+    --font-color: #1F2933;
+    --font-disabled-color: #ACA899;
+    --font-shadow-color: #FFF;
     --form-back-layer-color: #EEEBD6;
     --form-caption-color: #FFF;
     --form-caption-shadow-color: #072BA2;

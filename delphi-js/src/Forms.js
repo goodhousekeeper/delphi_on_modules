@@ -17,8 +17,8 @@ const MODULE_STYLES = `
     overflow: hidden;
     min-height: 32px;
     min-width: 100px;
-    color: var(--form-color);
-    text-shadow: 1px 1px 0 var(--form-shadow-color);
+    color: var(--font-color);
+    text-shadow: 1px 1px 0 var(--font-shadow-color);
     background-color: var(--form-back-layer-color);
 }
 
