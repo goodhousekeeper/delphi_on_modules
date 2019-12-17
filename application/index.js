@@ -24,15 +24,15 @@ import * as panelsFormModule from './forms/panels_form.js'
 
 /* Export TApplication, Modules and Forms */
 export {
-  App,
-  /*-------------*/
-  mainFormModule,
-  splashFormModule,
-  otherFormModule,
+    App,
+    /*-------------*/
+    mainFormModule,
+    splashFormModule,
+    otherFormModule,
 
-  buttonsFormModule,
-  inputsFormModule,
-  panelsFormModule
+    buttonsFormModule,
+    inputsFormModule,
+    panelsFormModule
 }
 
 /* Initial custom code */
@@ -43,14 +43,14 @@ let splashForm;
 App.addComponentsToLibrary(Panels);
 
 function showMainForm() {
-  mainForm = App.createForm(mainFormModule);
-  mainForm.show();
+    mainForm = App.createForm(mainFormModule);
+    mainForm.show();
 }
 
 
 function showSplashForm() {
-  splashForm = App.createForm(splashFormModule);
-  splashForm.show();
+    splashForm = App.createForm(splashFormModule);
+    splashForm.show();
 }
 
 //showMainForm()
@@ -59,7 +59,7 @@ function showSplashForm() {
 showSplashForm();
 
 setTimeout(() => {
-  splashForm.hide();
-  showMainForm();
+    splashForm.hide();
+    showMainForm();
 }, 2000);
 
