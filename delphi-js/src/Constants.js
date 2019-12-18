@@ -38,6 +38,7 @@ html {
     --form-background-color: #EEEBD6;
     --form-caption-font-color: #FFF;
     --form-caption-font-shadow-color: #072BA2;
+    --overlay-background-color: rgba(0, 0, 0, 0.25);
     --button-background-color: #F3F3F3;
     --button-border-color: #003C74;
     --button-active-background-color: #E3E3DC;

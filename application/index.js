@@ -56,7 +56,7 @@ function showMainForm() {
 
 function showSplashForm() {
     splashForm = App.createForm(splashFormModule);
-    splashForm.show();
+    splashForm.showModal();
 }
 
 //showMainForm()
