@@ -10,6 +10,6 @@
   "homepage": "https://github.com/goodhousekeeper/delphi_on_modules#readme",
   "license": "MIT",
   "dependencies": {
-    "delphi-js": "^1.1.3"
+    "delphi-js": "^1.1.4"
   }
 }
