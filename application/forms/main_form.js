@@ -5,7 +5,7 @@ const properties = {
     top: 20,
     left: 20,
     bottom: 20,
-    width: 500,
+    width: 450,
     minWidth: 300,
     minHeight: 300,
     sizeable: true,
@@ -136,9 +136,9 @@ import {
 
 const onFormCreate = (formObject) => {
     let oneMoreForm;
-    const buttonsForm = App.createForm(buttonsFormModule);
-    const inputsForm = App.createForm(inputsFormModule);
     const panelsForm = App.createForm(panelsFormModule);
+    const inputsForm = App.createForm(inputsFormModule);
+    const buttonsForm = App.createForm(buttonsFormModule);
 
     const viewComponentsGroupBox = formObject.openFormComponentsTGroupBox;
 
@@ -211,9 +211,9 @@ const onFormCreate = (formObject) => {
       buttonsForm.show()
       inputsForm.show()
     */
-    buttonsFormButton.click();
-    inputsFormButton.click();
     panelsFormButton.click();
+    inputsFormButton.click();
+    buttonsFormButton.click();
 };
 
 export {properties, onFormCreate}

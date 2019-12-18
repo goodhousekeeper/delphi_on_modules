@@ -2,9 +2,9 @@ const properties = {
     name: 'panelsForm',
     className: 'TForm',
     caption: 'Delphi.js - Panels',
-    width: 500,
-    height: 590,
-    left: 1060,
+    width: 400,
+    height: 440,
+    left: 490,
     top: 20,
     noMaximizeButton: true,
     icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARRJREFUeNqckr1thEAQhWeXJSRCBLZkiQS6cAku4Dq4Di5BIiHFsTtwAW7AGQldXHCUwD+3b6VBa0u3XjPSaDUjzfveDIiyLGnbNhJC8PtGRE/kFzdlVxCZ5/m5qqoPn+miKM62gCFrkde2bY2bRxFFEeV5DphQR8hN09C6rjSOI6mDZFqWhYZhEOoIeZqmHwICTRfZWtMMwvougAICSFdIKXcyv33fSwUVFEhXBEGwk/nVAmIXgL2/gsns+l8CuAGTMYy667pAYg8WcKVNruv6K8uyy02Hgg0fB7gBk/Uq3/p9xxwcmM/Ih3yUv8lhGBphhT2gyg3XDWwyHJl+HMcn3Xjx+RP10FXnZ5IklKapcXYXYAAH+jeXqzlizwAAAABJRU5ErkJggg==',
@@ -14,9 +14,9 @@ const properties = {
             className: 'TGroupBox',
             top: 8,
             left: 8,
-            width: 234,
-            height: 100,
-            caption: 'Default TGroupBox, no scroll',
+            width: 184,
+            height: 50,
+            caption: 'Default TGroupBox',
             contentProperties: []
         },
         {
@@ -24,8 +24,8 @@ const properties = {
             className: 'TGroupBox',
             top: 8,
             right: 8,
-            width: 234,
-            height: 100,
+            width: 184,
+            height: 50,
             caption: 'TGroupBox, disabled',
             enabled: false,
             contentProperties: []
@@ -33,48 +33,88 @@ const properties = {
         {
             name: 'defaultTPanel',
             className: 'TPanel',
-            top: 124,
+            top: 74,
             left: 8,
-            width: 234,
-            height: 100,
-            contentProperties: []
+            width: 184,
+            height: 50,
+            contentProperties: [
+                {
+                    name: 'defaultPanelTStaticText',
+                    className: 'TStaticText',
+                    caption: 'Default TPanel',
+                    height: 20,
+                    top: 4,
+                    right: 8,
+                    left: 8
+                }
+            ]
         },
         {
             name: 'disabledTPanel',
             className: 'TPanel',
-            top: 124,
+            top: 74,
             right: 8,
-            width: 234,
-            height: 100,
+            width: 184,
+            height: 50,
             enabled: false,
-            contentProperties: []
+            contentProperties: [
+                {
+                    name: 'disabledPanelTStaticText',
+                    className: 'TStaticText',
+                    caption: 'Disabled TPanel',
+                    height: 20,
+                    top: 4,
+                    right: 8,
+                    left: 8
+                }
+            ]
         },
         {
             name: 'loweredTPanel',
             className: 'TPanel',
-            top: 232,
+            top: 132,
             left: 8,
-            width: 234,
-            height: 100,
+            width: 184,
+            height: 50,
             lowered: true,
-            contentProperties: []
+            contentProperties: [
+                {
+                    name: 'loweredTPanelTStaticText',
+                    className: 'TStaticText',
+                    caption: 'Lowered TPanel',
+                    height: 20,
+                    top: 4,
+                    right: 8,
+                    left: 8
+                }
+            ]
         },
         {
             name: 'raisedTPanel',
             className: 'TPanel',
-            top: 232,
+            top: 132,
             right: 8,
-            width: 234,
-            height: 100,
+            width: 184,
+            height: 50,
             raised: true,
-            contentProperties: []
+            contentProperties: [
+                {
+                    name: 'raisedPanelTStaticText',
+                    className: 'TStaticText',
+                    caption: 'Raised TPanel',
+                    height: 20,
+                    top: 4,
+                    right: 8,
+                    left: 8
+                }
+            ]
         },
         {
             name: 'overflowXTPanel',
             className: 'TPanel',
-            top: 340,
+            top: 190,
             left: 8,
-            width: 234,
+            width: 184,
             height: 100,
             lowered: true,
             overflowX: true,
@@ -94,9 +134,9 @@ const properties = {
         {
             name: 'overflowYTPanel',
             className: 'TPanel',
-            top: 340,
+            top: 190,
             right: 8,
-            width: 234,
+            width: 184,
             height: 100,
             lowered: true,
             overflowY: true,
@@ -116,7 +156,7 @@ const properties = {
         {
             name: 'overflowALLTPanel',
             className: 'TPanel',
-            top: 448,
+            top: 298,
             left: 8,
             right: 8,
             height: 100,
