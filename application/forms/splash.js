@@ -5,6 +5,7 @@ const properties = {
     height: 302,
     screenCenter: true,
     noTitle: true,
+    maximized: true,
     contentProperties: [
         {
             name: 'splashTPicture',
