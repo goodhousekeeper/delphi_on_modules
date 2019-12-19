@@ -179,12 +179,49 @@ const properties = {
         {
             name: 'firstTAwesomePanel',
             className: 'TAwesomePanel',
+            raised: true,
             top: 406,
             left: 8,
             right: 8,
             height: 100,
-            borderRadius: 20,
+            borderRadius: 30,
             contentProperties: [
+                {
+                    name: 'secondTAwesomePanel',
+                    className: 'TAwesomePanel',
+                    lowered: true,
+                    top: 10,
+                    right: 10,
+                    bottom: 10,
+                    left: 10,
+                    borderRadius: 20,
+                    contentProperties: [
+                        {
+                            name: 'thirdTAwesomePanel',
+                            className: 'TAwesomePanel',
+                            raised: true,
+                            top: 10,
+                            right: 10,
+                            bottom: 10,
+                            left: 10,
+                            borderRadius: 10,
+                            contentProperties: [
+                                {
+                                    name: 'customTPanelTStaticText',
+                                    className: 'TStaticText',
+                                    caption: 'Stockpile of TAwesomePanels',
+                                    textAlign: 'center',
+                                    top: 12,
+                                    right: 8,
+                                    left: 8,
+                                    height: 20
+                                }
+
+                            ]
+                        },
+
+                    ]
+                },
 
             ]
         },
