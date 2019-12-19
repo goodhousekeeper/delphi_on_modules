@@ -3,6 +3,8 @@ import {TApplication as App, Panels} from '../delphi-js/index.js'
 
 /* Get custom component modules */
 
+import * as MyAwesomePanels from '../custom-components/AwesomePanels.js'
+
 /* Set up application instance */
 App.caption = 'New project on Delphi.js';
 App.setMainForm('mainForm');
@@ -18,6 +20,7 @@ App.setCSSVariable('--background-image', 'url("application/resources/images/wind
 
 /* Add components */
 App.addComponentsToLibrary(Panels);
+App.addComponentsToLibrary(MyAwesomePanels);
 
 /* Import forms */
 import * as mainFormModule from './forms/main_form.js'

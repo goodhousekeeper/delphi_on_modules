@@ -3,7 +3,7 @@ const properties = {
     className: 'TForm',
     caption: 'Delphi.js - Panels',
     width: 400,
-    height: 440,
+    height: 548,
     left: 490,
     top: 20,
     noMaximizeButton: true,
@@ -174,6 +174,18 @@ const properties = {
                     caption: 'TPanel with both vertical and horisontal scroll',
                     contentProperties: []
                 }
+            ]
+        },
+        {
+            name: 'firstTAwesomePanel',
+            className: 'TAwesomePanel',
+            top: 406,
+            left: 8,
+            right: 8,
+            height: 100,
+            borderRadius: 20,
+            contentProperties: [
+
             ]
         },
     ]
