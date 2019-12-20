@@ -14,6 +14,7 @@ import TButton from './TButton.js'
 import TBitButton from './TBitButton.js'
 import TStaticText from './TStaticText.js'
 import TEdit from './TEdit.js'
+import TPanel from './TPanel.js'
 
 import * as Panels from './Panels.js'
 
@@ -32,6 +33,7 @@ export {
     TBitButton,
     TStaticText,
     TEdit,
+    TPanel,
 
     Panels
 }
