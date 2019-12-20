@@ -1,8 +1,7 @@
 /* Get application instance */
-import {TApplication as App } from '../delphi-js/index.js'
-
+import {TApplication as App} from '../delphi-js/index.js'
 /* Get custom component modules */
-//import * as MyAwesomePanels from '../custom-components/AwesomePanels.js'
+import TAwesomePanel from '../custom-components/TAwesomePanels.js'
 
 /* Set up application instance */
 App.caption = 'New project on Delphi.js';
@@ -16,9 +15,6 @@ App.setCSSVariable('--background-image-repeat', 'no-repeat');
 App.setCSSVariable('--background-image-size', 'cover');
 App.setCSSVariable('--background-image-position', 'center center');
 App.setCSSVariable('--background-image', 'url("application/resources/images/windows_xp.jpg")');
-
-/* Add components */
-//App.addComponentsToLibrary(MyAwesomePanels);
 
 /* Import forms */
 import * as mainFormModule from './forms/main_form.js'
@@ -59,7 +55,6 @@ function showSplashForm() {
 }
 
 //showMainForm()
-
 
 showSplashForm();
 

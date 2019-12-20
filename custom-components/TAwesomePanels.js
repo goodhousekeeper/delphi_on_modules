@@ -1,9 +1,8 @@
-import {TApplication as App, Panels} from '../delphi-js/index.js';
+import {TApplication, TPanel} from '../delphi-js/index.js';
 
-App.addComponentsToLibrary(Panels);
-
-const MODULE_STYLES = `
+const style = `
 /* Styles for TAwesomePanel */
+
 .TApplication .TForm .TAwesomePanel {
     --border-radius: 0px;   
     border-radius: var(--border-radius);
@@ -17,7 +16,9 @@ const MODULE_STYLES = `
 }
 `;
 
-class TAwesomePanel extends Panels.TPanel {
+class TAwesomePanel extends TPanel {
+    static NAME = 'TAwesomePanel';
+    static STYLE = style;
     createNode() {
         super.createNode();
         const container = this.objectContainer;
@@ -29,4 +30,5 @@ class TAwesomePanel extends Panels.TPanel {
     }
 }
 
-export {MODULE_STYLES, TAwesomePanel}
+TApplication.addSingleComponentToLibrary(TAwesomePanel);
+export default TAwesomePanel;

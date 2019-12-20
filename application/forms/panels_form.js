@@ -178,7 +178,7 @@ const properties = {
         },
         {
             name: 'firstTAwesomePanel',
-            className: 'TPanel',
+            className: 'TAwesomePanel',
             raised: true,
             top: 406,
             left: 8,
@@ -188,7 +188,7 @@ const properties = {
             contentProperties: [
                 {
                     name: 'secondTAwesomePanel',
-                    className: 'TPanel',
+                    className: 'TAwesomePanel',
                     lowered: true,
                     top: 10,
                     right: 10,
@@ -198,7 +198,7 @@ const properties = {
                     contentProperties: [
                         {
                             name: 'thirdTAwesomePanel',
-                            className: 'TPanel',
+                            className: 'TAwesomePanel',
                             raised: true,
                             top: 10,
                             right: 10,
@@ -209,11 +209,11 @@ const properties = {
                                 {
                                     name: 'customTPanelTStaticText',
                                     className: 'TStaticText',
-                                    caption: 'Stockpile of TAwesomePanels',
+                                    caption: 'Stockpile of custom AwesomePanels',
                                     textAlign: 'center',
                                     top: 12,
-                                    right: 8,
-                                    left: 8,
+                                    right: 0,
+                                    left: 0,
                                     height: 20
                                 }
 
