@@ -1,4 +1,4 @@
-import {Utils, Constants, Forms, Buttons, Inputs} from './internal.js'
+import {Utils, Constants, Buttons, Inputs} from './internal.js'
 
 /* Application instance */
 const TApplication = Object.create(null);
@@ -193,7 +193,6 @@ Object.defineProperties(TApplication, {
 
 /* ----------------------------------------------------------------------------- */
 
-/* Application Instance Initialize */
 Utils.addStyleNode(Constants.APPLICATION_STYLES);
 document.body.classList.add('TApplication');
 

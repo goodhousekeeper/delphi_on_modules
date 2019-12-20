@@ -1,7 +1,7 @@
 import {Constants, TControl, TApplication} from "./internal.js";
 
 const style = `
-'/* Styles for TOverlay */
+/* Styles for TOverlay */
 
 .TOverlay {
     top: 0;

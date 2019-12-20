@@ -7,27 +7,32 @@ import TApplication from './TApplication.js'
 /* Import essential components module */
 import TComponent from './TComponent.js'
 import TControl from './TControl.js'
-import * as Forms from './Forms.js'
 import TOverlay from './TOverlay.js'
+import TForm from './TForm.js'
+import TPicture from './TPicture.js'
 import * as Buttons from './Buttons.js'
 import * as Inputs from './Inputs.js'
 import * as Panels from './Panels.js'
 
-TApplication.addComponentsToLibrary(Forms);
+
 TApplication.addComponentsToLibrary(Buttons);
 TApplication.addComponentsToLibrary(Inputs);
 
-/* Add core Objects */
+/* Create  core Objects */
 TApplication.createObject(Constants.OVERLAY_PROPERTIES);
 
 export {
     Constants,
     Utils,
+
     TApplication,
+
     TComponent,
     TControl,
     TOverlay,
-    Forms,
+    TForm,
+    TPicture,
+
     Buttons,
     Inputs,
     Panels
