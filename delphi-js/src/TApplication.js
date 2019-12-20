@@ -3,7 +3,6 @@ import {Utils, Constants} from './internal.js'
 /* Application instance */
 const TApplication = Object.create(null);
 /* Private properties */
-const componentModulesLoaded = [];
 const componentLibrary = Object.create(null);
 const objectStorage = Object.create(null);
 const modalStack = [];
@@ -47,9 +46,6 @@ Object.defineProperties(TApplication, {
     },
     modalStack: {
         value: modalStack
-    },
-    componentModulesLoaded: {
-        value: componentModulesLoaded
     },
     contentContainer: {
         value: document.body
