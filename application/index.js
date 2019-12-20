@@ -1,5 +1,5 @@
 /* Get application instance */
-import {TApplication as App,  Panels} from '../delphi-js/index.js'
+import {TApplication as App } from '../delphi-js/index.js'
 
 /* Get custom component modules */
 //import * as MyAwesomePanels from '../custom-components/AwesomePanels.js'
@@ -46,8 +46,6 @@ export {
 
 let mainForm;
 let splashForm;
-
-App.addComponentsToLibrary(Panels);
 
 function showMainForm() {
     mainForm = App.createForm(mainFormModule);

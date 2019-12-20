@@ -10,7 +10,7 @@ export {
     TBitButton,
     TStaticText,
     TEdit,
-
-    Panels
+    TPanel,
+    TGroupBox
 
 } from './src/internal.js'

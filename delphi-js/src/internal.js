@@ -15,8 +15,7 @@ import TBitButton from './TBitButton.js'
 import TStaticText from './TStaticText.js'
 import TEdit from './TEdit.js'
 import TPanel from './TPanel.js'
-
-import * as Panels from './Panels.js'
+import TGroupBox from './TGroupBox.js'
 
 export {
     Constants,
@@ -34,6 +33,6 @@ export {
     TStaticText,
     TEdit,
     TPanel,
+    TGroupBox
 
-    Panels
 }
