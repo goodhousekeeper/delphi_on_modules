@@ -186,14 +186,6 @@ Object.defineProperties(TApplication, {
 Utils.addStyleNode(Constants.APPLICATION_STYLES);
 document.body.classList.add('TApplication');
 
-/* Add base components */
-TApplication.addComponentsToLibrary(Forms);
-TApplication.addComponentsToLibrary(Buttons);
-TApplication.addComponentsToLibrary(Inputs);
-
-/* Add core Objects */
-TApplication.createObject(Constants.OVERLAY_PROPERTIES);
-
 /* Set up base properties */
 TApplication.caption = caption;
 TApplication.icon = icon;
