@@ -1,8 +1,12 @@
 import {TApplication} from './internal.js'
 
+const style = `
+/* Styles for TComponent */
+`;
+
 class TComponent {
     static NAME = 'TComponent';
-    static STYLE = '/* Styles for TComponent */';
+    static STYLE = style;
 
     constructor(properties) {
         Object.defineProperties(this, {

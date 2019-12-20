@@ -1,8 +1,12 @@
 import {Constants, Utils, TComponent, TApplication} from './internal.js'
 
+const style = `
+/* Styles for TControl */
+`;
+
 class TControl extends TComponent {
     static NAME = 'TControl';
-    static STYLE = '/* Styles for TControl */';
+    static STYLE = style;
 
     createNode() {
         const objectContainer = document.createElement('div');
