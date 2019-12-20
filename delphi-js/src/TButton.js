@@ -50,7 +50,6 @@ const style = `
 }
 `;
 
-
 class TButton extends TControl {
     static NAME = 'TButton';
     static STYLE = style;

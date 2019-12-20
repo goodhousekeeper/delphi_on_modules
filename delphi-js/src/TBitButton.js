@@ -1,6 +1,5 @@
 import {TApplication, TButton} from "./internal.js";
 
-
 const style = `
 /* Styles for TBitButton */
 

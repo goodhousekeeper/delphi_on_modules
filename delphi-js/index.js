@@ -6,6 +6,9 @@ export {
     TOverlay,
     TForm,
     TPicture,
+    TButton,
+    TBitButton,
+    TStaticText,
 
     Panels
 

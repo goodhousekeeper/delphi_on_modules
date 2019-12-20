@@ -12,6 +12,7 @@ import TForm from './TForm.js'
 import TPicture from './TPicture.js'
 import TButton from './TButton.js'
 import TBitButton from './TBitButton.js'
+import TStaticText from './TStaticText.js'
 
 import * as Inputs from './Inputs.js'
 import * as Panels from './Panels.js'
@@ -32,6 +33,7 @@ export {
     TPicture,
     TButton,
     TBitButton,
+    TStaticText,
 
     Inputs,
     Panels

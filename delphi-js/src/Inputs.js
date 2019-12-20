@@ -47,32 +47,6 @@ const MODULE_STYLES = `
   border-color: var(--input-disabled-border-color);
 }
 
-.TApplication .TForm .TStaticText {
-  box-sizing: border-box;
-}
-
-.TApplication .TForm .TStaticText .TStaticText__Caption {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: transparent;
-  color: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  text-align: inherit;
-  font-style: inherit;
-  font-family: inherit;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0;
-}
-
-.TApplication .TForm .TStaticText.Disabled .TStaticText__Caption
- {
-    color:  var(--font-disabled-color);
-}
-
 `;
 
 class TEdit extends TControl {
@@ -132,4 +106,4 @@ class TStaticText extends TControl {
     }
 }
 
-export {MODULE_STYLES, TEdit, TStaticText}
+export {MODULE_STYLES, TEdit}
