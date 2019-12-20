@@ -184,8 +184,6 @@ Object.defineProperties(TApplication, {
                 Utils.updateStyleNode(componentModule.STYLE);
             }
             componentLibrary[componentModule.NAME] = componentModule;
-
-            console.info('componentLibrary:', componentLibrary);
         }
     },
     setCSSVariable: {

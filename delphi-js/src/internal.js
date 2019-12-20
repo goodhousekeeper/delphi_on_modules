@@ -8,6 +8,7 @@ import TApplication from './TApplication.js'
 import TComponent from './TComponent.js'
 import TControl from './TControl.js'
 import * as Forms from './Forms.js'
+import TOverlay from './TOverlay.js'
 import * as Buttons from './Buttons.js'
 import * as Inputs from './Inputs.js'
 import * as Panels from './Panels.js'
@@ -25,6 +26,7 @@ export {
     TApplication,
     TComponent,
     TControl,
+    TOverlay,
     Forms,
     Buttons,
     Inputs,

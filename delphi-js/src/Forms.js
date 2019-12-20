@@ -623,4 +623,4 @@ class TPicture extends TControl {
     }
 }
 
-export {MODULE_STYLES, TForm, TOverlay, TPicture}
+export {MODULE_STYLES, TForm, TPicture}
