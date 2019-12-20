@@ -13,12 +13,9 @@ import TPicture from './TPicture.js'
 import TButton from './TButton.js'
 import TBitButton from './TBitButton.js'
 import TStaticText from './TStaticText.js'
+import TEdit from './TEdit.js'
 
-import * as Inputs from './Inputs.js'
 import * as Panels from './Panels.js'
-
-
-TApplication.addComponentsToLibrary(Inputs);
 
 export {
     Constants,
@@ -34,7 +31,7 @@ export {
     TButton,
     TBitButton,
     TStaticText,
+    TEdit,
 
-    Inputs,
     Panels
 }

@@ -1,10 +1,7 @@
-import {TControl} from './internal.js'
+import {TApplication, TControl} from "./internal.js";
 
-const MODULE_STYLES = `
-[contenteditable] {
-  -webkit-user-select: text;
-  user-select: text;
-}
+const style = `
+/* Styles for TEdit */
 
 .TApplication .TForm .TEdit {
   box-sizing: border-box;
@@ -46,10 +43,11 @@ const MODULE_STYLES = `
   background-color: var(--input-disabled-background-color);
   border-color: var(--input-disabled-border-color);
 }
-
 `;
 
 class TEdit extends TControl {
+    static NAME = 'TEdit';
+    static STYLE = style;
     createNode() {
         super.createNode();
         const container = this.objectContainer;
@@ -93,17 +91,5 @@ class TEdit extends TControl {
     }
 }
 
-class TStaticText extends TControl {
-    createNode() {
-        super.createNode();
-        const container = this.objectContainer;
-        const caption = document.getElementById(`${container.id}.Caption`);
-        container.classList.add('TStaticText');
-
-        if (!this.getProperty('multiLine')) {
-            caption.style.lineHeight = (parseInt(container.style.height, 10)) + 'px';
-        }
-    }
-}
-
-export {MODULE_STYLES, TEdit}
+TApplication.addSingleComponentToLibrary(TEdit);
+export default TEdit;

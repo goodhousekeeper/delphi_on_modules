@@ -9,6 +9,7 @@ export {
     TButton,
     TBitButton,
     TStaticText,
+    TEdit,
 
     Panels
 
