@@ -27,7 +27,6 @@ class Utils {
             return;
         }
         styleNode.innerHTML += style.replace(/\s+/g, ' ');
-        console.info(style);
     }
 
     static addFaviconNode(favicon) {

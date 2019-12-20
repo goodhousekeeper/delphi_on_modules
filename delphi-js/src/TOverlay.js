@@ -33,4 +33,6 @@ class TOverlay extends TControl {
 }
 
 TApplication.addSingleComponentToLibrary(TOverlay);
+TApplication.createObject(Constants.OVERLAY_PROPERTIES);
+
 export default TOverlay;

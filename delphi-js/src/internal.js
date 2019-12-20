@@ -18,8 +18,6 @@ import * as Panels from './Panels.js'
 TApplication.addComponentsToLibrary(Buttons);
 TApplication.addComponentsToLibrary(Inputs);
 
-/* Create  core Objects */
-TApplication.createObject(Constants.OVERLAY_PROPERTIES);
 
 export {
     Constants,
