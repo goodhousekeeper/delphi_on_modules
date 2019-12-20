@@ -3,7 +3,6 @@ export {
 
     TComponent,
     TControl,
-    TOverlay,
     TForm,
     TPicture,
     TButton,
