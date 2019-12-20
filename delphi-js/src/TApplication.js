@@ -1,4 +1,4 @@
-import {Utils, Constants, Buttons, Inputs} from './internal.js'
+import {Utils, Constants, Inputs} from './internal.js'
 
 /* Application instance */
 const TApplication = Object.create(null);

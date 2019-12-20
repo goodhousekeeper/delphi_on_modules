@@ -10,14 +10,14 @@ import TControl from './TControl.js'
 import TOverlay from './TOverlay.js'
 import TForm from './TForm.js'
 import TPicture from './TPicture.js'
-import * as Buttons from './Buttons.js'
+import TButton from './TButton.js'
+import TBitButton from './TBitButton.js'
+
 import * as Inputs from './Inputs.js'
 import * as Panels from './Panels.js'
 
 
-TApplication.addComponentsToLibrary(Buttons);
 TApplication.addComponentsToLibrary(Inputs);
-
 
 export {
     Constants,
@@ -30,8 +30,9 @@ export {
     TOverlay,
     TForm,
     TPicture,
+    TButton,
+    TBitButton,
 
-    Buttons,
     Inputs,
     Panels
 }
