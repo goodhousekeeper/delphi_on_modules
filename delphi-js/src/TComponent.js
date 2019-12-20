@@ -51,6 +51,6 @@ class TComponent {
     }
 }
 
-TApplication.addSingleComponentToLibrary(TComponent);
+TApplication.addComponentToLibrary(TComponent);
 
 export default TComponent;

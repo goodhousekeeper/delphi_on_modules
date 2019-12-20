@@ -72,5 +72,5 @@ class TPanel extends TControl {
     }
 }
 
-TApplication.addSingleComponentToLibrary(TPanel);
+TApplication.addComponentToLibrary(TPanel);
 export default TPanel;

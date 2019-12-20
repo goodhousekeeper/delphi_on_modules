@@ -265,5 +265,5 @@ class TControl extends TComponent {
     }
 }
 
-TApplication.addSingleComponentToLibrary(TControl);
+TApplication.addComponentToLibrary(TControl);
 export default TControl;

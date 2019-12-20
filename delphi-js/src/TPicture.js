@@ -41,5 +41,5 @@ class TPicture extends TControl {
     }
 }
 
-TApplication.addSingleComponentToLibrary(TPicture);
+TApplication.addComponentToLibrary(TPicture);
 export default TPicture;

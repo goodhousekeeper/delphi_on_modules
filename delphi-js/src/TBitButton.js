@@ -58,5 +58,5 @@ class TBitButton extends TButton {
     }
 }
 
-TApplication.addSingleComponentToLibrary(TBitButton);
+TApplication.addComponentToLibrary(TBitButton);
 export default TBitButton;

@@ -45,6 +45,6 @@ class TStaticText extends TControl {
     }
 }
 
-TApplication.addSingleComponentToLibrary(TStaticText);
+TApplication.addComponentToLibrary(TStaticText);
 
 export default TStaticText;

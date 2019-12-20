@@ -69,5 +69,5 @@ class TButton extends TControl {
     }
 }
 
-TApplication.addSingleComponentToLibrary(TButton);
+TApplication.addComponentToLibrary(TButton);
 export default TButton;

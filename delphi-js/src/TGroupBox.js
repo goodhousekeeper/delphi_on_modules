@@ -56,5 +56,5 @@ class TGroupBox extends TControl {
     }
 }
 
-TApplication.addSingleComponentToLibrary(TGroupBox);
+TApplication.addComponentToLibrary(TGroupBox);
 export default TGroupBox;

@@ -156,26 +156,7 @@ Object.defineProperties(TApplication, {
             return result;
         }
     },
-    addComponentsToLibrary: {
-        value: (componentModule) => {
-            if (TApplication.componentModulesLoaded.indexOf(componentModule) !== -1) {
-                return false;
-            }
-            for (const [key, value] of Object.entries(componentModule)) {
-                if (key === 'MODULE_STYLES') {
-                    Utils.updateStyleNode(value);
-                    continue;
-                }
-                if (componentLibrary[key]) {
-                    throw new Error(`Component with name ${value.name} already exists`);
-                } else {
-                    componentLibrary[key] = value;
-                }
-            }
-            TApplication.componentModulesLoaded.push(componentModule);
-        }
-    },
-    addSingleComponentToLibrary: {
+    addComponentToLibrary: {
         value: (componentModule) => {
             if (componentModule.NAME in componentLibrary) {
                 return;

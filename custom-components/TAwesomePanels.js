@@ -30,5 +30,5 @@ class TAwesomePanel extends TPanel {
     }
 }
 
-TApplication.addSingleComponentToLibrary(TAwesomePanel);
+TApplication.addComponentToLibrary(TAwesomePanel);
 export default TAwesomePanel;

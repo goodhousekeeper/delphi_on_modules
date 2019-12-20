@@ -91,5 +91,5 @@ class TEdit extends TControl {
     }
 }
 
-TApplication.addSingleComponentToLibrary(TEdit);
+TApplication.addComponentToLibrary(TEdit);
 export default TEdit;

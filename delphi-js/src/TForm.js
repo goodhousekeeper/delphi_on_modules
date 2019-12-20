@@ -564,5 +564,5 @@ class TForm extends TControl {
     }
 }
 
-TApplication.addSingleComponentToLibrary(TForm);
+TApplication.addComponentToLibrary(TForm);
 export default TForm;
