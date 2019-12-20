@@ -175,6 +175,19 @@ Object.defineProperties(TApplication, {
             TApplication.componentModulesLoaded.push(componentModule);
         }
     },
+    addSingleComponentToLibrary: {
+        value: (componentModule) => {
+            if (componentModule.NAME in componentLibrary) {
+                return;
+            }
+            if (componentModule.STYLE !== undefined) {
+                Utils.updateStyleNode(componentModule.STYLE);
+            }
+            componentLibrary[componentModule.NAME] = componentModule;
+
+            console.info('componentLibrary:', componentLibrary);
+        }
+    },
     setCSSVariable: {
         value: Utils.setCSSVariable
     }

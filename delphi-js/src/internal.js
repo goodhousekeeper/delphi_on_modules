@@ -12,7 +12,6 @@ import * as Buttons from './Buttons.js'
 import * as Inputs from './Inputs.js'
 import * as Panels from './Panels.js'
 
-/* Add base components */
 TApplication.addComponentsToLibrary(Forms);
 TApplication.addComponentsToLibrary(Buttons);
 TApplication.addComponentsToLibrary(Inputs);

@@ -1,6 +1,9 @@
 import {TApplication} from './internal.js'
 
-export default class TComponent {
+class TComponent {
+    static NAME = 'TComponent';
+    static STYLE = '/* Styles for TComponent */';
+
     constructor(properties) {
         Object.defineProperties(this, {
             _properties: {
@@ -43,3 +46,7 @@ export default class TComponent {
         }
     }
 }
+
+TApplication.addSingleComponentToLibrary(TComponent);
+
+export default TComponent;
