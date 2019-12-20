@@ -178,7 +178,7 @@ const properties = {
         },
         {
             name: 'firstTAwesomePanel',
-            className: 'TAwesomePanel',
+            className: 'TPanel',
             raised: true,
             top: 406,
             left: 8,
@@ -188,7 +188,7 @@ const properties = {
             contentProperties: [
                 {
                     name: 'secondTAwesomePanel',
-                    className: 'TAwesomePanel',
+                    className: 'TPanel',
                     lowered: true,
                     top: 10,
                     right: 10,
@@ -198,7 +198,7 @@ const properties = {
                     contentProperties: [
                         {
                             name: 'thirdTAwesomePanel',
-                            className: 'TAwesomePanel',
+                            className: 'TPanel',
                             raised: true,
                             top: 10,
                             right: 10,
