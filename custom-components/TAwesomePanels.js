@@ -17,8 +17,9 @@ const style = `
 `;
 
 class TAwesomePanel extends TPanel {
-    static NAME = 'TAwesomePanel';
-    static STYLE = style;
+    static get NAME() { return 'TAwesomePanel'}
+    static get STYLE() { return style }
+
     createNode() {
         super.createNode();
         const container = this.objectContainer;
