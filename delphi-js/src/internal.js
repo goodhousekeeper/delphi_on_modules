@@ -14,6 +14,7 @@ import TButton from './TButton.js'
 import TBitButton from './TBitButton.js'
 import TStaticText from './TStaticText.js'
 import TEdit from './TEdit.js'
+import TComboBox from './TComboBox.js'
 import TPanel from './TPanel.js'
 import TGroupBox from './TGroupBox.js'
 
@@ -32,6 +33,7 @@ export {
     TBitButton,
     TStaticText,
     TEdit,
+    TComboBox,
     TPanel,
     TGroupBox
 
