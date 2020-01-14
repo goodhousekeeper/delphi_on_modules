@@ -3,7 +3,7 @@ const properties = {
     className: 'TForm',
     caption: 'Delphi.js - Inputs',
     width: 400,
-    height: 412,
+    height: 624,
     left: 560,
     top: 100,
     noMaximizeButton: true,
@@ -73,9 +73,28 @@ const properties = {
             ]
         },
         {
-            name: 'TStaticTextTGroupBox',
+            name: 'TComboBoxTGroupBox',
             className: 'TGroupBox',
             top: 218,
+            left: 8,
+            right: 8,
+            height: 200,
+            caption: 'TComboBox component',
+            contentProperties: [
+                {
+                    name: 'defaultTComboBox',
+                    className: 'TComboBox',
+                    height: 26,
+                    top: 4,
+                    right: 8,
+                    left: 8
+                },
+            ]
+        },
+        {
+            name: 'TStaticTextTGroupBox',
+            className: 'TGroupBox',
+            top: 430,
             left: 8,
             right: 8,
             height: 144,

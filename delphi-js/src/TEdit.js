@@ -30,6 +30,12 @@ const style = `
   content: attr(placeholder);
   opacity: 0.5;
 }
+
+.TApplication .TForm .TEdit.Disabled {
+  background-color: var(--input-disabled-background-color);
+  border-color: var(--input-disabled-border-color);
+}
+
 .TApplication .TForm .TEdit.Disabled .TEdit__Input {
   color: var(--font-disabled-color);    
 }
@@ -39,15 +45,16 @@ const style = `
   border-color: var(--input-invalidated-border-color);
 }
 
-.TApplication .TForm .TEdit.Disabled {
-  background-color: var(--input-disabled-background-color);
-  border-color: var(--input-disabled-border-color);
-}
 `;
 
 class TEdit extends TControl {
-    static get NAME() { return 'TEdit'}
-    static get STYLE() { return style }
+    static get NAME() {
+        return 'TEdit'
+    }
+
+    static get STYLE() {
+        return style
+    }
 
     createNode() {
         super.createNode();
