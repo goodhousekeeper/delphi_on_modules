@@ -37,11 +37,11 @@ const style = `
     filter: grayscale(25%);
 }
 
-.TApplication .TForm .TComboBox:hover .TComboBox__Button {
+.TApplication .TForm .TComboBox .TComboBox__Button:hover {
     filter: grayscale(0%);
 }
 
-.TApplication .TForm .TComboBox:active .TComboBox__Button{
+.TApplication .TForm .TComboBox .TComboBox__Button:active{
     filter: grayscale(75%);
 }
 
@@ -90,6 +90,7 @@ class TComboBox extends TControl {
         input.className = 'TComboBox__Input';
         input.id = container.id + '.Input';
         input.style.lineHeight = (parseInt(container.style.height, 10) - 2) + 'px';
+        container.appendChild(input);
         button.className = 'TComboBox__Button';
         button.id = container.id + '.Button';
         container.appendChild(button);
