@@ -30,20 +30,20 @@ const style = `
     left: 0;
     width: 24px;
     background: transparent no-repeat 4px center;
-    filter: grayscale(25%);
+    filter: var(--interactive-item-default-filter);
 }
 
 .TApplication .TForm .TBitButton:hover .TBitButton__Icon {
-    filter: grayscale(0%);
+    filter: var(--interactive-item-hover-filter);
 }
 
 .TApplication .TForm .TBitButton:active .TBitButton__Icon {
-    filter: grayscale(75%);
+    filter: var(--interactive-item-active-filter);
 }
 
 
 .TApplication .TForm .TBitButton.Disabled .TBitButton__Icon {
-    filter: grayscale(100%);
+    filter: var(--interactive-item-disabled-filter);
 }
 `;
 

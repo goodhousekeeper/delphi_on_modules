@@ -100,19 +100,19 @@ const style = `
 
 .TApplication .TForm .TForm__Title .Buttons {
     width: 24px;
-    filter: grayscale(25%);
+    filter: var(--interactive-item-default-filter);
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 .TApplication .TForm .TForm__Title .Buttons:hover
 {
-  filter: grayscale(0%);
+  filter: var(--interactive-item-hover-filter);
 }
 
 .TApplication .TForm .TForm__Title .Buttons:active  
 {
-  filter: grayscale(75%);
+  filter: var(--interactive-item-active-filter);
 }
 
 .TApplication .TForm .TForm__Title .CloseButton {
